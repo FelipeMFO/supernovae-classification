@@ -33,6 +33,7 @@
 \usepackage[brazil]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
+\graphicspath{{figures/}}
 
 \makelosymbols
 \makeloabbreviations
@@ -149,15 +150,17 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
 	Por fim, a ideia do projeto foi derivada de um artigo publicado pela cientista \citet{lochner}. A autora busca criar uma maneira automática de classificação fotométrica usando as curvas de luz obtidas através da fotometria, essas que já foram devidamente classificadas no passado utilizando espectroscopia. Caracterizando assim um problema de classificação, visto que temos os tipos de supernovas dados pela espectroscopia, e suas representações fotométricas para que possamos criar e treinar modelos.
 	
 	\section{Problemática}
+	\label{sec:prob}
 	
 	Tendo em vista que o artigo \cite{lochner} testou e validou diversos \textit{pipelines}, neste trabalho adotamos aquele que ela obteve o melhor resultado de classificação, e a partir desse ponto, aplicamos modificações e avaliamos quaisquer possíveis melhoras.
 	
-	O \textit{pipeline} escolhido é constituído majoritariamente de 3 partes:
+	O \textit{pipeline} escolhido é constituído majoritariamente de 4 partes:
 	
 	\begin{itemize}
-		\item Processo Gaussiano
+		\item Processo Gaussiano (\textit{Gaussian Process} ou \textbf{GP})
 		\item Transformada de Wavelet
-		\item Floresta Aleatória
+		\item Análise de componentes principais (\textit{Principal Component Analysis} ou \textbf{PCA})
+		\item Floresta Aleatória (\textit{Random Forest} ou \textbf{RF})
 	\end{itemize}
 	
 	A problemática encontra-se no método de interpolação chamado \textbf{Processo Gaussiano}. Por ser um método de interpolação, espera-se que o mesmo defina uma função que passe pelos pontos obtidos respeitando suas incertezas. Entretanto, em alguns casos o gráfico interpolado é uma constante \ref{fig:ExReto}. O que não possui sentido físico, visto que se trata do fluxo de luz após uma explosão de um objeto astronômico.
@@ -169,7 +172,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=15cm]{Ex_reta.png}
-		\caption{Exemplo da interpolação referente a um gráfico de fluxo de luz.}
+		\caption{Exemplo da interpolação não condizente com a realidade, devido a ser uma linha reta ao invés de uma curva.}
 		\label{fig:ExReto}
 	\end{figure}
 	
@@ -177,38 +180,106 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
 	
 	Todos os dados utilizados tanto neste trabalho quanto no artigo \cite{lochner}, foram extraídos da base de dados oferecida pelo desafio \citet{challenge}. A base de dados é de domínio público e pode ser obtida no {LINK DO DOWNLOAD}.
 	
-	Devido a granularidade dos dados brutos, é necessário um pré-tratamento visando buscar apenas os dados que iremos utilizar. Esse pré-tratamento foi aproveitado do \textit{pipeline} do Instituto de Física da UFRJ, cujo processo visa ler os arquivos de texto transformando cada informação em uma chave de dicionário. 
+	Devido a granularidade dos dados brutos, é necessário um pré-tratamento visando buscar apenas os dados que iremos utilizar. Esse pré-tratamento foi aproveitado do \textit{pipeline} do Instituto de Física da UFRJ (\textbf{IF-UFRJ}), cujo processo visa ler os arquivos de texto transformando cada informação em uma chave de dicionário. 
 	
 	Ao fim do uso da seleção de dados citada acima, obtivemos valores em forma de dicionários em Python para cada objeto astronômico. Esses dicionários serão os \textbf{Dados Brutos} no escopo deste trabalho.   
 	
 	\section{Objetivos}
+	\label{sec:Obj}
 	
 	O objetivo do trabalho é otimizar determinados pontos do \textit{pipeline} utilizado atualmente, após um estudo inicial ter sido feito para identificar pontos frágeis ou passíveis de melhoras.
 	
-	Esses pontos são apresentados e justificados a seguir.
+	Esses pontos são apresentados e justificados a seguir, criando as três vertentes do trabalho
+	
+	\begin{itemize}
+		\item Processo Gaussiano
+		\item Aprendizagem Profunda
+		\item Tratamento de \textit{Outliers}		
+	\end{itemize}
 	
 		\subsection{Processo Gaussiano \textit{Gaussian Process}}
 		
-		O Processo Gaussiano (\textit{Gaussian Process} ou \textbf{GP}), é a primeira parte do tratamento de dados após a transformação dos dados brutos em dicionários de Python.
+		O Processo Gaussiano, é a primeira parte do tratamento de dados após a transformação dos dados brutos em dicionários de Python. Iremos abordar esse procedimento no \autoref{chap:GP}.
 		
-		Cada objeto astronômico irá possuir uma quantidade de pontos que representam a intensidade do fluxo de luz captado em determinado dia, bem como a incerteza desse valor. Assim, busca-se fazer uma interpolação para obter um gráfico que passe por determinados pontos. 
+		Cada objeto astronômico irá possuir uma quantidade de pontos que representam a intensidade do fluxo de luz captado em determinado dia, bem como a incerteza desse valor. Assim, buscamos fazer uma interpolação para obter um gráfico que passe por determinados pontos. 
 		
 		O objetivo ao abordar esse ponto é consertar interpolações que não condizem com a interpretação física, como pode ser vista na figura \ref{fig:ExReto}.
 		
 		\subsection{Aprendizagem Profunda}		
 
-		\subsection{Tratamento de \textit{Outliers}}		
+		A Aprendizagem Profunda (\textit{Deep Learning} ou \textbf{DL}) vêm sendo um advento utilizado recentemente para aprimorar alguns algoritmos de Aprendizagem de Máquina (\textit{Machine Learning} ou \textbf{ML}). 
+		
+		A ideia de aplicar DL nesse problema veio a partir da análise do \textit{pipeline} inicial (visto na seção \ref{sec:prob}). Tendo em vista que o mesmo possui diversas partes entre os dados brutos e algoritmo de RF, buscamos aplicar DL esperando obter um \textit{pipeline} mais simples, possuindo apenas uma etapa entre os dados brutos e o algoritmo de classificação.
+		
+		Em diversos outros casos na literatura, como identificação de sons ou imagens, houveram melhorias significativas ao reduzir o número de etapas envolvendo processamento de sinais (wavelets) ou redução de componentes (PCA) em troca do uso de DL. 
+		
+		A segunda motivação para a aplicação de DL veio do artigo da \citet{lochner}, onde ela menciona possíveis aplicações no escopo do problema.
+		
+		Assim, foi decidido aplicar algoritmos de DL após a primeira parte do tratamento de dados, visando manter uma simplicidade ao longo do \textit{pipeline}. Estabelecendo assim, apenas a etapa do GP entre os dados brutos e o algoritmo de classificação. O detalhamento desse procedimento encontra-se no \autoref{chap:DL}.
+
+		\subsection{Tratamento de \textit{Outliers}}
+		
+		O último objetivo para buscar melhorias no algoritmo é o tratamento de pontos cuja incerteza é muito alta ou cujos valores são fora do esperado, pontos com essas características são conhecidos na literatura como \textit{outliers}.
+		
+		Analisando alguns dados brutos, observamos pontos cuja incerteza mostra-se mais de 100\% maior do que a própria curva (ponto mais a esquerda da figura \ref{fig:ExOutlierStd}) e também pontos que encontram-se completamente fora da curva interpolada \ref{fig:ExOutlier}.
+		
+		As etapas do tratamento encontram-se descritas no \autoref{chap:Out}.
+		
+		\newpage
+		
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=15cm]{OutPoint.png}
+			\caption{Exemplo de \textit{outlier}. Gráfico Fluxo $ \times $ Tempo (dias).}
+			\label{fig:ExOutlier}
+		\end{figure}
+	
+		\begin{figure}[h!]
+		\centering
+		\includegraphics[width=15cm]{OutStd.png}
+		\caption{Exemplo de ponto com incerteza 3 vezes maior que o pico da curva. Gráfico Fluxo $ \times $ Tempo (dias).}
+		\label{fig:ExOutlierStd}
+		\end{figure}
+	
+
+		
+		\newpage
 
 	\section{Metodologia}
 	
-		\subsection{Desenvolvimento}
+	Devido ao código de pré-processamento do IF-UFRJ estar escrito em Python, todo o trabalho também foi escrito na mesma linguagem. Outro ponto para a escolha da linguagem foi a facilidade que a mesma possui para realizar experimentos através da plataforma \textit{Jupyter}, além da grande quantidade de bibliotecas de ciências de dados e suporte para desenvolver algoritmos de ML. 
+	
+	As principais bibliotecas utilizadas no contexto de tratamento de dados foram \textit{Pandas} e \textit{Numpy}. Já para a aplicação dos métodos as bibliotecas mais importantes foram \textit{scikit-learn}, \textit{Keras} e \textit{PyMC3}.
+	
+	A entrada dos modelos sempre serão os dicionários gerados a partir dos dados brutos após o pré-processamento do IF-UFRJ. Assim, pôde-se  filtrar com maior facilidade as propriedades desejadas para cada uma das três vertentes do trabalho. 
+
+	Cada uma dessas vertentes possuiu um trabalho específico e isolado para poder melhor averiguar suas mudanças posteriormente. Em outras palavras, a cada mudança realizada houve a comparação direta com os resultados do \textit{pipeline} original, para poder avaliar especificamente a eficiência e melhora dessa mudança.
+	
+	Por se tratar de um algoritmo de classificação, a saída do nosso modelo será booleana e classificará se um objeto astronômico é ou não do tipo IA. Entretanto, nos dados brutos, as classes são divididas em 8 tipos de objetos: \textit{IA, IB, IBC, IC, II, IIL, IIN} e \textit{IIP}.
+	
+	É importante ressaltar também que para validar os modelos do projeto, foi usado o método \textit{K-fold}. Todavia, este trabalho se diferenciou da divisão clássica presente na literatura, que é uma divisão de 80\% dos dados para treinamento e 20\% para o teste dos modelos. Neste trabalho foram utilizados apenas 1100 objetos para treino dentre 21316 objetos totais. A justificativa é a limitação física das amostras.
+	
+	Por fim, as mudanças foram verificadas através de \textbf{Matrizes de Confusão} (\textit{Confusion Matrices} ou \textbf{CM}) ou através de métodos de \textit{score} da biblioteca \textit{scikit-learn}.
+	
+	Como última observação, a fim de estudos posteriores fora do escopo do projeto, todo o código desenvolvido encontra-se disponível em um repositório público do \textit{GitHub}. E nele foram feitas classificações envolvendo os 8 tipos de objetos, além de treinamentos adotando a proporção de 80\% para treino e 20\% para teste.
 		
-		\subsection{Avaliação dos Resultados}
+		
 		
 	\section{Descrição}
-	Dizer aqui o que vai ter nos capítulos a frente
+	No \autoref{chap:FundTeo}, iremos explicar os principais conceitos teóricos utilizados na aplicação do \textbf{Processo Gaussiano} e no \textbf{\textit{Deep Learning}}. Também serão levantados alguns conceitos não tão centrais do trabalho, mas de importância igualmente significativa.
+	
+	O \autoref{chap:ModeloAtual}, será destinado para detalhar especificamente cada etapa do \textit{pipeline} atual, assim como uma breve menção a maneira na qual os dados brutos são tratados.
+	
+	Os capítulos 4, 5 e 6 serão destinados à explicação dos objetivos citados na seção \ref{sec:Obj}, assim como os resultados das mudanças que os mesmos causaram, buscando averiguar a eficiência de aplicação ou explicar possíveis erros.
+	
+	No \autoref{chap:Result} serão apresentados os resultados como um todo, seguidos de análises dos métodos através uma perspectiva global do projeto, diferentemente de como será nos capítulos anteriores, nos quais teremos uma visão específica para cada objetivo.
+	
+	Por fim, no \autoref{chap:Concl} tiraremos as conclusões finais do projeto e serão apresentadas sugestões de trabalhos futuros junto as limitações e possíveis soluções encontradas.
+	
+	\newpage
 	
   \chapter{Fundamentos Teóricos}
+  \label{chap:FundTeo}
   
  	\section{Processo Gaussiano \textit{Gaussian Process}}
  	
@@ -223,20 +294,51 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
  		\subsection{Transformadas de \textit{Wavelet}}
  		
   		\subsection{Validação Cruzada}
+	\newpage
+  \chapter{Modelo Atual}
+  \label{chap:ModeloAtual}  		
+  
+  Neste capítulo iremos detalhar o modelo atual utilizado para estudos cosmológicos do IF-UFRJ.
 
-  \chapter{Modelo Atual}  		
 
 	\section{Pré-processamento dos Dados Brutos}
 	
-	\section{\textit{Pipeline Atual}}
+	Inicialmente os dados brutos chegam da seguinte forma para o pré-processamento.
+	
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=9cm]{raw_dat.png}
+		\caption{Arquivo \textit{.txt} a ser lido pelos arquivos de pré-processamento.}
+		\label{fig:RawData}
+	\end{figure}
+	
+	Através dos arquivos de pré-tratamento iremos obter todas essas informações em forma de dicionário, entretanto apenas as seguintes serão utilizadas durante o projeto.
+	
+	\begin{itemize}
+		\item \textbf{SN TYPE} : Informa o tipo de supernova
+		\item  \textbf{TERSE LIGHT CURVE OUTPUT} : Informa os pontos de observações obtidos. Será nosso \textit{Data Frame}. 
+		\begin{itemize}
+			\item \textbf{MJD} : O momento em que a observação foi obtida. A medida está descrita em dias do calendário Juliano, em seguida ela será convertida para dias tomando como 0 o menor valor do MJD.
+			\item \textbf{FLT} : O filtro em que a observação foi obtida, pois cada observação é obtida a partir de um determinado espectro de luz. 
+			\item  \textbf{FLUXCAL} : O valor do fluxo de luz obtido naquela observação.
+			\item  \textbf{FLUXCALERR} : O valor do erro do fluxo de luz obtido naquela observação.
+		\end{itemize}
+	\end{itemize}
 
+	Sobre os filtros...
+	
+	\section{\textit{Pipeline} Atual}
+	\newpage
   \chapter{Tratamento de \textit{Outliers}}
+  \label{chap:Out}
  	
  	\section{Estratégias Utilizadas}  	
  		
  	\section{Resultados e comparações}
- 		
+	\newpage 		
   \chapter{Rede Neural Convolucional}
+  \label{chap:DL}
  	A ideia foi blablabla usar deep learning, vimos exemplos das roupas, e colocamos la
  	deixamos a princípio o pipeline do Marcelo
  	 	
@@ -246,8 +348,9 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
  		escolhemos 2CNN pra fazer por isso e por aquilo
  	
  	\section{Resultados e comparações}
-
+	\newpage
   \chapter{Interpolação através de Processo Gaussiano}
+  \label{chap:GP}
   
 	\section{Escolha da Biblioteca}
 		
@@ -261,11 +364,12 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
 	\section{Resultados das Interpolações}
 		
 	\section{Identificação e Justificativa do Erro}
- 
+	\newpage 
   \chapter{Resultados e Discussões}
-
+  \label{chap:Result}
+	\newpage
   \chapter{Conclusões}
- 
+  \label{chap:Concl}
 	\section{Conclusões Finais} 	  
 		
 			Falar que o Algoritmo de hoje já é bem robusto

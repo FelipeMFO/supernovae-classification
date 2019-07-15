@@ -2,17 +2,20 @@
 \babel@toc {english}{}
 \babel@toc {brazil}{}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Exemplo da interpola\IeC {\c c}\IeC {\~a}o referente a um gr\IeC {\'a}fico de fluxo de luz.}}{2}{figure.1.1}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Exemplo da interpola\IeC {\c c}\IeC {\~a}o n\IeC {\~a}o condizente com a realidade, devido a ser uma linha reta ao inv\IeC {\'e}s de uma curva.}}{3}{figure.1.1}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Exemplo de \textit {outlier}. Gr\IeC {\'a}fico Fluxo $ \times $ Tempo (dias).}}{5}{figure.1.2}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Exemplo de ponto com incerteza 3 vezes maior que o pico da curva. Gr\IeC {\'a}fico Fluxo $ \times $ Tempo (dias).}}{5}{figure.1.3}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Arquivo \textit {.txt} a ser lido pelos arquivos de pr\IeC {\'e}-processamento.}}{10}{figure.3.1}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {9.1}{\ignorespaces Logotipo da POLI-UFRJ.}}{13}{figure.9.1}
-\contentsline {figure}{\numberline {9.2}{\ignorespaces Logotipo da COPPE.}}{13}{figure.9.2}
+\contentsline {figure}{\numberline {9.1}{\ignorespaces Logotipo da POLI-UFRJ.}}{17}{figure.9.1}
+\contentsline {figure}{\numberline {9.2}{\ignorespaces Logotipo da COPPE.}}{17}{figure.9.2}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -11,41 +11,39 @@
 \BOOKMARK [2][-]{subsection.1.4.2}{Aprendizagem Profunda}{section.1.4}% 11
 \BOOKMARK [2][-]{subsection.1.4.3}{Tratamento de Outliers}{section.1.4}% 12
 \BOOKMARK [1][-]{section.1.5}{Metodologia}{chapter.1}% 13
-\BOOKMARK [2][-]{subsection.1.5.1}{Desenvolvimento}{section.1.5}% 14
-\BOOKMARK [2][-]{subsection.1.5.2}{Avalia\347\343o dos Resultados}{section.1.5}% 15
-\BOOKMARK [1][-]{section.1.6}{Descri\347\343o}{chapter.1}% 16
-\BOOKMARK [0][-]{chapter.2}{Fundamentos Te\363ricos}{}% 17
-\BOOKMARK [1][-]{section.2.1}{Processo Gaussiano Gaussian Process}{chapter.2}% 18
-\BOOKMARK [1][-]{section.2.2}{Rede Neural Convolucional}{chapter.2}% 19
-\BOOKMARK [1][-]{section.2.3}{Demais Conceitos}{chapter.2}% 20
-\BOOKMARK [2][-]{subsection.2.3.1}{An\341lise de Componentes Principais}{section.2.3}% 21
-\BOOKMARK [2][-]{subsection.2.3.2}{Transformadas de Wavelet}{section.2.3}% 22
-\BOOKMARK [2][-]{subsection.2.3.3}{Valida\347\343o Cruzada}{section.2.3}% 23
-\BOOKMARK [0][-]{chapter.3}{Modelo Atual}{}% 24
-\BOOKMARK [1][-]{section.3.1}{Pr\351-processamento dos Dados Brutos}{chapter.3}% 25
-\BOOKMARK [1][-]{section.3.2}{Pipeline Atual}{chapter.3}% 26
-\BOOKMARK [0][-]{chapter.4}{Tratamento de Outliers}{}% 27
-\BOOKMARK [1][-]{section.4.1}{Estrat\351gias Utilizadas}{chapter.4}% 28
-\BOOKMARK [1][-]{section.4.2}{Resultados e compara\347\365es}{chapter.4}% 29
-\BOOKMARK [0][-]{chapter.5}{Rede Neural Convolucional}{}% 30
-\BOOKMARK [1][-]{section.5.1}{Gera\347\343o de Imagens e Par\342metros}{chapter.5}% 31
-\BOOKMARK [1][-]{section.5.2}{Escolhas de Redes Neurais}{chapter.5}% 32
-\BOOKMARK [1][-]{section.5.3}{Resultados e compara\347\365es}{chapter.5}% 33
-\BOOKMARK [0][-]{chapter.6}{Interpola\347\343o atrav\351s de Processo Gaussiano}{}% 34
-\BOOKMARK [1][-]{section.6.1}{Escolha da Biblioteca}{chapter.6}% 35
-\BOOKMARK [1][-]{section.6.2}{Aleatoriedades e Random Seeds}{chapter.6}% 36
-\BOOKMARK [1][-]{section.6.3}{Kernel Functions}{chapter.6}% 37
-\BOOKMARK [1][-]{section.6.4}{Demais Observa\347\365es}{chapter.6}% 38
-\BOOKMARK [1][-]{section.6.5}{Resultados das Interpola\347\365es}{chapter.6}% 39
-\BOOKMARK [1][-]{section.6.6}{Identifica\347\343o e Justificativa do Erro}{chapter.6}% 40
-\BOOKMARK [0][-]{chapter.7}{Resultados e Discuss\365es}{}% 41
-\BOOKMARK [0][-]{chapter.8}{Conclus\365es}{}% 42
-\BOOKMARK [1][-]{section.8.1}{Conclus\365es Finais}{chapter.8}% 43
-\BOOKMARK [1][-]{section.8.2}{Trabalhos Futuros}{chapter.8}% 44
-\BOOKMARK [0][-]{chapter.9}{Introdu\347\343o}{}% 45
-\BOOKMARK [0][-]{chapter.10}{Revis\343o Bibliogr\341fica}{}% 46
-\BOOKMARK [0][-]{chapter.11}{M\351todo Proposto}{}% 47
-\BOOKMARK [0][-]{chapter.12}{Resultados e Discuss\365es}{}% 48
-\BOOKMARK [0][-]{chapter.13}{Conclus\365es}{}% 49
-\BOOKMARK [0][-]{chapter*.7}{Refer\352ncias Bibliogr\341ficas}{}% 50
-\BOOKMARK [0][-]{appendix.A}{Algumas Demonstra\347\365es}{}% 51
+\BOOKMARK [1][-]{section.1.6}{Descri\347\343o}{chapter.1}% 14
+\BOOKMARK [0][-]{chapter.2}{Fundamentos Te\363ricos}{}% 15
+\BOOKMARK [1][-]{section.2.1}{Processo Gaussiano Gaussian Process}{chapter.2}% 16
+\BOOKMARK [1][-]{section.2.2}{Rede Neural Convolucional}{chapter.2}% 17
+\BOOKMARK [1][-]{section.2.3}{Demais Conceitos}{chapter.2}% 18
+\BOOKMARK [2][-]{subsection.2.3.1}{An\341lise de Componentes Principais}{section.2.3}% 19
+\BOOKMARK [2][-]{subsection.2.3.2}{Transformadas de Wavelet}{section.2.3}% 20
+\BOOKMARK [2][-]{subsection.2.3.3}{Valida\347\343o Cruzada}{section.2.3}% 21
+\BOOKMARK [0][-]{chapter.3}{Modelo Atual}{}% 22
+\BOOKMARK [1][-]{section.3.1}{Pr\351-processamento dos Dados Brutos}{chapter.3}% 23
+\BOOKMARK [1][-]{section.3.2}{Pipeline Atual}{chapter.3}% 24
+\BOOKMARK [0][-]{chapter.4}{Tratamento de Outliers}{}% 25
+\BOOKMARK [1][-]{section.4.1}{Estrat\351gias Utilizadas}{chapter.4}% 26
+\BOOKMARK [1][-]{section.4.2}{Resultados e compara\347\365es}{chapter.4}% 27
+\BOOKMARK [0][-]{chapter.5}{Rede Neural Convolucional}{}% 28
+\BOOKMARK [1][-]{section.5.1}{Gera\347\343o de Imagens e Par\342metros}{chapter.5}% 29
+\BOOKMARK [1][-]{section.5.2}{Escolhas de Redes Neurais}{chapter.5}% 30
+\BOOKMARK [1][-]{section.5.3}{Resultados e compara\347\365es}{chapter.5}% 31
+\BOOKMARK [0][-]{chapter.6}{Interpola\347\343o atrav\351s de Processo Gaussiano}{}% 32
+\BOOKMARK [1][-]{section.6.1}{Escolha da Biblioteca}{chapter.6}% 33
+\BOOKMARK [1][-]{section.6.2}{Aleatoriedades e Random Seeds}{chapter.6}% 34
+\BOOKMARK [1][-]{section.6.3}{Kernel Functions}{chapter.6}% 35
+\BOOKMARK [1][-]{section.6.4}{Demais Observa\347\365es}{chapter.6}% 36
+\BOOKMARK [1][-]{section.6.5}{Resultados das Interpola\347\365es}{chapter.6}% 37
+\BOOKMARK [1][-]{section.6.6}{Identifica\347\343o e Justificativa do Erro}{chapter.6}% 38
+\BOOKMARK [0][-]{chapter.7}{Resultados e Discuss\365es}{}% 39
+\BOOKMARK [0][-]{chapter.8}{Conclus\365es}{}% 40
+\BOOKMARK [1][-]{section.8.1}{Conclus\365es Finais}{chapter.8}% 41
+\BOOKMARK [1][-]{section.8.2}{Trabalhos Futuros}{chapter.8}% 42
+\BOOKMARK [0][-]{chapter.9}{Introdu\347\343o}{}% 43
+\BOOKMARK [0][-]{chapter.10}{Revis\343o Bibliogr\341fica}{}% 44
+\BOOKMARK [0][-]{chapter.11}{M\351todo Proposto}{}% 45
+\BOOKMARK [0][-]{chapter.12}{Resultados e Discuss\365es}{}% 46
+\BOOKMARK [0][-]{chapter.13}{Conclus\365es}{}% 47
+\BOOKMARK [0][-]{chapter*.7}{Refer\352ncias Bibliogr\341ficas}{}% 48
+\BOOKMARK [0][-]{appendix.A}{Algumas Demonstra\347\365es}{}% 49
