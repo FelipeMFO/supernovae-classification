@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.7.5)  15 JUL 2019 12:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.7.5)  16 JUL 2019 02:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -853,7 +853,7 @@ Package babel Info: Redefining portuges shorthand "|
 Package hyperref Info: Option `breaklinks' set `true' on input line 107.
 Package hyperref Info: Option `raiselinks' set `true' on input line 107.
 Package hyperref Info: Option `pageanchor' set `true' on input line 107.
-<poli-logo.pdf, id=172, 708.6475pt x 282.05376pt>
+<poli-logo.pdf, id=180, 708.6475pt x 282.05376pt>
 File: poli-logo.pdf Graphic file (type pdf)
 <use poli-logo.pdf>
 Package pdftex.def Info: poli-logo.pdf  used on input line 107.
@@ -1006,7 +1006,7 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 163.
-<figures/Ex_reta.png, id=303, 1156.32pt x 722.7pt>
+<figures/Ex_reta.png, id=317, 1156.32pt x 722.7pt>
 File: figures/Ex_reta.png Graphic file (type png)
 <use figures/Ex_reta.png>
 Package pdftex.def Info: figures/Ex_reta.png  used on input line 177.
@@ -1036,252 +1036,354 @@ Package babel Info: Redefining portuges shorthand "|
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 231.
  [4]
-<figures/OutPoint.png, id=333, 1156.32pt x 722.7pt>
+<figures/OutPoint.png, id=348, 1156.32pt x 722.7pt>
 File: figures/OutPoint.png Graphic file (type png)
 <use figures/OutPoint.png>
 Package pdftex.def Info: figures/OutPoint.png  used on input line 235.
 (pdftex.def)             Requested size: 426.79134pt x 266.74419pt.
-<figures/OutStd.png, id=334, 1156.32pt x 722.7pt>
+<figures/OutStd.png, id=349, 1156.32pt x 722.7pt>
 File: figures/OutStd.png Graphic file (type png)
 <use figures/OutStd.png>
-Package pdftex.def Info: figures/OutStd.png  used on input line 242.
+Package pdftex.def Info: figures/OutStd.png  used on input line 243.
 (pdftex.def)             Requested size: 426.79134pt x 266.74419pt.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 249.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 249.
- [5 <./figures/OutPoint.png> <./figures/OutStd.png>]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 251.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 271.
+(babel)             in language  on input line 251.
+ [5 <./figures/OutPoint.png> <./figures/OutStd.png>]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 275.
+(babel)             in language  on input line 253.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 275.
+(babel)             in language  on input line 273.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 278.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 278.
  [6]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 282.
+(babel)             in language  on input line 284.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 282.
+(babel)             in language  on input line 284.
 
 [7]
 Cap\'{\i }tulo 2.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 284.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 287.
+(babel)             in language  on input line 286.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 289.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 291.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 295.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 297.
-Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 299.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 300.
+(babel)             in language  on input line 305.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 300.
+(babel)             in language  on input line 305.
 [8
 
 ]
+<figures/Kernel1.png, id=389, 748.7975pt x 444.66125pt>
+File: figures/Kernel1.png Graphic file (type png)
+<use figures/Kernel1.png>
+Package pdftex.def Info: figures/Kernel1.png  used on input line 319.
+(pdftex.def)             Requested size: 223.00256pt x 132.42236pt.
+
+Overfull \hbox (20.27408pt too wide) in paragraph at lines 319--321
+ [][] 
+ []
+
+<figures/Kernel2.png, id=390, 1135.24126pt x 446.66875pt>
+File: figures/Kernel2.png Graphic file (type png)
+<use figures/Kernel2.png>
+Package pdftex.def Info: figures/Kernel2.png  used on input line 327.
+(pdftex.def)             Requested size: 223.00256pt x 87.7373pt.
+
+Overfull \hbox (20.27408pt too wide) in paragraph at lines 327--329
+ [][] 
+ []
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 339.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 339.
+[9]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 341.
+<figures/mcmc1.png, id=400, 803.0pt x 321.2pt>
+File: figures/mcmc1.png Graphic file (type png)
+<use figures/mcmc1.png>
+Package pdftex.def Info: figures/mcmc1.png  used on input line 355.
+(pdftex.def)             Requested size: 223.00256pt x 89.20021pt.
+
+Overfull \hbox (20.27408pt too wide) in paragraph at lines 355--357
+ [][] 
+ []
+
+<figures/mcmc2.png, id=401, 803.0pt x 321.2pt>
+File: figures/mcmc2.png Graphic file (type png)
+<use figures/mcmc2.png>
+Package pdftex.def Info: figures/mcmc2.png  used on input line 363.
+(pdftex.def)             Requested size: 223.00256pt x 89.20021pt.
+
+Overfull \hbox (20.27408pt too wide) in paragraph at lines 363--365
+ [][] 
+ []
+
+
+Underfull \hbox (badness 2027) in paragraph at lines 365--365
+[]\T1/cmr/m/n/10.95 (b) |Exem-plo de pri-ori de-li-mi-tada que
+ []
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 377.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 379.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 383.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 383.
+[10 <./figures/Kernel1.png> <./figures/Kernel2.png>]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 383.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 383.
+ [11 <./figures/mcmc1.png> <./figures/mcmc2.png>]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 383.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 393.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 401.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 405.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 405.
+ [12]
 Cap\'{\i }tulo 3.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 301.
+(babel)             in language  on input line 406.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 307.
-<figures/raw_dat.png, id=361, 744.7825pt x 1061.9675pt>
+(babel)             in language  on input line 412.
+<figures/raw_dat.png, id=427, 744.7825pt x 1061.9675pt>
 File: figures/raw_dat.png Graphic file (type png)
 <use figures/raw_dat.png>
-Package pdftex.def Info: figures/raw_dat.png  used on input line 314.
+Package pdftex.def Info: figures/raw_dat.png  used on input line 419.
 (pdftex.def)             Requested size: 256.0748pt x 365.13145pt.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 335.
+(babel)             in language  on input line 440.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 335.
-[9
+(babel)             in language  on input line 440.
+[13
 
 ]
-<figures/SN000017_II_desg.png, id=367, 1156.32pt x 722.7pt>
+<figures/SN000017_II_desg.png, id=433, 1156.32pt x 722.7pt>
 File: figures/SN000017_II_desg.png Graphic file (type png)
 <use figures/SN000017_II_desg.png>
-Package pdftex.def Info: figures/SN000017_II_desg.png  used on input line 342.
+Package pdftex.def Info: figures/SN000017_II_desg.png  used on input line 447.
 (pdftex.def)             Requested size: 202.72849pt x 126.69493pt.
-<figures/SN000017_II_desi.png, id=368, 1156.32pt x 722.7pt>
+<figures/SN000017_II_desi.png, id=434, 1156.32pt x 722.7pt>
 File: figures/SN000017_II_desi.png Graphic file (type png)
 <use figures/SN000017_II_desi.png>
-Package pdftex.def Info: figures/SN000017_II_desi.png  used on input line 350.
+Package pdftex.def Info: figures/SN000017_II_desi.png  used on input line 455.
 (pdftex.def)             Requested size: 202.72849pt x 126.69493pt.
-<figures/SN000017_II_desr.png, id=369, 1156.32pt x 722.7pt>
+<figures/SN000017_II_desr.png, id=435, 1156.32pt x 722.7pt>
 File: figures/SN000017_II_desr.png Graphic file (type png)
 <use figures/SN000017_II_desr.png>
-Package pdftex.def Info: figures/SN000017_II_desr.png  used on input line 358.
+Package pdftex.def Info: figures/SN000017_II_desr.png  used on input line 463.
 (pdftex.def)             Requested size: 202.72849pt x 126.69493pt.
-<figures/SN000017_II_desz.png, id=370, 1156.32pt x 722.7pt>
+<figures/SN000017_II_desz.png, id=436, 1156.32pt x 722.7pt>
 File: figures/SN000017_II_desz.png Graphic file (type png)
 <use figures/SN000017_II_desz.png>
-Package pdftex.def Info: figures/SN000017_II_desz.png  used on input line 366.
+Package pdftex.def Info: figures/SN000017_II_desz.png  used on input line 471.
 (pdftex.def)             Requested size: 202.72849pt x 126.69493pt.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 376.
-
-
-LaTeX Warning: Reference `fig:ImgDFMarc' on page 10 undefined on input line 380
-.
-
+(babel)             in language  on input line 481.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 382.
+(babel)             in language  on input line 490.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 382.
-[10 <./figures/raw_dat.png>]
+(babel)             in language  on input line 490.
+ [14 <./figures/raw_dat.png>]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 383.
+(babel)             in language  on input line 504.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 383.
- [11 <./figures/SN000017_II_desg.png> <./figures/SN000017_II_desi.png> <./figur
+(babel)             in language  on input line 504.
+ [15 <./figures/SN000017_II_desg.png> <./figures/SN000017_II_desi.png> <./figur
 es/SN000017_II_desr.png> <./figures/SN000017_II_desz.png>]
+<figures/cm_ex.png, id=454, 336.25626pt x 281.05pt>
+File: figures/cm_ex.png Graphic file (type png)
+<use figures/cm_ex.png>
+Package pdftex.def Info: figures/cm_ex.png  used on input line 511.
+(pdftex.def)             Requested size: 202.72849pt x 169.44609pt.
+<figures/cm_exp.png, id=455, 320.19624pt x 281.05pt>
+File: figures/cm_exp.png Graphic file (type png)
+<use figures/cm_exp.png>
+Package pdftex.def Info: figures/cm_exp.png  used on input line 519.
+(pdftex.def)             Requested size: 202.72849pt x 177.94585pt.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 529.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 529.
+ [16 <./figures/cm_ex.png> <./figures/cm_exp.png>]
 Cap\'{\i }tulo 4.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 383.
+(babel)             in language  on input line 530.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 386.
+(babel)             in language  on input line 533.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 388.
+(babel)             in language  on input line 535.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 389.
+(babel)             in language  on input line 536.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 389.
-[12
+(babel)             in language  on input line 536.
+[17
 
 ]
 Cap\'{\i }tulo 5.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 390.
+(babel)             in language  on input line 537.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 395.
+(babel)             in language  on input line 542.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 397.
+(babel)             in language  on input line 544.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 400.
+(babel)             in language  on input line 547.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 401.
+(babel)             in language  on input line 548.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 401.
-[13
+(babel)             in language  on input line 548.
+[18
 
 ]
 Cap\'{\i }tulo 6.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 402.
+(babel)             in language  on input line 549.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 405.
+(babel)             in language  on input line 552.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 407.
+(babel)             in language  on input line 554.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 409.
+(babel)             in language  on input line 556.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 411.
+(babel)             in language  on input line 558.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 414.
+(babel)             in language  on input line 561.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 416.
+(babel)             in language  on input line 563.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 417.
+(babel)             in language  on input line 564.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 417.
-[14
+(babel)             in language  on input line 564.
+[19
 
 ]
 Cap\'{\i }tulo 7.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 418.
+(babel)             in language  on input line 565.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 420.
+(babel)             in language  on input line 567.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 420.
-[15
+(babel)             in language  on input line 567.
+[20
 
 ]
 Cap\'{\i }tulo 8.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 421.
+(babel)             in language  on input line 568.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 423.
+(babel)             in language  on input line 570.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 427.
+(babel)             in language  on input line 574.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 432.
+(babel)             in language  on input line 579.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 432.
-[16
+(babel)             in language  on input line 579.
+[21
 
 ] (./TCC_relatorio.bbl
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 1.
+
+Underfull \hbox (badness 7631) in paragraph at lines 26--30
+[]\T1/cmr/m/n/12 BAILEY, K.  ``From both si-des now: the math of li-near re-
+ []
+
+
+Underfull \hbox (badness 4752) in paragraph at lines 26--30
+\T1/cmr/m/n/12 gres-sion'', []\T1/cmr/m/it/12 http://katbailey.github.io/post/f
+rom-both-sides-now-the-math-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--36
+[]\T1/cmr/m/n/12 BAILEY, K.  ``Gaus-sian Pro-ces-ses for Dum-mies'',
+ []
+
+
+Underfull \hbox (badness 7291) in paragraph at lines 32--36
+[]\T1/cmr/m/it/12 http://katbailey.github.io/post/gaussian-processes-for-dummie
+s/[]\T1/cmr/m/n/12 , v. 1,
+ []
+
 )
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 437.
+(babel)             in language  on input line 584.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 437.
- [17
+(babel)             in language  on input line 584.
+ [22
 
 
 ]
 Ap\^endice A.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 437.
+(babel)             in language  on input line 584.
 
 AED: lastpage setting LastPage
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 438.
+(babel)             in language  on input line 587.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 438.
-[18
+(babel)             in language  on input line 587.
+[23
 
 ]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 438.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 438.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 438.
+(babel)             in language  on input line 587.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 587.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 587.
  (./TCC_relatorio.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 438.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 438.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 587.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 587.
 Package rerunfilecheck Info: File `TCC_relatorio.out' has not changed.
-(rerunfilecheck)             Checksum: 028B0FCCC703A9FD153C6195375A2432;2897.
+(rerunfilecheck)             Checksum: 488DC899D21F050BBE7315669C810C1D;3048.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 438.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 587.
  ) 
 Here is how much of TeX's memory you used:
- 9836 strings out of 492982
- 141555 string characters out of 6134897
- 361338 words of memory out of 5000000
- 13117 multiletter control sequences out of 15000+600000
+ 9927 strings out of 492982
+ 142978 string characters out of 6134897
+ 362190 words of memory out of 5000000
+ 13185 multiletter control sequences out of 15000+600000
  20950 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,11n,40p,689b,524s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,11n,45p,689b,496s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/
-cm-super/sfbi1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbi1440.pf
-b></usr/share/texmf/fonts/type1/public/cm-super/sfbi1728.pfb></usr/share/texmf/
-fonts/type1/public/cm-super/sfbi2488.pfb></usr/share/texmf/fonts/type1/public/c
-m-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb
-></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/f
-onts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf/fonts/type1/public/cm
--super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
-</usr/share/texmf/fonts/type1/public/cm-super/sfti1095.pfb></usr/share/texmf/fo
-nts/type1/public/cm-super/sfti1200.pfb>
-Output written on TCC_relatorio.pdf (29 pages, 783704 bytes).
+f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/cm-supe
+r/sfbi1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbi1440.pfb></usr
+/share/texmf/fonts/type1/public/cm-super/sfbi1728.pfb></usr/share/texmf/fonts/t
+ype1/public/cm-super/sfbi2488.pfb></usr/share/texmf/fonts/type1/public/cm-super
+/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/
+share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/ty
+pe1/public/cm-super/sfbx2488.pfb></usr/share/texmf/fonts/type1/public/cm-super/
+sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/s
+hare/texmf/fonts/type1/public/cm-super/sfti1095.pfb></usr/share/texmf/fonts/typ
+e1/public/cm-super/sfti1200.pfb>
+Output written on TCC_relatorio.pdf (34 pages, 978589 bytes).
 PDF statistics:
- 485 PDF objects out of 1000 (max. 8388607)
- 416 compressed objects within 5 object streams
- 81 named destinations out of 1000 (max. 500000)
- 382 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 573 PDF objects out of 1000 (max. 8388607)
+ 484 compressed objects within 5 object streams
+ 98 named destinations out of 1000 (max. 500000)
+ 428 words of extra memory for PDF output out of 10000 (max. 10000000)
 

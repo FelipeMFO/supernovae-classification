@@ -1,4 +1,4 @@
-\begin{thebibliography}{2}
+\begin{thebibliography}{9}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -15,5 +15,45 @@
 \MakeUppercase{Kessler, R.}
 \newblock \enquote{Supernova Photometric Classification Challenge},
   \emph{arXiv}, v.~6, n. 5210, \penalty0 pp.~4, abr. 2010.
+
+\bibitem[\MakeUppercase{Rasmussen} e \MakeUppercase{Williams}(2004)Rasmussen e
+  Williams]{GPBook}
+\MakeUppercase{Rasmussen, C., Williams, C. K.~I.}
+\newblock \emph{Gaussian Processes for Machine Learning}.
+\newblock 1 ed. New York, Thomas Dietterich, Editor, 2004.
+
+\bibitem[\MakeUppercase{Bailey}(2016{\natexlab{a}})Bailey]{ridge}
+\MakeUppercase{Bailey, K.}
+\newblock \enquote{From both sides now: the math of linear regression},
+  \emph{\href{http://katbailey.github.io/post/from-both-sides-now-the-math-of-linear-regression/}{http://katbailey.github.io/post/from-both-sides-now-the-math-of-linear-regression/}},
+  v.~1, n.~1, \penalty0 pp.~1, jun. 2016{\natexlab{a}}.
+
+\bibitem[\MakeUppercase{Bailey}(2016{\natexlab{b}})Bailey]{GPDummies}
+\MakeUppercase{Bailey, K.}
+\newblock \enquote{Gaussian Processes for Dummies},
+  \emph{\href{http://katbailey.github.io/post/gaussian-processes-for-dummies/}{http://katbailey.github.io/post/gaussian-processes-for-dummies/}},
+  v.~1, n.~1, \penalty0 pp.~1, jun. 2016{\natexlab{b}}.
+
+\bibitem[\MakeUppercase{Jochen~Görtler}(2019)Jochen~Görtler]{GPVisual}
+\MakeUppercase{Jochen~Görtler, Rebecca~Kehlbeck, O.~D.}
+\newblock \enquote{A Visual Exploration of Gaussian Processes},
+  \emph{\href{https://distill.pub/2019/visual-exploration-gaussian-processes/}{https://distill.pub/2019/visual-exploration-gaussian-processes/}},
+  v.~1, n.~1, \penalty0 pp.~1, 2019.
+
+\bibitem[\MakeUppercase{Dani~Gamerman}(2006)Dani~Gamerman]{MCMC}
+\MakeUppercase{Dani~Gamerman, H. F.~L.}
+\newblock \emph{Markov Chain Monte Carlo Stochastic Simulation for Bayesian
+  Inference}.
+\newblock 2 ed. New York, Chapman and Hall/CRC, 2006.
+
+\bibitem[\MakeUppercase{Murphy}(2012)Murphy]{ML}
+\MakeUppercase{Murphy, K.~P.}
+\newblock \emph{Machine Learning A Probabilistic Perspective}.
+\newblock 1 ed. Massachussetts Institute of Technology, MIT, 2012.
+
+\bibitem[\MakeUppercase{Celso}(2014)Celso]{Afonso}
+\MakeUppercase{Celso, A.}
+\newblock \enquote{Notas de Aula de Sinais e Sistemas}, \emph{UFRJ - COE350 -
+  Sinais e Sistemas - ECA}, jun. 2014.
 
 \end{thebibliography}

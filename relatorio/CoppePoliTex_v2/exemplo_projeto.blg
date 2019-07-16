@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: exemplo_projeto.aux
+The style file: coppe-unsrt.bst
+Database file #1: example.bib
+Warning--I didn't find a database entry for "book-example"
+Warning--I didn't find a database entry for "article-example"
+Warning--I didn't find a database entry for "techreport-example"
+Warning--I didn't find a database entry for "techreport-exampleIn"
+Warning--I didn't find a database entry for "inproceedings-example"
+Warning--I didn't find a database entry for "incollection-example"
+Warning--I didn't find a database entry for "inbook-example"
+Warning--I didn't find a database entry for "mastersthesis-example"
+Warning--I didn't find a database entry for "phdthesis-example"
+You've used 2 entries,
+            2630 wiz_defined-function locations,
+            569 strings with 4301 characters,
+and the built_in function-call counts, 689 in all, are:
+= -- 51
+> -- 14
+< -- 4
++ -- 8
+- -- 4
+* -- 65
+:= -- 104
+add.period$ -- 6
+call.type$ -- 2
+change.case$ -- 2
+chr.to.int$ -- 2
+cite$ -- 2
+duplicate$ -- 48
+empty$ -- 78
+format.name$ -- 6
+if$ -- 141
+int.to.chr$ -- 1
+int.to.str$ -- 3
+missing$ -- 2
+newline$ -- 17
+num.names$ -- 6
+pop$ -- 14
+preamble$ -- 1
+purify$ -- 2
+quote$ -- 0
+skip$ -- 21
+stack$ -- 0
+substring$ -- 15
+swap$ -- 16
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 14
+warning$ -- 0
+while$ -- 6
+width$ -- 0
+write$ -- 32
+(There were 9 warnings)

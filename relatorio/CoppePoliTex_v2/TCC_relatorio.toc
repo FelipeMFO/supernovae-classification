@@ -14,32 +14,34 @@
 \contentsline {section}{\numberline {1.5}Metodologia}{6}{section.1.5}
 \contentsline {section}{\numberline {1.6}Descri\IeC {\c c}\IeC {\~a}o}{6}{section.1.6}
 \contentsline {chapter}{\numberline {2}Fundamentos Te\IeC {\'o}ricos}{8}{chapter.2}
-\contentsline {section}{\numberline {2.1}Processo Gaussiano \textit {Gaussian Process}}{8}{section.2.1}
-\contentsline {section}{\numberline {2.2}Rede Neural Convolucional}{8}{section.2.2}
-\contentsline {section}{\numberline {2.3}Demais Conceitos}{8}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}An\IeC {\'a}lise de Componentes Principais}{8}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Transformadas de \textit {Wavelet}}{8}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Valida\IeC {\c c}\IeC {\~a}o Cruzada}{8}{subsection.2.3.3}
-\contentsline {chapter}{\numberline {3}Modelo Atual}{9}{chapter.3}
-\contentsline {section}{\numberline {3.1}Pr\IeC {\'e}-processamento dos Dados Brutos}{9}{section.3.1}
-\contentsline {section}{\numberline {3.2}\textit {Pipeline} Atual}{10}{section.3.2}
-\contentsline {chapter}{\numberline {4}Tratamento de \textit {Outliers}}{12}{chapter.4}
-\contentsline {section}{\numberline {4.1}Estrat\IeC {\'e}gias Utilizadas}{12}{section.4.1}
-\contentsline {section}{\numberline {4.2}Resultados e compara\IeC {\c c}\IeC {\~o}es}{12}{section.4.2}
-\contentsline {chapter}{\numberline {5}Rede Neural Convolucional}{13}{chapter.5}
-\contentsline {section}{\numberline {5.1}Gera\IeC {\c c}\IeC {\~a}o de Imagens e Par\IeC {\^a}metros}{13}{section.5.1}
-\contentsline {section}{\numberline {5.2}Escolhas de Redes Neurais}{13}{section.5.2}
-\contentsline {section}{\numberline {5.3}Resultados e compara\IeC {\c c}\IeC {\~o}es}{13}{section.5.3}
-\contentsline {chapter}{\numberline {6}Interpola\IeC {\c c}\IeC {\~a}o atrav\IeC {\'e}s de Processo Gaussiano}{14}{chapter.6}
-\contentsline {section}{\numberline {6.1}Escolha da Biblioteca}{14}{section.6.1}
-\contentsline {section}{\numberline {6.2}Aleatoriedades e \textit {Random Seeds}}{14}{section.6.2}
-\contentsline {section}{\numberline {6.3}\textit {Kernel Functions}}{14}{section.6.3}
-\contentsline {section}{\numberline {6.4}Demais Observa\IeC {\c c}\IeC {\~o}es}{14}{section.6.4}
-\contentsline {section}{\numberline {6.5}Resultados das Interpola\IeC {\c c}\IeC {\~o}es}{14}{section.6.5}
-\contentsline {section}{\numberline {6.6}Identifica\IeC {\c c}\IeC {\~a}o e Justificativa do Erro}{14}{section.6.6}
-\contentsline {chapter}{\numberline {7}Resultados e Discuss\IeC {\~o}es}{15}{chapter.7}
-\contentsline {chapter}{\numberline {8}Conclus\IeC {\~o}es}{16}{chapter.8}
-\contentsline {section}{\numberline {8.1}Conclus\IeC {\~o}es Finais}{16}{section.8.1}
-\contentsline {section}{\numberline {8.2}Trabalhos Futuros}{16}{section.8.2}
-\contentsline {chapter}{Refer\^encias Bibliogr\'aficas}{17}{chapter*.10}
-\contentsline {chapter}{\numberline {A}Algumas Demonstra\IeC {\c c}\IeC {\~o}es}{18}{appendix.A}
+\contentsline {section}{\numberline {2.1}Processo Gaussiano}{8}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}\textit {Kernel} e Fun\IeC {\c c}\IeC {\~a}o de Covari\IeC {\^a}ncia}{8}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Fun\IeC {\c c}\IeC {\~a}o M\IeC {\'e}dia}{10}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}Rede Neural Convolucional}{12}{section.2.2}
+\contentsline {section}{\numberline {2.3}Demais Conceitos}{12}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}An\IeC {\'a}lise de Componentes Principais}{12}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Transformadas de \textit {Wavelet}}{12}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Valida\IeC {\c c}\IeC {\~a}o Cruzada}{12}{subsection.2.3.3}
+\contentsline {chapter}{\numberline {3}Modelo Atual}{13}{chapter.3}
+\contentsline {section}{\numberline {3.1}Pr\IeC {\'e}-processamento dos Dados Brutos}{13}{section.3.1}
+\contentsline {section}{\numberline {3.2}\textit {Pipeline} Atual}{14}{section.3.2}
+\contentsline {chapter}{\numberline {4}Tratamento de \textit {Outliers}}{17}{chapter.4}
+\contentsline {section}{\numberline {4.1}Estrat\IeC {\'e}gias Utilizadas}{17}{section.4.1}
+\contentsline {section}{\numberline {4.2}Resultados e compara\IeC {\c c}\IeC {\~o}es}{17}{section.4.2}
+\contentsline {chapter}{\numberline {5}Rede Neural Convolucional}{18}{chapter.5}
+\contentsline {section}{\numberline {5.1}Gera\IeC {\c c}\IeC {\~a}o de Imagens e Par\IeC {\^a}metros}{18}{section.5.1}
+\contentsline {section}{\numberline {5.2}Escolhas de Redes Neurais}{18}{section.5.2}
+\contentsline {section}{\numberline {5.3}Resultados e compara\IeC {\c c}\IeC {\~o}es}{18}{section.5.3}
+\contentsline {chapter}{\numberline {6}Interpola\IeC {\c c}\IeC {\~a}o atrav\IeC {\'e}s de Processo Gaussiano}{19}{chapter.6}
+\contentsline {section}{\numberline {6.1}Escolha da Biblioteca}{19}{section.6.1}
+\contentsline {section}{\numberline {6.2}Aleatoriedades e \textit {Random Seeds}}{19}{section.6.2}
+\contentsline {section}{\numberline {6.3}\textit {Kernel Functions}}{19}{section.6.3}
+\contentsline {section}{\numberline {6.4}Demais Observa\IeC {\c c}\IeC {\~o}es}{19}{section.6.4}
+\contentsline {section}{\numberline {6.5}Resultados das Interpola\IeC {\c c}\IeC {\~o}es}{19}{section.6.5}
+\contentsline {section}{\numberline {6.6}Identifica\IeC {\c c}\IeC {\~a}o e Justificativa do Erro}{19}{section.6.6}
+\contentsline {chapter}{\numberline {7}Resultados e Discuss\IeC {\~o}es}{20}{chapter.7}
+\contentsline {chapter}{\numberline {8}Conclus\IeC {\~o}es}{21}{chapter.8}
+\contentsline {section}{\numberline {8.1}Conclus\IeC {\~o}es Finais}{21}{section.8.1}
+\contentsline {section}{\numberline {8.2}Trabalhos Futuros}{21}{section.8.2}
+\contentsline {chapter}{Refer\^encias Bibliogr\'aficas}{22}{chapter*.13}
+\contentsline {chapter}{\numberline {A}Reposit\IeC {\'o}rio do C\IeC {\'o}digo}{23}{appendix.A}

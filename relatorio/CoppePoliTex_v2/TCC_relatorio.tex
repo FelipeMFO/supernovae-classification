@@ -51,7 +51,7 @@
   \examiner{Prof.}{Amit Bhaya}{D.Sc.}
   \examiner{Prof.}{Ribamar Rondon de Rezende dos Reis}{Ph.D.}
   \examiner{Prof.}{Heraldo Luís Silveira de Almeida}{D.Sc.}
-  \examiner{Prof.}{Nome do Segundo Examinador Sobrenome}{D.Sc.}
+  \examiner{Prof.}{Ramon Romankevicius Costa }{D.Sc.}
 
   
   
@@ -233,14 +233,16 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[width=15cm]{OutPoint.png}
-			\caption{Exemplo de \textit{outlier}. Gráfico Fluxo $ \times $ Tempo (dias).}
+			\caption[Exemplo de \textit{outlier}.]
+			{{\small Exemplo de \textit{outlier}. Gráfico Fluxo $ \times $ Tempo (dias).}}
 			\label{fig:ExOutlier}
 		\end{figure}
 	
 		\begin{figure}[h!]
 		\centering
 		\includegraphics[width=15cm]{OutStd.png}
-		\caption{Exemplo de ponto com incerteza 3 vezes maior que o pico da curva. Gráfico Fluxo $ \times $ Tempo (dias).}
+		\caption[Exemplo de ponto com incerteza 3 vezes maior que o pico da curva.]
+		{{Exemplo de ponto com incerteza 3 vezes maior que o pico da curva. Gráfico Fluxo $ \times $ Tempo (dias).}}
 		\label{fig:ExOutlierStd}
 		\end{figure}
 	
@@ -264,7 +266,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
 	
 	Por fim, as mudanças foram verificadas através de \textbf{Matrizes de Confusão} (\textit{Confusion Matrices} ou \textbf{CM}) ou através de métodos de \textit{score} da biblioteca \textit{scikit-learn}.
 	
-	Como última observação, a fim de estudos posteriores fora do escopo do projeto, todo o código desenvolvido encontra-se disponível em um repositório público do \textit{GitHub}. E nele foram feitas classificações envolvendo os 8 tipos de objetos, além de treinamentos adotando a proporção de 80\% para treino e 20\% para teste.
+	Como última observação, a fim de estudos posteriores fora do escopo do projeto, foram feitas classificações envolvendo os 8 tipos de objetos, além de treinamentos adotando a proporção de 80\% para treino e 20\% para teste.
 		
 		
 		
@@ -284,19 +286,122 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
   \chapter{Fundamentos Teóricos}
   \label{chap:FundTeo}
   
- 	\section{Processo Gaussiano \textit{Gaussian Process}}
+ 	\section{Processo Gaussiano}
+ 	
+ 	O Processo Gaussiano é uma ferramenta importante no escopo de \textit{Machine Learning} que nos permite fazer predições sobre nossos dados tendo como base um conhecimento a priori. A sua aplicação mais frequente é em interpolações de funções, vide a aplicação neste projeto. Há também possíveis aplicações do conceito em classificações e agrupamentos de grande quantidades de dados. O livro base utilizado para os estudos desse projeto foi \citet{GPBook} . 
+ 	
+ 	Sabendo que para uma quantidade determinada de pontos existe uma infinidade de funções que podem interpolar esses valores, o Processo Gaussiano realiza essa interpolação a partir dos conhecimentos a priori dos valores dessa função, assim como de um provável formato que ela pode assumir como um todo. Por fim, o GP não irá obter um valor específico para cada ponto da função interpolada, mas sim uma distribuição probabilística para cada ponto, onde cada um possuirá uma média (valor que será atribuído) e um desvio padrão (incerteza).
+ 	
+ 	Neste projeto não abrangeremos maiores detalhes para o aprendizado do método, contudo, pode-se encontrar na bibliografia, tanto referências mais específicas e técnicas \cite{GPBook},   quanto mais práticas \cite{ridge}, \cite{GPDummies}, \cite{GPVisual}.
+ 	
+ 	Iremos agora focar nos dois aspectos fundamentais do Processo Gaussiano; eles serão os principais responsáveis por caracterizar as interpolações.
+
+	\subsection{\textit{Kernel} e Função de Covariância}
+	
+	O Processo Gaussiano interpola uma função discreta de $n$ pontos através dos $m$ pontos conhecidos, resultando em $n$ distribuições normais, uma para cada ponto que irá constituir essa função discreta.
+	
+	Vale lembrar que uma função discreta cujos intervalos dos pontos do eixo das abscissas são significativamente pequenos pode ser considerada contínua para efeitos práticos. 
+	
+	O diferencial do GP é considerar uma distribuição normal multivariável de dimensão $n+m$ durante a interpolação. Essa distribuição normal multivariável possuirá uma covariância $\Sigma$ responsável não apenas por descrever o \textbf{formato}, como também por determinar \textbf{características} da função a ser prevista.
+	
+	Para poder obter o $\Sigma$ desta normal multivariável, é estabelecido o \textit{Kernel} do GP. Ele é uma função de duas variáveis especial que respeita certas restrições matemáticas (Cap. 4 \citet{GPBook}). Essas varíaveis são os valores da abscissa de cada ponto da função a ser interpolada.
+	
+	Em outras palavras, o \textit{Kernel} é uma função que irá relacionar dois pontos que deverão estar na curva interpolada, baseando se apenas na distância entre eles. É essa relação que fornecerá características como periodicidade, picos e suavização da curva.
+	
+	É importante ressaltar que apenas os valores das abscissas serão utilizados para essa relação, enquanto os valores das ordenadas dos pontos conhecidos são utilizados para forçar que essa função passe pelos pontos dados, através de \textbf{probabilidade condicionada} ( \textit{\textbf{Posterior Distribution}} \cite{GPVisual}). Pode-se utilizar esse método de probabilidade condicionada devido à propriedade das distribuições gaussianas que afirma: distribuições condicionadas ou marginalizadas vindas de distribuições gaussianas também são gaussianas. 
+	
+	A figura \ref{fig:Kernel} ilustra uma maneira mais fácil de visualizar o que foi dito no parágrafo acima. Pode-se ver em \ref{fig:Kernel}(b) que os mesmos 10 pontos serão calculados já com a probabilidade condicionada para satisfazer os 2 pontos pré-estabelecidos.
+	
+	\begin{figure*}
+		\centering
+		\begin{subfigure}[h]{0.475\textwidth}
+			\centering
+			\includegraphics[width=1.1\textwidth]{Kernel1.png}
+			\caption[]%
+			{{\small Ilustração da matriz $\Sigma$ para 10 pontos.}}    
+			\label{fig:Kernel1}
+		\end{subfigure}
+		\vskip\baselineskip
+		\begin{subfigure}[h]{0.475\textwidth}   
+			\centering 
+			\includegraphics[width=1.1\textwidth]{Kernel2.png}
+			\caption[]%
+			{{\small Ilustração da matriz $\Sigma$ para 12 pontos. 2 deles são pontos dados.}}    
+			\label{fig:Kernel2}
+		\end{subfigure}
+		\quad
+
+		\caption[ Ilustração da matriz $\Sigma$ possuindo 10 e 12 pontos.]
+		{\small Ilustração da matriz $\Sigma$ possuindo 10 e 12 pontos. \textit{Imagens retiradas de \citet{GPVisual}}} 
+		\label{fig:Kernel}
+	\end{figure*}
+	
+	\newpage
+ 	
+ 	\subsection{Função Média}
+ 	
+ 	A Função Média de um Processo Gaussiano é aquela responsável por oferecer a predição inicial do ponto a ser interpolado. É o valor que determinado ponto possuiria caso só existisse ele a ser definido.
+ 	
+ 	Contudo, só existe sentido em falar de função média caso a associemos à Função Covariância. Normalmente a Função Média é estabelecida como uma distribuição normal com média em 0 e desvio padrão 1. 
+ 	
+ 	É possível usar essa distribuição padrão como valor a priori, pois o valor final da média de um ponto será obtido após um número suficientemente grande de amostras de pontos, que serão definidos através de amostragens usando \textbf{Cadeias de Markov Monte Carlo} \cite{MCMC}, se aproximando cada vez mais do valor ideal. A figura \ref{fig:MCMC}(a) ilustra esse caso.
+ 	
+ 	Todavia, é imprescindível o uso correto da Função Média, pois caso ela tenha seu domínio delimitado, isso poderá impossibilitar que a função assuma alguns valores, como está ilustrado na \ref{fig:MCMC}(b).
+ 	
+ 	\begin{figure*}
+ 		\centering
+ 		\begin{subfigure}[h]{0.475\textwidth}
+ 			\centering
+ 			\includegraphics[width=1.1\textwidth]{mcmc1.png}
+ 			\caption[]%
+ 			{{\small Exemplo de priori gaussiana que ao longo das amostragens influenciadas pelos dados assume o valor real (no caso do exemplo é 4).}}    
+ 			\label{fig:MCMC1}
+ 		\end{subfigure}
+ 		\vskip\baselineskip
+ 		\begin{subfigure}[h]{0.475\textwidth}   
+ 			\centering 
+ 			\includegraphics[width=1.1\textwidth]{mcmc2.png}
+ 			\caption[]%
+ 			{{\small Exemplo de priori delimitada que mesmo ao longo das amostragens nunca assumirá o valor real (no caso do exemplo é 4 e a delimitação é de -2 a 2).}}    
+ 			\label{fig:MCMC2}
+ 		\end{subfigure}
+ 		\quad
+ 		
+ 		\caption[ Ilustração do valor da função média.]
+ 		{\small Ilustração do valor da função média durante as amostragens via Cadeias de Markov Monte Carlo. \textit{Imagens retiradas da \citet{GPDummies}} } 
+ 		\label{fig:MCMC}
+ 	\end{figure*}
+ 	
+
  	
  	\section{Rede Neural Convolucional}
   
  	\section{Demais Conceitos}
  	
- 		Conceitos menos usados ao longo do \textit{pipeline}, estão brevemente explicados a seguir.
+ 	Aqui estão apresentados alguns conceitos menos usados ao longo do \textit{pipeline}.
  		
  		\subsection{Análise de Componentes Principais}
  		
+ 		A Análise de Componentes Principais (Cap. 12 \citet{ML}), ou \textit{Principal Component Analysis} (\textbf{PCA}), utiliza conceitos de ortogonalizações de vetores para poder reduzir dimensões.
+ 		
+ 		Em ML, essa redução de dimensões é aplicada as \textit{features} de um \textit{dataframe}, onde as amostras possuem um grande número de características e deseja-se reduzi-las para que o modelo de aprendizagem de máquina seja menos pesado mas igualmente eficaz.
+ 		
+ 		Através de técnicas vindas da álgebra linear o método "cria" novas dimensões virtuais compostas por combinações lineares das existentes, de maneira que estas novas dimensões poderão melhor distinguir a quantidade de dados existentes no \textit{dataframe}. 
+ 		
+ 		Por fim pode-se também interpretar PCA por uma perspectiva de filtros, onde se decompõe determinado sinal, e selecionando determinadas frequências conserva-se a potência do sinal. Por esta perspectiva, as frequências são as \textit{features} e a potência é a porcentagem que as novas \textit{features} têm de representar o \textit{dataframe}.
+ 		
  		\subsection{Transformadas de \textit{Wavelet}}
  		
+ 		Transformadas de \textit{Wavelet} \cite{Afonso} ou onduletas são funções capazes de descrever ou representar outras funções em diferentes escalas de frequência e de tempo.
+ 		
+ 		São normalmente usadas no domínio de processamento de sinais, sendo úteis para eliminar ruídos e comprimir dados por exemplo.
+ 		
+ 		Neste projeto as Transformadas de \textit{Wavelet} servem para processar os gráficos interpolados do GP. Resultando assim em valores que podem ter possíveis erros de interpolação eliminados, por exemplo. 
+ 		
   		\subsection{Validação Cruzada}
+  		
+  		Validação cruzada é uma técnica que avalia a generalização do modelo. Ao reparti
+  		
 	\newpage
   \chapter{Modelo Atual}
   \label{chap:ModeloAtual}  		
@@ -368,7 +473,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
 			{{\small Filtro \textit{desz}}}    
 			\label{fig:mean and std of net44}
 		\end{subfigure}
-		\caption[ Exemplo de 4 curvas de luz de um mesmo objeto, uma para cada filtro. Gráfico Fluxo $ \times $ Tempo (dias). ]
+		\caption[ Exemplo de 4 curvas de luz de um mesmo objeto.]
 		{\small Exemplo de 4 curvas de luz de um mesmo objeto, uma para cada filtro. Gráfico Fluxo $ \times $ Tempo (dias).} 
 		\label{fig:ExFiltro}
 	\end{figure*}
@@ -377,7 +482,49 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
 	
 	A partir do pré-processamento explicado na seção anterior, o \textit{pipeline} atual irá dispor destes dados para realizar as etapas do processo de classificação.
 	
-	Inicialmente ele irá separar os dados do \textit{Terse Light Curve Output} pelos filtros e irá criar 4 \textit{dataframes} possuindo 3 \textit{features} cada, são eles: \textbf{MJD}, \textbf{FLUXCAL} e \textbf{FLUXCALERR}. \ref{fig:ImgDFMarc}
+	Inicialmente ele irá separar os dados do \textit{Terse Light Curve Output} pelos filtros e irá criar 4 \textit{numpy arrays} possuindo $n \times 3$ dimensões cada (\textbf{MJD}, \textbf{FLUXCAL} e \textbf{FLUXCALERR}) e sendo n o número de amostras.
+	
+	Em seguida, esses 4 \textit{numpy arrays} serão a entrada do modelo de \textit{Gaussian Process}, cuja função é interpolar uma curva que passe pelos pontos de cada filtro, como pode ser visto na figura \ref{fig:ExFiltro}.
+	
+	A saída do Processo Gaussiano será o gráfico interpolado em forma de \textit{numpy array} $100 \times 3$, contendo 100 pontos de abscissa, 100 pontos de ordenada e 100 pontos do erro da ordenada. 
+	
+	Essa saída será a entrada do processo de \textit{wavelets}, que irá retornar 400 valores para cada entrada. 
+	
+	No total, cada objeto terá esse procedimento feito 4 vezes, uma para cada filtro. Assim, como saída do processo de \textit{wavelets} teremos 1600 coeficientes para cada objeto astronômico.
+	
+	Em seguida, é realizada uma redução de variáveis através da \textbf{análise de componentes principais} ou \textbf{PCA}. Após esse procedimento, cada objeto possuirá 20 \textit{features}.
+	
+	Após essa etapa, o \textit{dataframe} já estará composto por 21316 amostras com 20 \textit{features} cada.
+	
+	Em paralelo, usamos o \textbf{SN TYPE} do dicionário para guardar os \textit{labels} de cada objeto astronômico em forma de lista.
+	
+	Finalmente será criado o modelo de classificação baseado em \textit{Random Forest} para classificar o tipo de objeto astronômico. Usamos o módulo \textit{sklearn.pipeline} da biblioteca \textit{scikit learn}.
+	
+	Tendo em mãos o \textit{dataframe}, a lista com as classificações de cada objeto (os \textit{labels}) e o modelo de classificação, é feito a divisão usando o método \textit{k-fold} de validação cruzada. Nele dividimos os objetos em 19 partições e usa-se 1 delas para treino e as demais para teste.
+	
+	Por fim, cada modelo dos 19 \textit{folds} existentes é avaliado através de 2 maneiras de obtenção de \textit{score}, a \textbf{Curva AUC} e o \textbf{método de precisão média}. Podemos também analisar as matrizes de confusão de cada um dos 19 modelos para ilustrar seus acertos, seus falsos positivos e falsos negativos (figura \ref{fig:CMEx}). 
+
+	\begin{figure*}[h]
+	\centering
+	\begin{subfigure}[b]{0.475\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{cm_ex.png}
+		\caption[]%
+		{{\small Exemplo de Matriz de Confusão, valores absolutos.}}    
+		\label{fig:CMExValor}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.475\textwidth}  
+		\centering 
+		\includegraphics[width=\textwidth]{cm_exp.png}
+		\caption[]%
+		{{\small Exemplo Matriz de Confusão, valores normalizados.}}    
+		\label{fig:CMExPorcentavem}
+	\end{subfigure}
+	\caption[ Exemplo de Matrizes de Confusão de um modelo final do \textit{pipeline} original. ]
+	{\small Exemplo de Matrizes de Confusão de um modelo final do \textit{pipeline} original.} 
+	\label{fig:CMEx}
+	\end{figure*}
 	
 	\newpage
   \chapter{Tratamento de \textit{Outliers}}
@@ -431,10 +578,12 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
 
   \backmatter
   \bibliographystyle{coppe-unsrt}
-  \bibliography{example}
+  \bibliography{bibliografia}
 
   \appendix
-  \chapter{Algumas Demonstrações}
+  \chapter{Repositório do Código}
+  
+  Todo o código desenvolvido encontra-se disponível no repositório público do \textit{GitHub}, a fim de poder ser desenvolvido e modificado por qualquer pessoa que deseje contribuir ou estudar este projeto, podendo ser acessado no seguinte link: \href{https://github.com/FelipeMFO/supernova_identification}{https://github.com/FelipeMFO/supernova\_identification}.
 \end{document}
 %% 
 %%
