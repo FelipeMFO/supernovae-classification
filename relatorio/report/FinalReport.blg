@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: FinalReport.aux
+The style file: coppe-unsrt.bst
+Database file #1: bibliografia.bib
+Warning--string name "abr" is undefined
+--line 62 of file bibliografia.bib
+Repeated entry---line 75 of file bibliografia.bib
+ : @article{GPVisual
+ :                  ,
+I'm skipping whatever remains of this entry
+You've used 9 entries,
+            2630 wiz_defined-function locations,
+            599 strings with 5261 characters,
+and the built_in function-call counts, 2833 in all, are:
+= -- 218
+> -- 69
+< -- 14
++ -- 39
+- -- 20
+* -- 249
+:= -- 420
+add.period$ -- 27
+call.type$ -- 9
+change.case$ -- 12
+chr.to.int$ -- 8
+cite$ -- 9
+duplicate$ -- 206
+empty$ -- 326
+format.name$ -- 31
+if$ -- 601
+int.to.chr$ -- 2
+int.to.str$ -- 10
+missing$ -- 12
+newline$ -- 48
+num.names$ -- 27
+pop$ -- 74
+preamble$ -- 1
+purify$ -- 9
+quote$ -- 0
+skip$ -- 90
+stack$ -- 0
+substring$ -- 42
+swap$ -- 60
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 54
+warning$ -- 0
+while$ -- 23
+width$ -- 0
+write$ -- 118
+(There was 1 error message)
