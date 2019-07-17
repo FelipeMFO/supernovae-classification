@@ -32,16 +32,16 @@
 \contentsline {section}{\numberline {5.1}Gera\IeC {\c c}\IeC {\~a}o de Imagens e Par\IeC {\^a}metros}{21}{section.5.1}
 \contentsline {section}{\numberline {5.2}\textit {Pipeline}}{22}{section.5.2}
 \contentsline {section}{\numberline {5.3}Resultados e compara\IeC {\c c}\IeC {\~o}es}{23}{section.5.3}
-\contentsline {chapter}{\numberline {6}Interpola\IeC {\c c}\IeC {\~a}o atrav\IeC {\'e}s de Processo Gaussiano}{24}{chapter.6}
-\contentsline {section}{\numberline {6.1}Escolha da Biblioteca}{24}{section.6.1}
-\contentsline {section}{\numberline {6.2}Aleatoriedades e \textit {Random Seeds}}{24}{section.6.2}
-\contentsline {section}{\numberline {6.3}\textit {Kernel Functions}}{24}{section.6.3}
-\contentsline {section}{\numberline {6.4}Demais Observa\IeC {\c c}\IeC {\~o}es}{24}{section.6.4}
-\contentsline {section}{\numberline {6.5}Resultados das Interpola\IeC {\c c}\IeC {\~o}es}{24}{section.6.5}
-\contentsline {section}{\numberline {6.6}Identifica\IeC {\c c}\IeC {\~a}o e Justificativa do Erro}{24}{section.6.6}
-\contentsline {chapter}{\numberline {7}Resultados e Discuss\IeC {\~o}es}{25}{chapter.7}
-\contentsline {chapter}{\numberline {8}Conclus\IeC {\~o}es}{26}{chapter.8}
-\contentsline {section}{\numberline {8.1}Conclus\IeC {\~o}es Finais}{26}{section.8.1}
-\contentsline {section}{\numberline {8.2}Trabalhos Futuros}{26}{section.8.2}
-\contentsline {chapter}{Refer\^encias Bibliogr\'aficas}{27}{chapter*.17}
-\contentsline {chapter}{\numberline {A}Reposit\IeC {\'o}rio do C\IeC {\'o}digo}{28}{appendix.A}
+\contentsline {chapter}{\numberline {6}Interpola\IeC {\c c}\IeC {\~a}o atrav\IeC {\'e}s de Processo Gaussiano}{25}{chapter.6}
+\contentsline {section}{\numberline {6.1}Escolha da Biblioteca}{25}{section.6.1}
+\contentsline {section}{\numberline {6.2}Aleatoriedades e \textit {Random Seeds}}{25}{section.6.2}
+\contentsline {section}{\numberline {6.3}\textit {Kernel Functions}}{25}{section.6.3}
+\contentsline {section}{\numberline {6.4}Demais Observa\IeC {\c c}\IeC {\~o}es}{25}{section.6.4}
+\contentsline {section}{\numberline {6.5}Resultados das Interpola\IeC {\c c}\IeC {\~o}es}{25}{section.6.5}
+\contentsline {section}{\numberline {6.6}Identifica\IeC {\c c}\IeC {\~a}o e Justificativa do Erro}{25}{section.6.6}
+\contentsline {chapter}{\numberline {7}Resultados e Discuss\IeC {\~o}es}{26}{chapter.7}
+\contentsline {chapter}{\numberline {8}Conclus\IeC {\~o}es}{27}{chapter.8}
+\contentsline {section}{\numberline {8.1}Conclus\IeC {\~o}es Finais}{27}{section.8.1}
+\contentsline {section}{\numberline {8.2}Trabalhos Futuros}{27}{section.8.2}
+\contentsline {chapter}{Refer\^encias Bibliogr\'aficas}{28}{chapter*.20}
+\contentsline {chapter}{\numberline {A}Reposit\IeC {\'o}rio do C\IeC {\'o}digo}{29}{appendix.A}

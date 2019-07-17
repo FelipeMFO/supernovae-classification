@@ -581,11 +581,11 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
 		\centering 
 		\includegraphics[width=\textwidth]{cm_exp.png}
 		\caption[]%
-		{{\small Exemplo Matriz de Confusão, valores normalizados.}}    
+		{{\small Matriz de Confusão, valores normalizados.}}    
 		\label{fig:CMExPorcentavem}
 	\end{subfigure}
-	\caption[ Exemplo de Matrizes de Confusão de um modelo final do \textit{pipeline} original. ]
-	{\small Exemplo de Matrizes de Confusão de um modelo final do \textit{pipeline} original.} 
+	\caption[ Matrizes de Confusão de um modelo final do \textit{pipeline} original. ]
+	{\small Matrizes de Confusão do modelo final do \textit{pipeline} original.} 
 	\label{fig:CMEx}
 	\end{figure*}
 	
@@ -601,19 +601,19 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
 	\newpage 		
   \chapter{Rede Neural Convolucional}
   \label{chap:DL}
- 	A abordagem utilizando \textit{Deep Learning} embasou-se em uma breve análise dos dados onde se percebeu algumas diferenças entre gráficos de diferentes tipos de objetos astronômicos, assim como pequenas semelhanças entre aqueles do mesmo tipo.
+ 	A abordagem utilizando \textit{Deep Learning} teve como base uma análise das interpolações, nela foram notadas diferenças entre gráficos de diferentes tipos assim como pequenas semelhanças entre aqueles do mesmo tipo.
  	
- 	Somou-se a isso o conhecimento vindo da literatura de que recentemente muitos algoritmos rebuscados com diversas etapas em seu \textit{pipeline} vêem sendo substituídos por \textit{pipelines} mais simples contendo \textit{Deep Learning}.
+ 	Pode-se citar também que recentemente diversos algoritmos vêem tendo seus \textit{pipelines} reduzidos e seu desempenho melhorado graças a adição do \textit{Deep Learning} (como processamento de imagens e identificação de voz).
  	
  	 \section{Geração de Imagens e Parâmetros}  
  	 
- 	 A primeira etapa desta abordagem consiste em gerar gráficos a partir da interpolação gaussiana. Vale lembrar que para comparar o resultado deste método com o \textit{pipeline} inicial, a interpolação realizada para gerar os gráficos fornecidos ao DL é a mesma interpolação usada no \textit{pipeline} original.
+ 	 A primeira etapa desta abordagem consiste em gerar gráficos a partir da interpolação gaussiana. Para comparar o resultado deste método com o \textit{pipeline} inicial, a interpolação realizada para gerar os gráficos fornecidos ao DL é a mesma interpolação usada no \textit{pipeline} original.
  	 
- 	 Optou-se gerar gráficos ao invés de utilizar os pontos diretamente, devido à interpolação possuir mais informações ao aprendizado da máquina do que apenas pontos soltos em uma imagem. 
+ 	 Optou-se por gerar gráficos ao invés de utilizar os pontos diretamente, devido à interpolação possuir mais informações ao aprendizado da máquina do que apenas pontos soltos em uma imagem. 
  	 
- 	 Estas imagens serão gráficos em escalas de cinza na extensão \textit{png} cujas dimensões são:$64 \times 40$ pixels. Ao analisá-las, notou-se que existe uma margem ao gerar as imagens, esta margem contém 5 pixels na dimensão $y$ e 9 pixels na dimensão $x$. Para otimizar o tempo de treinamento, após transformar as imagens em matrizes \textit{numpy} eliminaram-se também essas margens, resultando em um formato de dimensão $46 \times 30$.
+ 	 Estas imagens serão gráficos em escalas de cinza na extensão \textit{png} cujas dimensões são: $64 \times 40$ pixels. Ao analisá-las, notou-se que existe uma margem ao gerar as imagens, esta margem contém 5 pixels na dimensão $y$ e 9 pixels na dimensão $x$. No fim, essas margens foram eliminadas resultando em um formato de dimensão $46 \times 30$.
  	 
- 	 Por fim, vale ressaltar que essas dimensões foram escolhidas baseando-se em exemplos clássicos e bem conhecidos da literatura que possuem dimensões com valores bem próximos, como o \href{	https://towardsdatascience.com/image-classification-in-10-minutes-with-mnist-dataset-54c35b77a38d
+ 	 Esses tamanhos foram escolhidos baseando-se em exemplos clássicos e bem conhecidos da literatura que possuem dimensões com valores bem próximos, como o \href{	https://towardsdatascience.com/image-classification-in-10-minutes-with-mnist-dataset-54c35b77a38d
  	 }{MNIST} e \href{https://github.com/zalandoresearch/fashion-mnist}{Fashion MNIST}.
 
  	\section{\textit{Pipeline}}  	
@@ -627,7 +627,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
 		
  	\end{itemize}
  
- 	Dentre diversos possíveis tipos de camadas internas de \textit{Deep Learning} foram escolhidas camadas do tipo \textbf{Convolucionais 2D} e \textbf{\textit{Max Pooling} 2D} (seção \ref{sec:CNN}).
+ 	Dentre diversos possíveis tipos de camadas internas de \textit{Deep Learning}, foram escolhidas camadas do tipo \textbf{Convolucionais 2D} e \textbf{\textit{Max Pooling} 2D} (seção \ref{sec:CNN}).
  	
  	A arquitetura escolhida também foi baseada em exemplos clássicos de problemas de identificação de imagens, em especial o \href{https://github.com/zalandoresearch/fashion-mnist}{Fashion MNIST}.
  	
@@ -640,11 +640,58 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
  		\label{fig:DLArchUsed}
  	\end{figure}
  
- 	O último valor do \textit{Shape} de cada camada é a quantidade de neurônios que ela possui, enquanto os demais valores são o número de linhas e colunas da imagem. O valor "4" que era de se esperar devido aos 4 filtros não aparece explicitamente na estrutura de arquitetura do modelo, todavia, é um comportamento normal visto que neste caso ele funciona como se fosse uma imagem em "RGBA" (uma matriz para veremlho, azul, verde e transparência).
+ 	O último valor do \textit{Shape} de cada camada é a quantidade de neurônios que ela possui, enquanto os demais valores são o número de linhas e colunas da imagem. O valor '4' que era de se esperar devido aos 4 filtros não aparece explicitamente na estrutura da arquitetura do modelo, todavia, é um comportamento normal visto que neste caso ele funciona como se fosse uma imagem em "RGBA", onde teria uma matriz para vermelho, azul, verde e transparência.
  	
- 	Em seguida, foi definida uma \textit{random seed} para poder fixar quaisquer tipos de aleatoriedades intrínsecas ao modelo. Assim, o mesmo foi treinado em 2,3,5 e 10 épocas (número este também baseado nos exemplos citados), obtendo um resultado satisfatório quando o valor foi de 10 épocas, pois sua acurácia foi mais alta e ainda assim não ficou "viciado".
+ 	Em seguida, foi definida uma \textit{random seed} para poder fixar quaisquer tipos de aleatoriedades intrínsecas ao modelo. Assim, o mesmo foi treinado em 2,3,5 e 10 épocas (número este também baseado nos exemplos citados), obtendo um resultado satisfatório quando o valor foi de 10 épocas, pois sua acurácia foi alta sem deixar o algoritmo dependente.
  	
  	\section{Resultados e comparações}
+ 	
+ 	Os resultados obtidos para a classificação do melhor modelo podem ser vistos nas matrizes de confusão da figura \ref{fig:resultadoDL}
+ 	
+ 	\begin{figure*}[h]
+ 		\centering
+ 		\begin{subfigure}[b]{0.475\textwidth}
+ 			\centering
+ 			\includegraphics[width=\textwidth]{result_DL1.png}
+ 			\caption[]%
+ 			{{\small Valores normalizados.}}    
+ 		\end{subfigure}
+ 		\hfill
+ 		\begin{subfigure}[b]{0.475\textwidth}  
+ 			\centering 
+ 			\includegraphics[width=\textwidth]{result_DL2.png}
+ 			\caption[]%
+ 			{{\small Valores absolutos.}}    
+ 		\end{subfigure}
+ 		\caption[ Matrizes de confusão do modelo final. \textit{Deep Learning}.]
+ 		{\small Matrizes de confusão do modelo final.} 
+ 		\label{fig:resultadoDL}
+ 	\end{figure*}
+ 
+ 	Ao compararmos os resultados da figura \ref{fig:resultadoDL} com o da figura \ref{fig:CMEx} percebemos que o modelo de \textit{Deep Learning} apresentou piora em seu desempenho.
+ 	
+ 	Dois motivos podem explicar tal desempenho, o primeiro deles é que as imagens treinadas não sofreram o chamado \textit{data augmentation}, uma técnica que busca aumentar a quantidade de dados treinados e variar suas formas de identificação, focando em rotacionar, deslocar, reduzir e aumentar as figuras. Devido as imagens deste projeto serem gráficos, haveria uma perda de sentido caso os mesmos fossem rotacionados ou deslocados.
+ 	
+ 	O segundo motivo é a limitação física que faz com que sejam treinados apenas 1100 objetos astronômicos. Normalmente algoritmos de \textit{Deep Learning} mostram-se mais vantajosos do que algoritmos de ML devido a grande quantidade de dados que os faz ter um desempenho melhor.
+ 	
+ 	Por fim, também foram feitos experimentos envolvendo uma distribuição de dados de $80\%$ para treino de $20\%$ para teste. A análise dessas matrizes de confusão (figuras \ref{fig:DLScuks1} e \ref{fig:DLScuks2}) confirmam que para este problema a aplicação de \textit{Deep Learning} analisando o formato dos gráficos não se mostra eficiente, reiterando a justificativa da ausência do \textit{data augmentation}.
+ 	
+ 	 \begin{figure}[ht]
+ 		\centering
+ 		\includegraphics[width=7cm]{dldef.png}
+ 		\caption{Valores normalizados do modelo DL treinando com 80\% dos dados.}
+ 		\label{fig:DLScuks1}
+ 	\end{figure}
+ 
+ 	 \begin{figure}[ht]
+ 		\centering
+ 		\includegraphics[width=7cm]{cmmarc.png}
+ 		\caption{Modelo do \textit{pipeline} original treinado com 80\% dos dados.}
+ 		\label{fig:DLScuks2}
+ 	\end{figure}
+
+ 	
+ 	
 	\newpage
   \chapter{Interpolação através de Processo Gaussiano}
   \label{chap:GP}
