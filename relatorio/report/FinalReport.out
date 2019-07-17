@@ -18,7 +18,7 @@
 \BOOKMARK [1][-]{section.2.3}{Demais Conceitos}{chapter.2}% 18
 \BOOKMARK [2][-]{subsection.2.3.1}{An\341lise de Componentes Principais}{section.2.3}% 19
 \BOOKMARK [2][-]{subsection.2.3.2}{Transformadas de Wavelet}{section.2.3}% 20
-\BOOKMARK [2][-]{subsection.2.3.3}{Valida\347\343o Cruzada}{section.2.3}% 21
+\BOOKMARK [2][-]{subsection.2.3.3}{K-Fold Cross Validation}{section.2.3}% 21
 \BOOKMARK [0][-]{chapter.3}{Modelo Atual}{}% 22
 \BOOKMARK [1][-]{section.3.1}{Pr\351-processamento dos Dados Brutos}{chapter.3}% 23
 \BOOKMARK [1][-]{section.3.2}{Pipeline Atual}{chapter.3}% 24
@@ -27,7 +27,7 @@
 \BOOKMARK [1][-]{section.4.2}{Resultados e compara\347\365es}{chapter.4}% 27
 \BOOKMARK [0][-]{chapter.5}{Rede Neural Convolucional}{}% 28
 \BOOKMARK [1][-]{section.5.1}{Gera\347\343o de Imagens e Par\342metros}{chapter.5}% 29
-\BOOKMARK [1][-]{section.5.2}{Escolhas de Redes Neurais}{chapter.5}% 30
+\BOOKMARK [1][-]{section.5.2}{Pipeline}{chapter.5}% 30
 \BOOKMARK [1][-]{section.5.3}{Resultados e compara\347\365es}{chapter.5}% 31
 \BOOKMARK [0][-]{chapter.6}{Interpola\347\343o atrav\351s de Processo Gaussiano}{}% 32
 \BOOKMARK [1][-]{section.6.1}{Escolha da Biblioteca}{chapter.6}% 33
@@ -40,5 +40,5 @@
 \BOOKMARK [0][-]{chapter.8}{Conclus\365es}{}% 40
 \BOOKMARK [1][-]{section.8.1}{Conclus\365es Finais}{chapter.8}% 41
 \BOOKMARK [1][-]{section.8.2}{Trabalhos Futuros}{chapter.8}% 42
-\BOOKMARK [0][-]{chapter*.16}{Refer\352ncias Bibliogr\341ficas}{}% 43
+\BOOKMARK [0][-]{chapter*.17}{Refer\352ncias Bibliogr\341ficas}{}% 43
 \BOOKMARK [0][-]{appendix.A}{Reposit\363rio do C\363digo}{}% 44

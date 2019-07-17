@@ -375,6 +375,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
 
  	
  	\section{Convolutional Neural Network}
+ 	\label{sec:CNN}
  	
  	Convolutional Neural Network (\textbf{CNN}) is a part of Deep Learning (\textbf{DL}) which is most commonly applied to analyze visual data. Our main goal inside this project is to use Machine Learning algorithms, however, to avoid any ambiguity with the nomenclatures, it is important to say that Deep Learning is a part of a broader Machine Learning family.
  	
@@ -425,6 +426,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
  	It is important to mention that there is a little randomness inside this process of training and optimizing the internal layers' parameters.
   
  	\section{Demais Conceitos}
+ 	\label{sec:OtherConcepts}
  	
  	Aqui estão apresentados alguns conceitos menos usados ao longo do \textit{pipeline}.
  		
@@ -446,9 +448,22 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
  		
  		Neste projeto as Transformadas de \textit{Wavelet} servem para processar os gráficos interpolados do GP. Resultando assim em valores que podem ter possíveis erros de interpolação eliminados, por exemplo. 
  		
-  		\subsection{Validação Cruzada}
+  		\subsection{K-Fold Cross Validation}
   		
-  		Validação cruzada é uma técnica que avalia a generalização do modelo. Ao reparti
+  		Cross-validation is a family of statistical methods used to estimate how a model can be generalized regardless the train and test sets.
+  		
+  		In ML, it is commonly used to analyze if a model is robust enough or if it gives more false-positives and false-negatives (inside the classification cases).
+  		
+  		K-Fold Cross Validation is one of these methods. The procedure consists in dividing the data set in $K$ folds, \textbf{normally} $K-1$ are used to train the model while $1$ is used to test.  However in this project, due to physical limitation reasons only 1 fold is used to train while the other 18 are used to test and validate the method (the value of K is set to be 19).
+  		
+  		With the K-Fold idea there are 2 concepts which will be used to evaluate the results in this project:
+  		
+  		\begin{itemize}
+  			\item AUC Curve (Cap. 5.7 \citet{ML})
+  			\item Mean Average Precision (Cap. 9.7.4 \citet{ML})
+  		\end{itemize}
+  	
+  		 
   		
 	\newpage
   \chapter{Modelo Atual}
@@ -550,7 +565,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
 	
 	Tendo em mãos o \textit{dataframe}, a lista com as classificações de cada objeto (os \textit{labels}) e o modelo de classificação, é feito a divisão usando o método \textit{k-fold} de validação cruzada. Nele dividimos os objetos em 19 partições e usa-se 1 delas para treino e as demais para teste.
 	
-	Por fim, cada modelo dos 19 \textit{folds} existentes é avaliado através de 2 maneiras de obtenção de \textit{score}, a \textbf{Curva AUC} e o \textbf{método de precisão média}. Podemos também analisar as matrizes de confusão de cada um dos 19 modelos para ilustrar seus acertos, seus falsos positivos e falsos negativos (figura \ref{fig:CMEx}). 
+	Por fim, cada modelo dos 19 \textit{folds} existentes é avaliado através de 2 maneiras de obtenção de \textit{score}, a \textbf{curva AUC} e o \textbf{método de precisão média} (seção \ref{sec:OtherConcepts}). Podemos também analisar as matrizes de confusão de cada um dos 19 modelos para ilustrar seus acertos, seus falsos positivos e falsos negativos (figura \ref{fig:CMEx}). 
 
 	\begin{figure*}[h]
 	\centering
@@ -579,18 +594,55 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
   \label{chap:Out}
  	
  	\section{Estratégias Utilizadas}  	
+ 	
+ 	
  		
  	\section{Resultados e comparações}
 	\newpage 		
   \chapter{Rede Neural Convolucional}
   \label{chap:DL}
- 	A ideia foi blablabla usar deep learning, vimos exemplos das roupas, e colocamos la
- 	deixamos a princípio o pipeline do Marcelo
- 	 	
- 	 \section{Geração de Imagens e Parâmetros}  	
- 		Os parâmetros na hora de gerar as imagens e o PQ
- 	\section{Escolhas de Redes Neurais}  	
- 		escolhemos 2CNN pra fazer por isso e por aquilo
+ 	A abordagem utilizando \textit{Deep Learning} embasou-se em uma breve análise dos dados onde se percebeu algumas diferenças entre gráficos de diferentes tipos de objetos astronômicos, assim como pequenas semelhanças entre aqueles do mesmo tipo.
+ 	
+ 	Somou-se a isso o conhecimento vindo da literatura de que recentemente muitos algoritmos rebuscados com diversas etapas em seu \textit{pipeline} vêem sendo substituídos por \textit{pipelines} mais simples contendo \textit{Deep Learning}.
+ 	
+ 	 \section{Geração de Imagens e Parâmetros}  
+ 	 
+ 	 A primeira etapa desta abordagem consiste em gerar gráficos a partir da interpolação gaussiana. Vale lembrar que para comparar o resultado deste método com o \textit{pipeline} inicial, a interpolação realizada para gerar os gráficos fornecidos ao DL é a mesma interpolação usada no \textit{pipeline} original.
+ 	 
+ 	 Optou-se gerar gráficos ao invés de utilizar os pontos diretamente, devido à interpolação possuir mais informações ao aprendizado da máquina do que apenas pontos soltos em uma imagem. 
+ 	 
+ 	 Estas imagens serão gráficos em escalas de cinza na extensão \textit{png} cujas dimensões são:$64 \times 40$ pixels. Ao analisá-las, notou-se que existe uma margem ao gerar as imagens, esta margem contém 5 pixels na dimensão $y$ e 9 pixels na dimensão $x$. Para otimizar o tempo de treinamento, após transformar as imagens em matrizes \textit{numpy} eliminaram-se também essas margens, resultando em um formato de dimensão $46 \times 30$.
+ 	 
+ 	 Por fim, vale ressaltar que essas dimensões foram escolhidas baseando-se em exemplos clássicos e bem conhecidos da literatura que possuem dimensões com valores bem próximos, como o \href{	https://towardsdatascience.com/image-classification-in-10-minutes-with-mnist-dataset-54c35b77a38d
+ 	 }{MNIST} e \href{https://github.com/zalandoresearch/fashion-mnist}{Fashion MNIST}.
+
+ 	\section{\textit{Pipeline}}  	
+ 	
+ 	Após a transformação dos arquivos de imagem para matrizes de \textit{nparray}, foi construída uma estrutura de dados para cada objeto como um compilado de suas 4 figuras. Obtendo o formato final de \textbf{(21316, 4, 30, 46)}, onde:
+ 	\begin{itemize}
+ 		\item Número de objetos: 21316
+		\item Número de imagens ou matrizes (referente a cada filtro): 4
+		\item Número de pixels por coluna (ou número de linhas): 30
+		\item Número de pixels por linha (ou número de colunas): 46   
+		
+ 	\end{itemize}
+ 
+ 	Dentre diversos possíveis tipos de camadas internas de \textit{Deep Learning} foram escolhidas camadas do tipo \textbf{Convolucionais 2D} e \textbf{\textit{Max Pooling} 2D} (seção \ref{sec:CNN}).
+ 	
+ 	A arquitetura escolhida também foi baseada em exemplos clássicos de problemas de identificação de imagens, em especial o \href{https://github.com/zalandoresearch/fashion-mnist}{Fashion MNIST}.
+ 	
+ 	Tendo como base esses exemplos, algumas camadas foram adicionadas e modificadas de forma a buscar empiricamente obter um melhor resultado. A arquitetura final encontra-se na figura \ref{fig:DLArchUsed}. 
+ 	
+ 	\begin{figure}[ht]
+ 		\centering
+ 		\includegraphics[width=11cm]{DL_architecture.png}
+ 		\caption{Arquitetura do modelo de \textit{Deep Learning} utilizado.}
+ 		\label{fig:DLArchUsed}
+ 	\end{figure}
+ 
+ 	O último valor do \textit{Shape} de cada camada é a quantidade de neurônios que ela possui, enquanto os demais valores são o número de linhas e colunas da imagem. O valor "4" que era de se esperar devido aos 4 filtros não aparece explicitamente na estrutura de arquitetura do modelo, todavia, é um comportamento normal visto que neste caso ele funciona como se fosse uma imagem em "RGBA" (uma matriz para veremlho, azul, verde e transparência).
+ 	
+ 	Em seguida, foi definida uma \textit{random seed} para poder fixar quaisquer tipos de aleatoriedades intrínsecas ao modelo. Assim, o mesmo foi treinado em 2,3,5 e 10 épocas (número este também baseado nos exemplos citados), obtendo um resultado satisfatório quando o valor foi de 10 épocas, pois sua acurácia foi mais alta e ainda assim não ficou "viciado".
  	
  	\section{Resultados e comparações}
 	\newpage

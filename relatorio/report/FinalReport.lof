@@ -12,11 +12,12 @@
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Convolution Operation.}}{13}{figure.caption.11}
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Max Pooling.}}{13}{figure.caption.12}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Arquivo \textit {.txt} a ser lido pelos arquivos de pr\IeC {\'e}-processamento.\relax }}{16}{figure.caption.13}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Exemplo de 4 curvas de luz de um mesmo objeto.}}{17}{figure.caption.14}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Exemplo de Matrizes de Confus\IeC {\~a}o de um modelo final do \textit {pipeline} original. }}{18}{figure.caption.15}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Arquivo \textit {.txt} a ser lido pelos arquivos de pr\IeC {\'e}-processamento.\relax }}{17}{figure.caption.13}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Exemplo de 4 curvas de luz de um mesmo objeto.}}{18}{figure.caption.14}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Exemplo de Matrizes de Confus\IeC {\~a}o de um modelo final do \textit {pipeline} original. }}{19}{figure.caption.15}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Arquitetura do modelo de \textit {Deep Learning} utilizado.\relax }}{22}{figure.caption.16}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
