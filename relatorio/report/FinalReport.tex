@@ -35,6 +35,7 @@
 \usepackage{subcaption}
 \usepackage{mwe}
 \usepackage{graphicx}
+\usepackage{makecell}
 \graphicspath{{figures/}}
 
 
@@ -109,7 +110,7 @@
   
   \makecatalog
   
-  \dedication{A alguém cujo valor é digno desta dedicatória. A você Goku}
+  \dedication{À família, amigos e à natureza.}
 
   \chapter*{Agradecimentos}
 
@@ -287,6 +288,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
   \label{chap:FundTeo}
   
  	\section{Processo Gaussiano}
+ 	\label{sec:GP}
  	
  	O Processo Gaussiano é uma ferramenta importante no escopo de \textit{Machine Learning} que nos permite fazer predições sobre nossos dados tendo como base um conhecimento a priori. A sua aplicação mais frequente é em interpolações de funções, vide a aplicação neste projeto. Há também possíveis aplicações do conceito em classificações e agrupamentos de grande quantidades de dados. O livro base utilizado para os estudos desse projeto foi \citet{GPBook} . 
  	
@@ -374,54 +376,59 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
  	
 
  	
- 	\section{Convolutional Neural Network}
+ 	\section{Redes Neurais Convolucionais}
  	\label{sec:CNN}
  	
- 	Convolutional Neural Network (\textbf{CNN}) is a part of Deep Learning (\textbf{DL}) which is most commonly applied to analyze visual data. Our main goal inside this project is to use Machine Learning algorithms, however, to avoid any ambiguity with the nomenclatures, it is important to say that Deep Learning is a part of a broader Machine Learning family.
+ 	Redes Neurais Convolucionais (\textit{Convolutional Neural Network} \textbf{CNN}) são um tipo de rede neural em que \textit{Deep Learning} é aplicado, normalmente usada para análise de imagens. O principal objetivo dentro deste projeto é usar algoritmos de \textit{Machine Learning}, logo, para evitar quaisquer confusões com as nomenclaturas, vale lembrar que DL se refere a uma técnica dentro da vasta área que é ML.\\
  	
- 	A basic DL architecture is made by 3 parts (figure \ref{fig:DLArch}):
+ 	Uma arquitetura básica de DL possui 3 partes (figura \ref{fig:DLArch})
+
  	
  	\begin{itemize}
- 		\item Input Layer: The first layer, being responsible for receiving one data sample and passing it to the hidden layers. 
- 		\item Hidden Layers: The internal DL architecture structure, inside this part are set and trained the functions to process and classify the data.
- 		\item Output Layer: The last Layer. It will be responsible for the final answer. In this project it will have the values of 0 and 1, respectively for classified supernovas as \textit{non IA} and \textit{IA}.
+ 		\item \textit{Input Layer}: A primeira camada; aquela responsável por receber uma amostra do dado e repassar para as camadas internas
+
+ 		\item \textit{Hidden Layers}: O grupo de camadas internas; nela encontram-se os nós que recebem os dados da \textit{input layer} e conectam às camadas subsequentes através de funções de ativação não-lineares. 
+
+ 		\item \textit{Output Layer}: A última camda; responsável pela resposta final. No caso de uma rede de classificação possui valores numéricos referindo-se as classes, no caso deste projeto, são valores de zero e um correspondendo as supernovas classificadas como \textit{IA} ou \textit{not IA}.
+
  	\end{itemize}
- 	
- 	Each layer is composed by different types of \textbf{neurons}. Those neurons are mathematical functions with specific parameters, which will be trained in order to classify our data.
+ 
+ 	Cada camada é composta de diferentes tipos de \textbf{neurônios}. Eles são funções matemáticas com parâmetros específicos, os quais serão treinados a fim de classificar os dados.
  	
  	\begin{figure}[h!]
  		\centering
  		\includegraphics[width=12cm]{DLarch.png}
- 		\caption[Deep Learning Standard Architecture.]
- 		{{Deep Learning Standard Architecture. (adapted from: \href{https://en.proft.me/2016/06/15/getting-started-deep-learning-r/}{here}.)}}
+ 		\caption[Arquitetura básica de \textit{Deep Learning}]
+ 		{{Arquitetura básica de \textit{Deep Learning}. (retirado de: \href{https://en.proft.me/2016/06/15/getting-started-deep-learning-r/}{link}.)}}
  		\label{fig:DLArch}
  	\end{figure}
  	
- 	In this project it is used CNN, a specific type of mathematical procedure compounding the hidden layer normally designed to process images. This thesis uses black and white png files created from a Gaussian Process interpolation.
- 	
- 	Firstly, the CNN must receive the image in a matrix format, where each pixel is a value between 0 and 1 (0 for white and 1 for black varying through gray's intensities). Therefore, the hidden layers process the matrices using different methods \ref{fig:convolution}(e.g. max pooling, ordinary convolution).
+ 	CNN é uma classe de redes neurais aplicada frequentemente na análise de imagens, neste projeto as imagens são arquivos \textit{png} criados através da interpolação gaussiana. Nas redes neurais convolucionais, são usadas versões \textit{multilayers perceptrons}. Normalmente tratam-se de casos de redes totalmente conectadas, ou seja, cada neurônio em uma camada é conectado em todos os neurônios a camada seguinte. Essa alta conectividade faz com que o algoritmo demande o mínimo de pré-processamento possível. Uma CNN necessita de um nível mínimo de pré-processamento quando comparada a outros métodos de classificação de imagens, pois caso sejam dadas amostras o suficiente, a rede "aprende" os filtros que em um algoritmo tradicional precisariam ser implementados manualmente \cite{wikiCNN}.
+
 
  	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=12cm]{convolution.png}
-		\caption[Convolution Operation.]
-		{{The blue matrix represents the input values; the red one is the result of convolution operation; and the green matrix contains the parameters to multiply the values from the blue one "sliding through its grid". (adapted from: \href{https://towardsdatascience.com/applied-deep-learning-part-4-convolutional-neural-networks-584bc134c1e2}{here}.)}}
+		\caption[Operação de Convolução.]
+		{{A matriz azul representa as variáveis de entrada; a vermelha os resultados da operação de convolução; e a verde possui os parâmetros para multiplicar valores da matriz azul "deslizando" pelos seus valores. (retirado de: \href{https://towardsdatascience.com/applied-deep-learning-part-4-convolutional-neural-networks-584bc134c1e2}{link}.)}}
 		\label{fig:convolution}
 	\end{figure}
  	
- 	Through different possible existent CNN methods, there is one particular which was used inside this project. It is the Max pooling. It consists on taking the biggest value after a matrix convolution \ref{fig:maxpooling}. 
+	CNNs podem possuir camadas de conjugação \textit{pooling}. Elas particionam retângulos da imagem de entrada em um conjunto menor de pixels para cada sub região. Dentre diversas funções \textit{pooling} não-lineares, a mais usada é a de \textit{max pooling} \ref{fig:maxpooling}. 
  	
  	\begin{figure}[h!]
  		\centering
  		\includegraphics[width=12cm]{maxpooling.png}
- 		\caption[Max Pooling.]
- 		{{Max pooling example, it selects the biggest value of a specific matrix and reduces the dimension of it only filtering that value. (adapted from: \href{http://cs231n.github.io/convolutional-networks/\#pool}{here}.)}}
+ 		\caption[\textit{Max Pooling.}]
+ 		{{Exemplo do \textit{Max pooling}, o maior valor dentro de um "retângulo" é selecionado e propagado para outra camada, esta possuindo sua dimensão reduzida (retirado de: \href{http://cs231n.github.io/convolutional-networks/\#pool}{link}.)}}
  		\label{fig:maxpooling}
  	\end{figure}
+
+ 	Internamente as camadas internas é impossível de afirmar precisamente qual o "sentido físico" de cada uma. Algumas podem possuir apenas significado matemático enquanto outras podem ser responsáveis por identificar pontas, olhos, pés, curvas, etc. 
  	
- 	Inside the hidden layers it is impossible to say exactly what is the physical meaning of each of them. Some might be nothing but mathematical function results converging to a final classification. But sometimes it is still possible to identify one layer as an image property like edges, eyes, foots, curves, etc.
+ 	Por fim, após os \textit{inputs} passarem por camadas que utilizam essas técnicas de processamento e classificação de imagens, a última camada irá retornar um valor que classificará o objeto de entrada.
  	
- 	Finally, with those techniques of evaluating and processing images, the last layer will receive the results from the hidden ones and returns a value responsible for the classification (mostly like numbers).
+ 	É importante mencionar que existe um pequeno fator de aleatoriedade dentro dos processos de treinamento ao envolver a otimização dos parâmetros internos de cada neurônio. Para estabelecer uma comparação livre de possíveis erros causados pela aleatoriedade, foram usadas \textit{random seeds}, funções do Python responsáveis por conservar a pseudoaleatoriedade \cite{pseudoaleatoriedade}. 
  	
  	It is important to mention that there is a little randomness inside this process of training and optimizing the internal layers' parameters.
   
@@ -592,12 +599,73 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
 	\newpage
   \chapter{Tratamento de \textit{Outliers}}
   \label{chap:Out}
- 	
+  
+  	A primeira forma de buscar melhorias neste projeto foi o tratamento de \textit{Outliers}. Todos os tipos de dados brutos estão sujeitos a amostras com valores absurdos ou incertezas irreais, sejam elas causadas por erros de medição ou quaisquer outros fatores \cite{Erros}.
+  
  	\section{Estratégias Utilizadas}  	
  	
+ 	O primeiro tratamento realizado foi a retirada de pontos negativos. Visto que os valores a serem interpolados são fluxos de luz em função do tempo, não há sentido físico em haver pontos negativos.
  	
+ 	A segunda estratégia foi analisar a incerteza das amostras de cada ponto referente aos 4 filtros dos objetos astronômicos. Em seguida, foi calculada a \textbf{média} e o \textbf{desvio padrão} desses conjuntos de incertezas e por fim, houve a exclusão daqueles pontos cujo erro era superior à média mais um desvio padrão da distribuição de incertezas.
+ 	
+ 	Outra tentativa foi a aplicação de limiares baseados nos valores das incertezas de cada ponto em relação ao pico da curva. Caso o valor da incerteza fosse maior que o pico da curva multiplicado por um limiar (valor entre 0 e 1), este ponto seria excluído.
+ 	
+ 	O código referente a implementação deste tratamento de \textit{outlier}, assim como todo o código do projeto, encontra-se disponível no \textit{GitHub} \ref{chap:Apendice}.
+ 	
+ 		\newpage
  		
  	\section{Resultados e comparações}
+ 	
+ 	Serão apresentados 3 tipos diferentes de \textit{scores} para cada um dos 19 modelos gerados pela validação cruzada K-Fold, curva AUC (\textbf{AUC}), \textit{Average Precision} (\textit{AP}) e o padrão da biblioteca \textit{scikit}; tendo sido aplicadas as seguintes estratégias:
+ 	
+ 	\begin{itemize}
+		\item Retirada de valores negativos e daqueles com incerteza maior que a média mais desvio padrão. Representada na tabela \ref{tab:outlier} como \textbf{StdDev}.
+		\item Retirada de valores negativos e daqueles com incerteza maior que 70\% o valor do pico. Representada na tabela \ref{tab:outlier} como \textbf{Threshold}.
+ 	\end{itemize}
+
+
+ 	\begin{table}[h!]
+ 		
+ 		\begin{center}	
+ 			\small\addtolength{\tabcolsep}{-5pt}
+ 			\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+ 	\hline
+Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC \\ Threshold}} & \textbf{AP} & \textbf{\makecell{AP \\ StdDev}} & \textbf{\makecell{AP \\ Threshold}}& \textbf{Padrão} & \textbf{\makecell{Padrão \\StdDev}} & \textbf{\makecell{Padrão \\ Threshold}}\\
+
+\hline
+\small{Fold 1 }&   95,93\% &95,18\%& 95,99\%& 86,34\% & 83,86\% & 86,41\% & 90,33\%& 89,65\%& 90,35\%\\
+\small{Fold 2 }&   95,76\% &94,88\%& 95,75\%& 84,51\% & 81,72\% & 84,36\% & 90,11\%& 89,00\%& 90,09\%\\
+\small{Fold 3 }&   96,02\% &94,89\%& 96,01\%& 87,25\% & 82,93\% & 87,27\% & 90,70\%& 89,14\%& 90,51\%\\
+\small{Fold 4 }&   95,65\% &94,77\%& 95,71\%& 84,73\% & 81,99\% & 84,96\% & 89,68\%& 88,47\%& 89,46\%\\
+\small{Fold 5 }&   95,72\% &95,01\%& 95,86\%& 85,34\% & 83,42\% & 86,34\% & 90,19\%& 89,51\%& 90,11\%\\
+\small{Fold 6 }&   95,79\% &94,81\%& 95,68\%& 84,27\% & 82,30\% & 84,04\% & 90,42\%& 88,97\%& 90,26\%\\
+\small{Fold 7 }&   95,56\% &94,82\%& 95,93\%& 85,20\% & 83,75\% & 86,36\% & 89,73\%& 88,96\%& 90,36\%\\
+\small{Fold 8 }&   95,82\% &95,19\%& 95,90\%& 85,49\% & 84,12\% & 86,10\% & 90,00\%& 89,41\%& 90,25\%\\
+\small{Fold 9 }&   95,74\% &95,24\%& 95,93\%& 85,71\% & 83,66\% & 86,87\% & 90,27\%& 89,45\%& 90,40\%\\
+\small{Fold 10} &  95,91\% &94,96\%& 95,94\%& 87,38\% & 85,24\% & 87,52\% & 90,65\%& 89,76\%& 90,69\%\\
+\small{Fold 11} &  95,89\% &95,42\%& 95,95\%& 85,90\% & 84,63\% & 86,77\% & 90,19\%& 89,61\%& 90,33\%\\
+\small{Fold 12} &  95,72\% &94,81\%& 95,93\%& 85,02\% & 81,56\% & 86,06\% & 90,19\%& 89,06\%& 90,46\%\\
+\small{Fold 13} &  95,69\% &95,29\%& 95,85\%& 85,19\% & 83,69\% & 85,86\% & 89,82\%& 89,55\%& 89,99\%\\
+\small{Fold 14} &  95,48\% &94,81\%& 95,51\%& 84,65\% & 82,17\% & 85,06\% & 89,83\%& 88,84\%& 89,94\%\\
+\small{Fold 15} &  95,65\% &95,29\%& 95,66\%& 84,84\% & 84,56\% & 85,68\% & 89,91\%& 90,18\%& 90,26\%\\
+\small{Fold 16} &  95,83\% &95,55\%& 95,95\%& 86,48\% & 85,30\% & 86,56\% & 90,12\%& 89,79\%& 90,00\%\\
+\small{Fold 17} &  96,01\% &95,41\%& 95,97\%& 86,19\% & 84,58\% & 85,95\% & 90,28\%& 89,66\%& 90,19\%\\
+\small{Fold 18} &  95,96\% &95,47\%& 95,86\%& 85,84\% & 83,88\% & 85,55\% & 90,63\%& 90,02\%& 90,60\%\\
+\small{Fold 19} &  95,35\% &95,37\%& 95,47\%& 84,34\% & 84,16\% & 84,47\% & 89,87\%& 89,61\%& 89,70\%\\
+\hline
+\hline
+Mean &  95,35\% &95,37\%& 95,47\%& &1 &1 & &1 & 1\\
+\hline
+ 			\end{tabular}
+ 		\end{center}
+ 	\caption{Resultados do tratamento de \textit{outliers}.}
+ 	\label{tab:outlier}
+ 	\end{table}
+	
+	\normalsize
+	
+ 	A conclusão final para o tratamento de \textit{outliers} é que o mesmo não influencia significativamente no aumento dos \textit{scores}, a possível explicação para isto encontra-se na robustez que as transformadas de \textit{wavelets} oferecem ao método.
+ 	
 	\newpage 		
   \chapter{Rede Neural Convolucional}
   \label{chap:DL}
@@ -696,9 +764,55 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
   \chapter{Interpolação através de Processo Gaussiano}
   \label{chap:GP}
   
+  	A abordagem feita pelo IF-UFRJ ao usar o \textit{Gaussian Process} foi através da biblioteca \textit{George} \cite{george}. Uma biblioteca focada em avaliar a probabilidade marginal \cite{marginallikelihood} \cite{GPBook} da distribuição dos dados. 
+  	
+ 	Contudo, ao tentar editar alguns parâmetros internos da biblioteca, como os \textit{Kernels}  ou \textit{Prior functions} \ref{sec:GP}, houve certa dificuldade ou mesmo impossibilidade de modelá-los da maneira desejada. Como, por exemplo, somar e multiplicar \textit{Kernels}, sobretudo aqueles não-estacionários (Cap. 3 \cite{GPBook} ).
+ 	
+ 	Um ponto chave que levou o projeto a escolher uma outra biblioteca foi a citação do capítulo 4 seção 2 do \citet{GPBook}, argumentando que o Kernel de tipo\textit{Squared Exponential Covariance Funtion} (utilizado no \textit{pipeline} original) propicia à função interpolada uma suavização irreal para diversos fenômenos físicos, e recomenda usar Kernels do tipo \textit{Matern}. Apesar de a biblioteca \textit{george} também conter determinado tipo de Kernel, achou-se outras bibliotecas com uma maior possibilidade de modificação de seus Kernels.
+ 	
+ 	Na seção abaixo serão vistos os tipos de bibliotecas analisadas.
+  
 	\section{Escolha da Biblioteca}
+	
+		Inicialmente, a biblioteca utilizada no artigo da \citet{lochner} foi a \textit{Gapp}, uma biblioteca para reconstrução de funções usada em outros trabalhos de cosmologia \cite{gapp}.
+		
+		Entretanto, o próprio \textit{pipeline} desenvolvido pelo IF-UFRJ já buscava otimizar o artigo original da M. Lochner, logo, neste projeto foi utilizado como base de estudos a biblioteca utilizada para este \textit{pipeline}, a biblioteca \textit{George}.
+		
+		Vale mencionar também que embora seja possível implementar manualmente os processos gaussianos, as várias bibliotecas disponíveis já possuem especificações e ajustes para os modelos de maneira mais automatizada. As três bibliotecas que serão comparadas são:
+		
+		\begin{itemize}
+			\item SciKit-Learn
+			\item GPflow
+			\item PyMC3
+		\end{itemize}
+		
+		Em particular, cada um desses pacotes inclui um conjunto de funções de covariância que podem ser flexivelmente combinadas para descrever adequadamente os padrões específicos dos dados, juntamente aos métodos para ajustar os parâmetros do GP.
+		
+		Essa análise é baseada no blog \textit{Domino}, onde vários experimentos foram realizados comparando o desempenho de cada pacote \cite{bibliotecacomp}. 
+		
+		Análises detalhadas de cada uma das bibliotecas encontram-se em todo o projeto realizado no blog \textit{Domino} citado acima, não serão citados mais detalhes sobre a especificidade de cada objeto, pois elas fugiriam do escopo deste trabalho. 
+		
+		Como explicação breve para a escolha das três bibliotecas, pode se dizer globalmente que o \textit{scikit-learn} possui uma abordagem mais simples e focada menos nos modelos probabilísticos e sofisticados. Enquanto tanto o GPFlow quanto o PyMC3 possuem um próprio \textit{backend} computacional dando suporte a esses modelos. Por fim, o motivo da escolha do PyMC3 foi devido a maior comunidade de suporte e ao domínio de estudo da biblioteca. Pois por ser um pacote de programação probabilística, PyMC3 abrange mais ferramentas que podem vir a ser úteis no desenvolvimento das distribuições de probabilidade usadas no GP.
 		
 	\section{Aleatoriedades e \textit{Random Seeds}}
+	
+	Antes adentrar nas explicações das \textit{Kernel Functions} é muito importante explicar o fator da aleatoriedade dentro do projeto. Originalmente a biblioteca PyMC3 realiza métodos de otimização da função a posteriori em seu GP, entretanto por ser uma biblioteca que exige um alto custo computacional, dentro desse projeto decidiu-se optar por escolher uma função Kernel melhor para a interpolação em prol de não executar a linha de código que otimiza totalmente os parâmetros da distribuição a posteriori (ilustrado como as distribuições a direita na figura \ref{fig:MCMC1}). 
+	
+	Isto não significa que os parâmetros do GP não serão otimizados, eles apenas não irão convergir para um valor final, tornando-se assim dependentes das condições iniciais estabelecidas internamente pelo computador durante as cadeias de Markov Monte Carlo \cite{MCMC}.
+	
+	A alternativa para esta vertente de projeto foi estabelecer determinadas sementes aleatórias \cite{pseudoaleatoriedade}. Através da análise de algumas delas pode-se escolher aquelas que buscavam um maior \textit{overfitting} das interpolações, sendo favoráveis ao caso em questão. As figuras das comparações das interpolações de cada semente para alguns exemplos encontram-se no APENDICE B COLOCAR ELAS AQUI.
+	
+	Buscando sempre aquelas sementes que eliminam interpolações constantes e possuem \textit{overfitting}, analisando 11 sementes aleatórias, as melhores foram:
+	
+	\begin{itemize}
+	\item 8 -> overfita mto
+	\item 6 -> Overfita mto tb
+	\item 5 -> meio equilibrado mas ainda bom
+	\item 4 -> vai passando meio que pelo meio
+	\item 9 -> me pareceu bem boa
+	\item 7 -> é até boa mas não corrige o problema de ser uma linha reta
+	\end{itemize}
+	
 			
 	\section{\textit{Kernel Functions}}
 			
@@ -729,6 +843,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca clasific
 
   \appendix
   \chapter{Repositório do Código}
+  \label{chap:Apendice}
   
   Todo o código desenvolvido encontra-se disponível no repositório público do \textit{GitHub}, a fim de poder ser desenvolvido e modificado por qualquer pessoa que deseje contribuir ou estudar este projeto, podendo ser acessado no seguinte link: \href{https://github.com/FelipeMFO/supernova_identification}{https://github.com/FelipeMFO/supernova\_identification}.
 \end{document}

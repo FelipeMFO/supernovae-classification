@@ -8,19 +8,19 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Ilustra\IeC {\c c}\IeC {\~a}o da matriz $\Sigma $ possuindo 10 e 12 pontos.}}{10}{figure.caption.8}
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Ilustra\IeC {\c c}\IeC {\~a}o do valor da fun\IeC {\c c}\IeC {\~a}o m\IeC {\'e}dia.}}{11}{figure.caption.9}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Deep Learning Standard Architecture.}}{12}{figure.caption.10}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Convolution Operation.}}{13}{figure.caption.11}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Max Pooling.}}{13}{figure.caption.12}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Arquitetura b\IeC {\'a}sica de \textit {Deep Learning}}}{12}{figure.caption.10}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Opera\IeC {\c c}\IeC {\~a}o de Convolu\IeC {\c c}\IeC {\~a}o.}}{13}{figure.caption.11}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces \textit {Max Pooling.}}}{13}{figure.caption.12}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Arquivo \textit {.txt} a ser lido pelos arquivos de pr\IeC {\'e}-processamento.\relax }}{17}{figure.caption.13}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Exemplo de 4 curvas de luz de um mesmo objeto.}}{18}{figure.caption.14}
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Matrizes de Confus\IeC {\~a}o de um modelo final do \textit {pipeline} original. }}{19}{figure.caption.15}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Arquitetura do modelo de \textit {Deep Learning} utilizado.\relax }}{22}{figure.caption.16}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Matrizes de confus\IeC {\~a}o do modelo final. \textit {Deep Learning}.}}{23}{figure.caption.17}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Valores normalizados do modelo DL treinando com 80\% dos dados.\relax }}{24}{figure.caption.18}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Modelo do \textit {pipeline} original treinado com 80\% dos dados.\relax }}{24}{figure.caption.19}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Arquitetura do modelo de \textit {Deep Learning} utilizado.\relax }}{23}{figure.caption.17}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Matrizes de confus\IeC {\~a}o do modelo final. \textit {Deep Learning}.}}{24}{figure.caption.18}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Valores normalizados do modelo DL treinando com 80\% dos dados.\relax }}{25}{figure.caption.19}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Modelo do \textit {pipeline} original treinado com 80\% dos dados.\relax }}{25}{figure.caption.20}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

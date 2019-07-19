@@ -1,4 +1,4 @@
-\begin{thebibliography}{9}
+\begin{thebibliography}{15}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -46,6 +46,12 @@
   Inference}.
 \newblock 2 ed. New York, Chapman and Hall/CRC, 2006.
 
+\bibitem[\MakeUppercase{Wikipedia}(2018)Wikipedia]{wikiCNN}
+\MakeUppercase{Wikipedia}.
+\newblock \enquote{Rede neural convolucional},
+  \emph{\href{https://pt.wikipedia.org/wiki/Rede{\_}neural{\_}convolucional}{Rede
+  neural convolucional}}, jun. 2018.
+
 \bibitem[\MakeUppercase{Murphy}(2012)Murphy]{ML}
 \MakeUppercase{Murphy, K.~P.}
 \newblock \emph{Machine Learning A Probabilistic Perspective}.
@@ -55,5 +61,34 @@
 \MakeUppercase{Celso, A.}
 \newblock \enquote{Notas de Aula de Sinais e Sistemas}, \emph{UFRJ - COE350 -
   Sinais e Sistemas - ECA}, jun. 2014.
+
+\bibitem[\MakeUppercase{Vuolo}(1996)Vuolo]{Erros}
+\MakeUppercase{Vuolo, J.~H.}
+\newblock \emph{Fundamentos da Teoria de Erros}.
+\newblock Editora Edgard Blücher LTDA, 1996.
+
+\bibitem[\MakeUppercase{Wikipedia}(2012)Wikipedia]{george}
+\MakeUppercase{Wikipedia}.
+\newblock \enquote{Documentação biblioteca \textit{George}},
+  \emph{\href{https://george.readthedocs.io/en/latest/}{https://george.readthedocs.io/en/latest/}},
+  2012.
+
+\bibitem[\MakeUppercase{Wikipedia}(2019)Wikipedia]{marginallikelihood}
+\MakeUppercase{Wikipedia}.
+\newblock \enquote{Wikipedia, probabilidade marginal},
+  \emph{\href{https://en.wikipedia.org/wiki/Marginal\_likelihood}{https://en.wikipedia.org/wiki/Marginal\_likelihood}},
+  jun. 2019.
+
+\bibitem[\MakeUppercase{Marina~Seikel}(2012)Marina~Seikel]{gapp}
+\MakeUppercase{Marina~Seikel, Chris~Clarkson, M.~S.}
+\newblock \enquote{Reconstruction of dark energy and expansion dynamics using
+  Gaussian processes}, \emph{JCAP06(2012)036}, v.~2, n.~2, \penalty0 pp.~20,
+  2012.
+
+\bibitem[\MakeUppercase{Wikipedia}(2017)Wikipedia]{bibliotecacomp}
+\MakeUppercase{Wikipedia}.
+\newblock \enquote{Fitting Gaussian Process Models in Python},
+  \emph{\href{https://blog.dominodatalab.com/fitting-gaussian-process-models-python/}{https://blog.dominodatalab.com/fitting-gaussian-process-models-python/}},
+  mar. 2017.
 
 \end{thebibliography}
