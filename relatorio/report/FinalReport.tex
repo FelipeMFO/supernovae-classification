@@ -768,7 +768,7 @@ Mean &  95,35\% &95,37\%& 95,47\%& &1 &1 & &1 & 1\\
   	
  	Contudo, ao tentar editar alguns parâmetros internos da biblioteca, como os \textit{Kernels}  ou \textit{Prior functions} \ref{sec:GP}, houve certa dificuldade ou mesmo impossibilidade de modelá-los da maneira desejada. Como, por exemplo, somar e multiplicar \textit{Kernels}, sobretudo aqueles não-estacionários (Cap. 3 \cite{GPBook} ).
  	
- 	Um ponto chave que levou o projeto a escolher uma outra biblioteca foi a citação do capítulo 4 seção 2 do \citet{GPBook}, argumentando que o Kernel de tipo\textit{Squared Exponential Covariance Funtion} (utilizado no \textit{pipeline} original) propicia à função interpolada uma suavização irreal para diversos fenômenos físicos, e recomenda usar Kernels do tipo \textit{Matern}. Apesar de a biblioteca \textit{george} também conter determinado tipo de Kernel, achou-se outras bibliotecas com uma maior possibilidade de modificação de seus Kernels.
+ 	Um ponto chave que levou o projeto a escolher uma outra biblioteca foi a citação do capítulo 4 seção 2 do \citet{GPBook}, argumentando que o Kernel de tipo \textit{Squared Exponential Covariance Funtion} (utilizado no \textit{pipeline} original) propicia à função interpolada uma suavização irreal para diversos fenômenos físicos, e recomenda usar Kernels do tipo \textit{Matern}. Apesar de a biblioteca \textit{george} também conter determinado tipo de Kernel, achou-se outras bibliotecas com uma maior possibilidade de modificação de seus Kernels.
  	
  	Na seção abaixo serão vistos os tipos de bibliotecas analisadas.
   
@@ -796,13 +796,13 @@ Mean &  95,35\% &95,37\%& 95,47\%& &1 &1 & &1 & 1\\
 		
 	\section{Aleatoriedades e \textit{Random Seeds}}
 	
-	Antes adentrar nas explicações das \textit{Kernel Functions} é muito importante explicar o fator da aleatoriedade dentro do projeto. Originalmente a biblioteca PyMC3 realiza métodos de otimização da função a posteriori em seu GP, entretanto por ser uma biblioteca que exige um alto custo computacional, dentro desse projeto decidiu-se optar por escolher uma função Kernel melhor para a interpolação em prol de não executar a linha de código que otimiza totalmente os parâmetros da distribuição a posteriori (ilustrado como as distribuições a direita na figura \ref{fig:MCMC1}). 
+	Antes adentrar nas escolhas das \textit{Kernel Functions} é muito importante explicar o fator da aleatoriedade dentro do projeto. Originalmente a biblioteca PyMC3 realiza métodos de otimização da função a posteriori em seu GP, entretanto por ser uma biblioteca que exige um alto custo computacional, dentro desse projeto decidiu-se optar por melhor escolher uma função Kernel para a interpolação em prol de não executar a linha de código que otimizaria os parâmetros da distribuição a posteriori (ilustrado como as distribuições a direita na figura \ref{fig:MCMC1}). 
 	
 	Isto não significa que os parâmetros do GP não serão otimizados, eles apenas não irão convergir para um valor final, tornando-se assim dependentes das condições iniciais estabelecidas internamente pelo computador durante as cadeias de Markov Monte Carlo \cite{MCMC}.
 	
-	A alternativa para esta vertente de projeto foi estabelecer determinadas sementes aleatórias \cite{pseudoaleatoriedade}. Através da análise de algumas delas pode-se escolher aquelas que buscavam um maior \textit{overfitting} das interpolações, sendo favoráveis ao caso em questão. As figuras das comparações das interpolações de cada semente para alguns exemplos encontram-se no APENDICE B COLOCAR ELAS AQUI.
+	A alternativa para esta escolha de projeto foi estabelecer determinadas sementes aleatórias \cite{pseudoaleatoriedade}. Através da análise de 11 sementes pôde-se escolher aquelas cujas condições iniciais resultavam em um maior \textit{overfitting} das interpolações, sendo favoráveis ao caso em questão. As figuras das comparações das interpolações de cada semente para alguns exemplos encontram-se no APENDICE B COLOCAR ELAS AQUI.
 	
-	Buscando sempre aquelas sementes que eliminam interpolações constantes e possuem \textit{overfitting}, analisando 11 sementes aleatórias, as melhores foram:
+	Buscando sempre aquelas sementes que eliminam interpolações constantes e proporcionam um \textit{overfitting}, as melhores foram:
 	
 	\begin{itemize}
 	\item 8 -> overfita mto
@@ -813,13 +813,138 @@ Mean &  95,35\% &95,37\%& 95,47\%& &1 &1 & &1 & 1\\
 	\item 7 -> é até boa mas não corrige o problema de ser uma linha reta
 	\end{itemize}
 	
-			
+	Por fim, para analisar seus resultados no final do projeto, foram escolhidas duas delas para as interpolações finais, as sementes 4 e 9.
+	
 	\section{\textit{Kernel Functions}}
+	
+	Para escolher as funções Kernel que seriam utilizadas para as interpolações, foi seguido o suporte da biblioteca PyMC3 \cite{pymc}. Neste suporte podem ser vistas diferentes maneiras de interpolações e analisar diretamente como os Kernels afetam no formato das funções.
+	
+	A partir dos dados da referência acima, foram escolhidos os seguintes Kernels para as interpolações:
+	
+	\begin{itemize}
+		\item Exponencial quadrática:
+			\begin{equation}
+			k(x, x') = \mathrm{exp}\left[ -\frac{(x - x')^2}{2 \ell^2} \right]
+			\end{equation}
+		\item Racional quadrática:
+			\begin{equation}
+			k(x, x') = \left(1 + \frac{(x - x')^2}{2\alpha\ell^2} \right)^{-\alpha}
+			\end{equation}
+		\item \textit{Matern} 5/2:
+			\begin{equation}
+			k(x, x') = \left(1 + \frac{\sqrt{5(x - x')^2}}{\ell} +
+			\frac{5(x-x')^2}{3\ell^2}\right)
+			\mathrm{exp}\left[ - \frac{\sqrt{5(x - x')^2}}{\ell} \right]
+			\end{equation}
+		\item \textit{Matern} 3/2:
+			\begin{equation}
+			k(x, x') = \left(1 + \frac{\sqrt{3(x - x')^2}}{\ell}\right)
+			\mathrm{exp}\left[ - \frac{\sqrt{3(x - x')^2}}{\ell} \right]
+			\end{equation}	
+	\end{itemize}
+	
+	Nestas funções temos $x$ e $x'$ como os valores das abscissas e $\alpha$ e $l$ como hiperparâmetros a serem ajustados. Empiricamente percebeu-se que o $l$ possui um efeito de aumentar \textit{overfitting} em troca do aumento do erro da interpolação.
+	
+	Esses parâmetros podem assumir valores como funções de distribuição probabilística ou como  constantes. Optou-se por adotá-los como distribuições, pois, após diversos testes utilizando constantes, resultados melhores foram obtidos usando distribuições. Outro fator que levou a esta escolha, foram os exemplos oferecidos no suporte da biblioteca PyMC3 \cite{pymcex} \cite{pymcgs}. 
+	
+	No apêndice C COLOCAR AS FUNÇÕES LÁ são ilustradas as interpolações realizadas para escolher qual Kernel seria utilizado. Os critérios principais para a  escolha, foram evitar interpolações constantes e buscar \textit{overfitting}. Como resultado, os dois melhores Kernels foram o \textit{Matern} 3/2 e o \textit{Matern} 5/2; uma conclusão alinhada com a teoria explícita no capítulo 4 seção 2 do \citet{GPBook}.
+	
+	
+
 			
 	\section{Demais Observações}
-			Valor negativo e Mean function, erro grande, melhor overfittado que underfitado
+	
+	Antes de adentrar nos resultados das Interpolações, duas observações importantes são feitas.
+	
+	A primeira é a solução para o problema de possíveis valores negativos, por mais que não tenha sido adotado neste trabalho devido à tentativa de deixar o código com menos custo computacional possível, caso em trabalhos futuros deseje-se impossibilitar interpolações com valores negativos, o uso de uma \textit{mean function} não-negativa resolve este problema \cite{pymccont}.
+	
+	Vários tipos de funções que atendem esse pré-requisito estão descritos no \citet{pymccont}.
+	
+	Um exemplo pode ser a \textit{Half-Cauchy log-likelihood}.
+	
+	\begin{equation}
+		f(x \mid \beta) = \frac{2}{\pi \beta [1 + (\frac{x}{\beta})^2]}
+	\end{equation}
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=12cm]{halfcauchy.png}
+		\caption{Exemplo de distribuição com valores não-negativos.}
+		\label{fig:HalfCauchy}
+	\end{figure}
 			
+			
+	A segunda observação é o uso da função Matern dentro da própria biblioteca usada no \textit{pipeline} original, \textit{george}.
+	
+	Os resultados da troca do Kernel \textit{ExpQuadr} pelo \textit{Matern} 5/2 na biblioteca \textit{george} foi realizada usando constantes como hiperparâmetros, resultando nos seguintes resultados:
+	
+	COLOCAR AQUI OS RESULTADOS
+	
+	Pode-se perceber que os resultados são piores do que o uso do Kernel \textit{Exp Quadr}, esse resultado será melhor explicado no capítulo \ref{chap:Result}. Entretanto, pode-se justificar esse resultado pelo uso dos hiperparâmetros terem sido constantes e não distribuições. Uma outra justificativa que reforça o uso do Kernel Matern como teoricamente superior ao \textit{Exp Quadr}, é a compararação das interpolações de ambos quando os hipterparâmetros são distribuições, como será visto na seção a seguir. 
+	
+	
 	\section{Resultados das Interpolações}
+	
+	O resultado global das interpolações não pôde ser concluído devido a um erro de processamento de código, mais precisamente um \textit{memory leak} interno durante a execução dos modelos do PyMC3 em \textit{loop}. A explicação e detalhamento desse erro será apresentado na seção a seguir. 
+	
+	Nesta seção serão apresentados alguns exemplos de comparação de interpolação entre os algoritmos, justificando o porquê de se esperar que caso o processamento de todos os dados, provavelmente obter-se-iam resultados melhores.
+	
+	
+	
+	\begin{itemize}
+		\item Interpolação do objeto SN013742
+		
+			\begin{figure*}
+			\centering
+			\begin{subfigure}[b]{0.475\textwidth}
+				\centering
+				\includegraphics[width=\textwidth]{Ex_reta.png}
+				\caption[]%
+				{{\small Pipeline original}}    
+			\end{subfigure}
+			\hfill
+			\begin{subfigure}[b]{0.475\textwidth}  
+				\centering 
+				\includegraphics[width=\textwidth]{SN013742_pymc_eq.png}
+				\caption[]%
+				{{\small PyMC3 Exponential Quadratic semente 9}}    
+			\end{subfigure}
+			\vskip\baselineskip
+			\begin{subfigure}[b]{0.475\textwidth}   
+				\centering 
+				\includegraphics[width=\textwidth]{SN013742_pymc_m52_6.png}
+				\caption[]%
+				{{\small PyMC3 Matern 5/2 semente 6, overfit}}    
+			\end{subfigure}
+			\quad
+			\begin{subfigure}[b]{0.475\textwidth}   
+				\centering 
+				\includegraphics[width=\textwidth]{SN013742_pymc_m52_9.png}
+				\caption[]%
+				{{\small PyMC3 Matern 5/2 semente 9, overfit}}    
+			\end{subfigure}
+			\vskip\baselineskip
+			\begin{subfigure}[b]{0.475\textwidth}   
+				\centering 
+				\includegraphics[width=\textwidth]{SN013742_pymc_m52_6_noOF.png}
+				\caption[]%
+				{{\small PyMC3 Matern 5/2 semente 6, menos overfit}}    
+			\end{subfigure}
+			\quad
+			\begin{subfigure}[b]{0.475\textwidth}   
+				\centering 
+				\includegraphics[width=\textwidth]{SN013742_pymc_m52_9_noOF.png}
+				\caption[]%
+				{{\small PyMC3 Matern 5/2 semente 9, menos overfit}}    
+			\end{subfigure}
+			\caption[ Comparação dos resultados finais para um exemplo.]
+			{\small Interpolações usando 6 configurações diferentes. Gráfico Fluxo $ \times $ Tempo (dias).} 
+			\label{fig:GPResult}
+		\end{figure*}
+		
+	\end{itemize}
+		
+		Demais exemplos de comparações estão descritos no \textit{notebook} do apêndice B.
 		
 	\section{Identificação e Justificativa do Erro}
 	\newpage 

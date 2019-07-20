@@ -19,45 +19,45 @@ Warning--string name "mai" is undefined
 --line 159 of file bibliografia.bib
 `address' is a missing field, not a string, for entry Erros
 while executing---line 1327 of file coppe-unsrt.bst
-You've used 16 entries,
+You've used 20 entries,
             2630 wiz_defined-function locations,
-            629 strings with 6288 characters,
-and the built_in function-call counts, 4880 in all, are:
-= -- 380
-> -- 118
-< -- 22
-+ -- 68
-- -- 34
-* -- 403
-:= -- 724
-add.period$ -- 48
-call.type$ -- 16
-change.case$ -- 20
-chr.to.int$ -- 14
-cite$ -- 16
-duplicate$ -- 361
-empty$ -- 568
-format.name$ -- 52
-if$ -- 1042
-int.to.chr$ -- 3
-int.to.str$ -- 17
-missing$ -- 20
-newline$ -- 77
-num.names$ -- 48
-pop$ -- 137
+            642 strings with 6856 characters,
+and the built_in function-call counts, 6032 in all, are:
+= -- 472
+> -- 146
+< -- 26
++ -- 87
+- -- 42
+* -- 487
+:= -- 894
+add.period$ -- 60
+call.type$ -- 20
+change.case$ -- 24
+chr.to.int$ -- 15
+cite$ -- 20
+duplicate$ -- 449
+empty$ -- 704
+format.name$ -- 64
+if$ -- 1290
+int.to.chr$ -- 6
+int.to.str$ -- 21
+missing$ -- 24
+newline$ -- 93
+num.names$ -- 60
+pop$ -- 173
 preamble$ -- 1
-purify$ -- 16
+purify$ -- 20
 quote$ -- 0
-skip$ -- 165
+skip$ -- 208
 stack$ -- 0
-substring$ -- 68
-swap$ -- 101
+substring$ -- 80
+swap$ -- 125
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 100
+type$ -- 128
 warning$ -- 0
-while$ -- 38
+while$ -- 46
 width$ -- 0
-write$ -- 197
+write$ -- 241
 (There were 3 error messages)

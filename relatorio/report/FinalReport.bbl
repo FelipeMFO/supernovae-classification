@@ -1,4 +1,4 @@
-\begin{thebibliography}{15}
+\begin{thebibliography}{20}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -52,6 +52,12 @@
   \emph{\href{https://pt.wikipedia.org/wiki/Rede{\_}neural{\_}convolucional}{Rede
   neural convolucional}}, jun. 2018.
 
+\bibitem[\MakeUppercase{Wikipedia}(2019{\natexlab{a}})Wikipedia]{pseudoaleatoriedade}
+\MakeUppercase{Wikipedia}.
+\newblock \enquote{Pseudoaleatoriedade},
+  \emph{\href{https://pt.wikipedia.org/wiki/Pseudoaleatoriedade}{https://pt.wikipedia.org/wiki/Pseudoaleatoriedade}},
+  2019{\natexlab{a}}.
+
 \bibitem[\MakeUppercase{Murphy}(2012)Murphy]{ML}
 \MakeUppercase{Murphy, K.~P.}
 \newblock \emph{Machine Learning A Probabilistic Perspective}.
@@ -73,22 +79,45 @@
   \emph{\href{https://george.readthedocs.io/en/latest/}{https://george.readthedocs.io/en/latest/}},
   2012.
 
-\bibitem[\MakeUppercase{Wikipedia}(2019)Wikipedia]{marginallikelihood}
+\bibitem[\MakeUppercase{Wikipedia}(2019{\natexlab{b}})Wikipedia]{marginallikelihood}
 \MakeUppercase{Wikipedia}.
 \newblock \enquote{Wikipedia, probabilidade marginal},
   \emph{\href{https://en.wikipedia.org/wiki/Marginal\_likelihood}{https://en.wikipedia.org/wiki/Marginal\_likelihood}},
-  jun. 2019.
+  jun. 2019{\natexlab{b}}.
 
 \bibitem[\MakeUppercase{Marina~Seikel}(2012)Marina~Seikel]{gapp}
 \MakeUppercase{Marina~Seikel, Chris~Clarkson, M.~S.}
 \newblock \enquote{Reconstruction of dark energy and expansion dynamics using
-  Gaussian processes}, \emph{JCAP06(2012)036}, v.~2, n.~2, \penalty0 pp.~20,
-  2012.
+  Gaussian processes}, \emph{JCAP06}, v.~2, n.~2, \penalty0 pp.~20, 2012.
 
 \bibitem[\MakeUppercase{Wikipedia}(2017)Wikipedia]{bibliotecacomp}
 \MakeUppercase{Wikipedia}.
 \newblock \enquote{Fitting Gaussian Process Models in Python},
   \emph{\href{https://blog.dominodatalab.com/fitting-gaussian-process-models-python/}{https://blog.dominodatalab.com/fitting-gaussian-process-models-python/}},
   mar. 2017.
+
+\bibitem[\MakeUppercase{PyMC3}(2018{\natexlab{a}})PyMC3]{pymc}
+\MakeUppercase{PyMC3}.
+\newblock \enquote{PyMC3 - Mean and Covariance Functions},
+  \emph{\href{https://docs.pymc.io/notebooks/GP-MeansAndCovs.html}{https://docs.pymc.io/notebooks/GP-MeansAndCovs.html}},
+  2018{\natexlab{a}}.
+
+\bibitem[\MakeUppercase{PyMC3}(2018{\natexlab{b}})PyMC3]{pymcex}
+\MakeUppercase{PyMC3}.
+\newblock \enquote{PyMC3 - Example},
+  \emph{\href{https://docs.pymc.io/notebooks/GP-MaunaLoa.html}{https://docs.pymc.io/notebooks/GP-MaunaLoa.html}},
+  2018{\natexlab{b}}.
+
+\bibitem[\MakeUppercase{PyMC3}(2018{\natexlab{c}})PyMC3]{pymcgs}
+\MakeUppercase{PyMC3}.
+\newblock \enquote{PyMC3 - Getting Started},
+  \emph{\href{https://docs.pymc.io/notebooks/getting\_started.html}{
+  https://docs.pymc.io/notebooks/getting\_started.html}}, 2018{\natexlab{c}}.
+
+\bibitem[\MakeUppercase{PyMC3}(2018{\natexlab{d}})PyMC3]{pymccont}
+\MakeUppercase{PyMC3}.
+\newblock \enquote{PyMC3 - Continuos functions},
+  \emph{\href{https://docs.pymc.io/api/distributions/continuous.html}{
+  https://docs.pymc.io/api/distributions/continuous.html}}, 2018{\natexlab{d}}.
 
 \end{thebibliography}
