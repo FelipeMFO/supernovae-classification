@@ -4,60 +4,67 @@ The top-level auxiliary file: FinalReport.aux
 The style file: coppe-unsrt.bst
 Database file #1: bibliografia.bib
 Warning--string name "mai" is undefined
---line 20 of file bibliografia.bib
+--line 29 of file bibliografia.bib
 Warning--string name "abr" is undefined
---line 74 of file bibliografia.bib
-Repeated entry---line 87 of file bibliografia.bib
+--line 83 of file bibliografia.bib
+Repeated entry---line 96 of file bibliografia.bib
  : @article{GPVisual
  :                  ,
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 143 of file bibliografia.bib
+I was expecting a `,' or a `}'---line 152 of file bibliografia.bib
  :  year = 2012
  :             -2018,
 I'm skipping whatever remains of this entry
 Warning--string name "mai" is undefined
---line 167 of file bibliografia.bib
+--line 176 of file bibliografia.bib
+Name 1 in "K. Sooknunan, M. Lochner," has a comma at the end for entry sooknunan
+while executing---line 1243 of file coppe-unsrt.bst
 `address' is a missing field, not a string, for entry Erros
 while executing---line 1327 of file coppe-unsrt.bst
-You've used 21 entries,
+Name 1 in "K. Sooknunan, M. Lochner," has a comma at the end for entry sooknunan
+while executing---line 1327 of file coppe-unsrt.bst
+Name 1 in "K. Sooknunan, M. Lochner," has a comma at the end for entry sooknunan
+while executing---line 1327 of file coppe-unsrt.bst
+Warning--empty journal in sooknunan
+You've used 22 entries,
             2630 wiz_defined-function locations,
-            645 strings with 7010 characters,
-and the built_in function-call counts, 6322 in all, are:
-= -- 495
-> -- 153
-< -- 27
-+ -- 92
-- -- 44
-* -- 510
-:= -- 936
-add.period$ -- 63
-call.type$ -- 21
-change.case$ -- 25
-chr.to.int$ -- 15
-cite$ -- 21
-duplicate$ -- 471
-empty$ -- 738
-format.name$ -- 67
-if$ -- 1352
+            650 strings with 7127 characters,
+and the built_in function-call counts, 6641 in all, are:
+= -- 520
+> -- 160
+< -- 28
++ -- 96
+- -- 46
+* -- 538
+:= -- 982
+add.period$ -- 66
+call.type$ -- 22
+change.case$ -- 26
+chr.to.int$ -- 16
+cite$ -- 23
+duplicate$ -- 494
+empty$ -- 776
+format.name$ -- 70
+if$ -- 1420
 int.to.chr$ -- 7
-int.to.str$ -- 22
-missing$ -- 25
-newline$ -- 97
-num.names$ -- 63
-pop$ -- 182
+int.to.str$ -- 23
+missing$ -- 26
+newline$ -- 101
+num.names$ -- 66
+pop$ -- 191
 preamble$ -- 1
-purify$ -- 21
+purify$ -- 22
 quote$ -- 0
-skip$ -- 218
+skip$ -- 228
 stack$ -- 0
-substring$ -- 83
-swap$ -- 132
+substring$ -- 92
+swap$ -- 138
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 135
-warning$ -- 0
-while$ -- 48
+type$ -- 142
+warning$ -- 1
+while$ -- 51
 width$ -- 0
-write$ -- 252
-(There were 3 error messages)
+write$ -- 263
+(There were 6 error messages)

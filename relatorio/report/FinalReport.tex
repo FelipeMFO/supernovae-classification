@@ -282,9 +282,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
 	
 	O \autoref{chap:ModeloAtual} será destinado para detalhar especificamente cada etapa do \textbf{pipeline atual}, assim como uma breve menção a maneira na qual os dados brutos são tratados.
 	
-	Os capítulos 4, 5 e 6 serão destinados à explicação dos \textbf{objetivos} citados na seção \ref{sec:Obj}, assim como os \textbf{resultados das mudanças} que dos mesmos, buscando averiguar a eficiência de aplicação ou explicar possíveis erros.
-	
-	No \autoref{chap:Result} serão apresentados os \textbf{resultados} na totalidade, seguidos de análises dos métodos através de uma perspectiva global do projeto diferentemente de como será nos capítulos anteriores, nos quais teremos uma visão específica para cada objetivo.
+	Os capítulos 4, 5 e 6 serão destinados à explicação dos \textbf{objetivos} citados na seção \ref{sec:Obj}, assim como os \textbf{resultados das mudanças} dos mesmos, buscando averiguar a eficiência de aplicação ou explicar possíveis erros.
 	
 	Por fim, no \autoref{chap:Concl} serão apresentadas as \textbf{conclusões finais do projeto e sugestões de trabalhos futuros}, junto às limitações e possíveis soluções encontradas.
 	
@@ -623,7 +621,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
  		
  	\section{Resultados e comparações}
  	
- 	Serão apresentados 3 tipos diferentes de scores para cada um dos 19 modelos gerados pela validação cruzada K-Fold, curva AUC (\textbf{AUC}), \textit{Average Precision} (\textbf{AP}) e o padrão da biblioteca \textit{scikit}; tendo sido aplicadas as seguintes estratégias:
+ 	Serão apresentados 3 tipos diferentes de scores para cada um dos 19 modelos gerados pela validação cruzada K-Fold: curva AUC (\textbf{AUC}), \textit{Average Precision} (\textbf{AP}) e o padrão da biblioteca \textit{scikit}; tendo sido aplicadas as seguintes estratégias:
  	
  	\begin{itemize}
 		\item Retirada de valores negativos e daqueles com incerteza maior que a média mais desvio padrão. Representada na tabela \ref{tab:outlier} como \textbf{StdDev}.
@@ -661,7 +659,7 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
 \small{Fold 19} &  95,35\% &95,37\%& 95,47\%& 84,34\% & 84,16\% & 84,47\% & 89,87\%& 89,61\%& 89,70\%\\
 \hline
 \hline
-Média &  x\% &x\%& x\%& x&x &x & x&x & x\\
+\textbf{Média} &  \textbf{95,76\%} & \textbf{95,11\%} & \textbf{95,83\%} & \textbf{85,51\%} & \textbf{83,55\%} & \textbf{85,90\%} & \textbf{90,15\%} & \textbf{89,40\%} & \textbf{90,21\%} \\
 \hline
  			\end{tabular}
  		\end{center}
@@ -778,11 +776,11 @@ Média &  x\% &x\%& x\%& x&x &x & x&x & x\\
   
 	\section{Escolha da Biblioteca}
 	
-		Inicialmente, a biblioteca utilizada no artigo da \citet{lochner} foi a \textit{Gapp}, uma biblioteca para reconstrução de funções usada em outros trabalhos de cosmologia \cite{gapp}.
+		A biblioteca utilizada no artigo da \citet{lochner} foi a \textit{Gapp}, uma biblioteca para reconstrução de funções usada em outros trabalhos de cosmologia \cite{gapp}.
 		
 		Entretanto, o próprio pipeline desenvolvido pelo IF-UFRJ já buscava otimizar o artigo original da M. Lochner, logo, este projeto partiu dos estudos já feitos, tendo como ponto de partida a biblioteca \textit{george}.
 		
-		Vale mencionar também que embora seja possível implementar manualmente os processos gaussianos, as várias bibliotecas disponíveis já possuem especificações e ajustes para os modelos de maneira mais automatizada. As três bibliotecas analisadas são:
+		Vale mencionar também que embora seja possível implementar manualmente os processos gaussianos, as várias bibliotecas disponíveis já possuem especificações e ajustes para os modelos de maneira mais automatizada. As três bibliotecas analisadas foram:
 		
 		\begin{itemize}
 			\item SciKit-Learn
@@ -794,34 +792,34 @@ Média &  x\% &x\%& x\%& x&x &x & x&x & x\\
 		
 		A maior parte da análise foi baseada no blog \textit{Domino}, onde vários experimentos foram realizados comparando o desempenho de cada pacote \cite{bibliotecacomp}. 
 		
-		As minuciosidades destas análises podem ser vistas em todo o projeto realizado no blog \textit{Domino} citado acima, para não fugir do escopo deste trabalho não serão mencionados mais detalhes sobre a especificidade de cada biblioteca.
+		As minuciosidades destas análises podem ser vistas em todo o projeto realizado no blog citado acima, para não fugir do escopo deste trabalho não serão mencionados mais detalhes sobre a especificidade de cada biblioteca.
 		
 		Como explicação breve para a escolha final, pode se dizer globalmente que o \textit{scikit-learn} possui uma abordagem mais simples e focada menos nos modelos probabilísticos sofisticados. Enquanto tanto o \textit{GPFlow} quanto o PyMC3 possuem um próprio \textit{backend} computacional dando suporte a esses modelos. Por fim, o motivo da escolha do PyMC3 foi devido a maior comunidade de suporte e ao vasto domínio de estudo da biblioteca. Pois, por ser um pacote de programação probabilística, o PyMC3 abrange mais ferramentas que podem vir a ser úteis no desenvolvimento das distribuições de probabilidade usadas no GP.
 		
 	\section{Aleatoriedades e \textit{Random Seeds}}
 	
-	Antes de adentrar nas escolhas dos Kernels, é muito importante explicar o fator da aleatoriedade dentro do projeto. Normalmente a biblioteca PyMC3 realizaria métodos de otimização da função a posteriori em seu GP, entretanto, por ser uma biblioteca que exige um alto custo computacional, preferiu-se escolher uma função Kernel melhor para a interpolação em prol de não executar a linha de código que otimizaria os parâmetros da distribuição a posteriori (ilustrado como as distribuições a direita na figura \ref{fig:MCMC1}). 
+	Antes de adentrar nas escolhas dos Kernels, é muito importante explicar o fator da aleatoriedade dentro do projeto. Normalmente a biblioteca PyMC3 realizaria métodos de otimização da função a posteriori em seu GP, entretanto, por ser uma biblioteca que exige um alto custo computacional, foi decidido não executar a linha de código que otimizaria o código em prol de escolher uma função Kernel que melhor faria a interpolação.
 	
 	Isto não significa que os parâmetros do GP não serão otimizados, eles apenas não irão convergir para um valor final, o que os torna dependentes das condições iniciais estabelecidas internamente pelo computador durante as cadeias de Markov Monte Carlo \cite{MCMC}.
 	
-	A alternativa para esta escolha de projeto foi estabelecer determinadas sementes aleatórias \cite{pseudoaleatoriedade}. Através da análise de 11 sementes pôde-se escolher aquelas cujas condições iniciais resultavam em um maior \textit{overfitting} das interpolações, sendo favoráveis ao caso em questão. As figuras das comparações das interpolações de cada semente encontram-se no APENDICE B COLOCAR O LINK DO NOTEBOOK.
+	A alternativa para esta escolha de projeto foi comparar determinadas sementes aleatórias \cite{pseudoaleatoriedade}. Através da análise de 11 sementes pôde-se escolher aquelas cujas condições iniciais resultavam em um maior overfitting das interpolações. As figuras das comparações das interpolações de cada semente encontram-se no apêndice \ref{chap:ApendiceB}.
 	
 	Buscando sempre aquelas sementes que eliminam interpolações constantes e proporcionam um \textit{overfitting}, as melhores foram:
 	
 	\begin{itemize}
-	\item 8 -> overfita mto
-	\item 6 -> Overfita mto tb
-	\item 5 -> meio equilibrado mas ainda bom
-	\item 4 -> vai passando meio que pelo meio
-	\item 9 -> me pareceu bem boa
-	\item 7 -> é até boa mas não corrige o problema de ser uma linha reta
+	\item Random Seed 8, possuiu overfitting muito alto.
+	\item Random Seed 6, possuiu também um alto overfitting.
+	\item Random Seed 5, em troca de uma margem de erro menor, seu overfitting também é reduzido.
+	\item Random Seed 4, comportamento buscando reduzir os erros com overfitting e corrigindo o problema dos valores constantes.
+	\item Random Seed 9, a melhor combinação entre overfitting e erro não possuindo interpolações constantes.
+	\item Random Seed 7, possui uma boa interpolação mas não corrige o problema de interpolações constantes.
 	\end{itemize}
 	
-	Por fim, para analisar seus resultados no final do projeto, foram escolhidas duas delas para as interpolações finais, as sementes 4 e 9.
+	Por fim, foram escolhidas duas delas para as interpolações finais, as sementes 4 e 9.
 	
 	\section{\textit{Kernel Functions}}
 	
-	Para escolher as funções Kernel que seriam utilizadas para as interpolações, foi seguido o suporte da biblioteca PyMC3 \cite{pymc}. Neste suporte podem ser vistas diferentes maneiras de interpolações e analisar diretamente como os Kernels afetam no formato das funções.
+	Para escolher as funções Kernel que seriam utilizadas nas interpolações, foi seguido o suporte da biblioteca PyMC3 \cite{pymc}. Nesse suporte existem diferentes maneiras de interpolações e análises sobre como os Kernels afetam diretamente no formato das funções.
 	
 	A partir dos dados da referência acima, foram escolhidos os seguintes Kernels para as interpolações:
 	
@@ -847,11 +845,11 @@ Média &  x\% &x\%& x\%& x&x &x & x&x & x\\
 			\end{equation}	
 	\end{itemize}
 	
-	Nestas funções temos $x$ e $x'$ como os valores das abscissas e $\alpha$ e $l$ como hiperparâmetros a serem ajustados. Empiricamente percebeu-se que o $l$ possui um efeito de aumentar \textit{overfitting} em troca do aumento do erro da interpolação.
+	Nestas funções temos $x$ e $x'$ como os valores das abscissas e $\alpha$ e $l$ como hiperparâmetros a serem ajustados. Empiricamente percebeu-se que o $l$ possui um efeito de aumentar overfitting em troca do aumento do erro da interpolação.
 	
-	Esses parâmetros podem assumir valores como funções de distribuição probabilística ou como  constantes. Optou-se por adotá-los como distribuições, pois, após diversos testes utilizando constantes, resultados melhores foram obtidos usando distribuições. Outro fator que levou a esta escolha, foram os exemplos oferecidos no suporte da biblioteca PyMC3 \cite{pymcex} \cite{pymcgs}. 
+	Esses hiperparâmetros podem assumir valores como funções de distribuições probabilísticas ou como  constantes. Após diversos testes utilizando constantes, foi notório que os melhores resultados foram obtidos usando distribuições. Outro fator que levou a essa escolha, foram os exemplos oferecidos no suporte da biblioteca PyMC3 \cite{pymcex} \cite{pymcgs}. 
 	
-	No apêndice C COLOCAR AS FUNÇÕES LÁ são ilustradas as interpolações realizadas para escolher qual Kernel seria utilizado. Os critérios principais para a  escolha, foram evitar interpolações constantes e buscar \textit{overfitting}. Como resultado, os dois melhores Kernels foram o \textit{Matern} 3/2 e o \textit{Matern} 5/2; uma conclusão alinhada com a teoria explícita no capítulo 4 seção 2 do \citet{GPBook}.
+	No apêndice \ref{chap:ApendiceB} são ilustradas as interpolações realizadas para escolher qual Kernel seria utilizado. Os critérios principais para a  escolha foram evitar interpolações constantes e buscar overfitting. Como resultado, os dois melhores Kernels foram o \textit{Matern} 3/2 e o \textit{Matern} 5/2; uma conclusão alinhada com a teoria exposta no capítulo 4 seção 2 do \citet{GPBook}.
 	
 	
 
@@ -860,7 +858,7 @@ Média &  x\% &x\%& x\%& x&x &x & x&x & x\\
 	
 	Antes de adentrar nos resultados das Interpolações, duas observações importantes são feitas.
 	
-	A primeira é a solução para o problema de possíveis valores negativos, por mais que não tenha sido adotado neste trabalho devido à tentativa de deixar o código com menos custo computacional possível, caso em trabalhos futuros deseje-se impossibilitar interpolações com valores negativos, o uso de uma \textit{mean function} não-negativa resolve este problema \cite{pymccont}.
+	A primeira é a solução para o problema de possíveis valores negativos. Por mais que tal abordagem não tenha sido adotada neste trabalho, devido à tentativa de deixar o código com menos custo computacional possível; para trabalhos futuros nos quais deseje-se impossibilitar interpolações com valores negativos, o uso de uma \textit{mean function} não-negativa resolve este problema \cite{pymccont}.
 	
 	Vários tipos de funções que atendem esse pré-requisito estão descritos no \citet{pymccont}.
 	
@@ -878,26 +876,59 @@ Média &  x\% &x\%& x\%& x&x &x & x&x & x\\
 	\end{figure}
 			
 			
-	A segunda observação é o uso da função Matern dentro da própria biblioteca usada no \textit{pipeline} original, \textit{george}.
+	A segunda observação é o uso da função Matern dentro da própria biblioteca usada no pipeline original do \textit{george}.
 	
-	Os resultados da troca do Kernel \textit{ExpQuadr} pelo \textit{Matern} 5/2 na biblioteca \textit{george} foi realizada usando constantes como hiperparâmetros, resultando nos seguintes resultados:
+	Os resultados da troca do Kernel \textit{ExpQuadr} pelo \textit{Matern} 5/2 na biblioteca \textit{george} podem ser vistos em \ref{tab:materngeorge} e \ref{fig:CMmaterngeorge}
 	
-	COLOCAR AQUI OS RESULTADOS
+	\begin{table}[h!]
 	
-	Pode-se perceber que os resultados são piores do que o uso do Kernel \textit{Exp Quadr}, esse resultado será melhor explicado no capítulo \ref{chap:Result}. Entretanto, pode-se justificar esse resultado pelo uso dos hiperparâmetros terem sido constantes e não distribuições. Uma outra justificativa que reforça o uso do Kernel Matern como teoricamente superior ao \textit{Exp Quadr}, é a compararação das interpolações de ambos quando os hipterparâmetros são distribuições, como será visto na seção a seguir. 
+	\begin{center}	
+		\small\addtolength{\tabcolsep}{-5pt}
+	\begin{tabular}{|l|c|c|c|}
+		\hline
+		
+		Fold & \textbf{AUC} & \textbf{AP} & \textbf{Default scikit}\\
+		
+		\hline
+\small{Fold 1 }&   94,79\%& 83,15\%& 88,88\%\\
+\small{Fold 2 }&   94,42\%& 81,28\%& 88,50\%\\
+\small{Fold 3 }&   94,32\%& 81,86\%& 88,74\%\\
+\small{Fold 4 }&   93,92\%& 80,44\%& 88,26\%\\
+\small{Fold 5 }&   94,53\%& 83,51\%& 88,67\%\\
+\small{Fold 6 }&   93,92\%& 79,85\%& 88,32\%\\
+\small{Fold 7 }&   94,09\%& 82,05\%& 88,72\%\\
+\small{Fold 8 }&   94,10\%& 81,51\%& 88,22\%\\
+\small{Fold 9 }&   93,74\%& 82,14\%& 88,18\%\\
+\small{Fold 10} &  94,04\%& 82,67\%& 88,43\%\\
+\small{Fold 11} &  94,82\%& 83,75\%& 89,33\%\\
+\small{Fold 12} &  93,97\%& 83,03\%& 89,14\%\\
+\small{Fold 13} &  94,36\%& 82,31\%& 88,35\%\\
+\small{Fold 14} &  94,38\%& 83,42\%& 88,56\%\\
+\small{Fold 15} &  93,83\%& 81,28\%& 88,01\%\\
+\small{Fold 16} &  94,12\%& 82,24\%& 88,29\%\\
+\small{Fold 17} &  94,72\%& 83,30\%& 88,90\%\\
+\small{Fold 18} &  94,21\%& 82,23\%& 88,63\%\\
+\small{Fold 19} &  94,26\%& 81,63\%& 88,38\%\\
+		\hline
+		\hline
+		\textbf{Média} &  \textbf{94,24\%} & \textbf{82,19\%} & \textbf{88,55\%} \\
+		\hline
+		
+	\end{tabular}
+	\end{center}
+	\caption{Resultados do Kernel \textit{Mattern 5/2} pela biblioteca \textit{george}.}
+	\label{tab:materngeorge}
+	\end{table}
+	
+	A justificativa para tal desempenho ser pior pode ser atribuída aos hiperparâmetros terem sido constantes e não distribuições. Em contrapartida, poderia ser concluído que o uso do Matern é inferior ao do \textit{Exp Quadr} caso analisasse apenas o resultado do \textit{george}. Todavia, ao realizar comparações dentro de uma biblioteca com mais suporte, é visivelmente notada a melhora ao interpolar usando o Kernel proposto do que o antigo \ref{fig:GPResult}.
 	
 	
 	\section{Resultados das Interpolações}
 	
 	O resultado global das interpolações não pôde ser concluído devido a um erro de processamento de código, mais precisamente um \textit{memory leak} interno durante a execução dos modelos do PyMC3 em \textit{loop}. A explicação e detalhamento desse erro será apresentado na seção a seguir. 
 	
-	Nesta seção serão apresentados alguns exemplos de comparação de interpolação entre os algoritmos, justificando o porquê de se esperar que caso o processamento de todos os dados, provavelmente obter-se-iam resultados melhores.
+	Nesta seção serão apresentados apenas alguns exemplos de comparação de interpolação entre os algoritmos, justificando o porquê de se esperar que caso o processamento de todos os dados fosse concluido, provavelmente obter-se-iam resultados melhores.
 	
-	
-	
-	\begin{itemize}
-		\item Interpolação do objeto SN013742
-		
 			\begin{figure*}
 			\centering
 			\begin{subfigure}[b]{0.475\textwidth}
@@ -918,52 +949,88 @@ Média &  x\% &x\%& x\%& x&x &x & x&x & x\\
 				\centering 
 				\includegraphics[width=\textwidth]{SN013742_pymc_m52_6.png}
 				\caption[]%
-				{{\small PyMC3 Matern 5/2 semente 6, overfit}}    
+				{{\small PyMC3 Matern 5/2 semente 6, overfitting}}    
 			\end{subfigure}
 			\quad
 			\begin{subfigure}[b]{0.475\textwidth}   
 				\centering 
 				\includegraphics[width=\textwidth]{SN013742_pymc_m52_9.png}
 				\caption[]%
-				{{\small PyMC3 Matern 5/2 semente 9, overfit}}    
+				{{\small PyMC3 Matern 5/2 semente 9, overfitting}}    
 			\end{subfigure}
 			\vskip\baselineskip
 			\begin{subfigure}[b]{0.475\textwidth}   
 				\centering 
 				\includegraphics[width=\textwidth]{SN013742_pymc_m52_6_noOF.png}
 				\caption[]%
-				{{\small PyMC3 Matern 5/2 semente 6, menos overfit}}    
+				{{\small PyMC3 Matern 5/2 semente 6, menos overfitting}}    
 			\end{subfigure}
 			\quad
 			\begin{subfigure}[b]{0.475\textwidth}   
 				\centering 
 				\includegraphics[width=\textwidth]{SN013742_pymc_m52_9_noOF.png}
 				\caption[]%
-				{{\small PyMC3 Matern 5/2 semente 9, menos overfit}}    
+				{{\small PyMC3 Matern 5/2 semente 9, menos overfitting}}    
 			\end{subfigure}
 			\caption[ Comparação dos resultados finais para um exemplo.]
-			{\small Interpolações usando 6 configurações diferentes. Gráfico Fluxo $ \times $ Tempo (dias).} 
+			{\small Interpolações do objeto SN013742 usando 6 configurações diferentes. Gráfico Fluxo $ \times $ Tempo (dias).} 
 			\label{fig:GPResult}
 		\end{figure*}
+	
+	 	\begin{figure*}[h]
+		\centering
+		\begin{subfigure}[b]{0.475\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{CM_mat_george_normal.png}
+			\caption[]%
+			{{\small Valores normalizados.}}    
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.475\textwidth}  
+			\centering 
+			\includegraphics[width=\textwidth]{CM_mat_george_absolut.png}
+			\caption[]%
+			{{\small Valores absolutos.}}    
+		\end{subfigure}
+		\caption[ Matrizes de confusão do \textit{Matern 5/2} pela biblioteca \textit{george}.]
+		{\small Matrizes de confusão do \textit{Matern 5/2} pela biblioteca \textit{george}.} 
+		\label{fig:CMmaterngeorge}
+		\end{figure*}
+
 		
-	\end{itemize}
-		
-		Demais exemplos de comparações estão descritos no \textit{notebook} do apêndice B.
+		Demais exemplos de comparações estão descritos no \textit{notebook} do apêndice \ref{chap:ApendiceB}.
 		
 	\section{Identificação e Justificativa do Erro}
 	\newpage 
-  \chapter{Resultados e Discussões}
-  \label{chap:Result}
-	\newpage
+
   \chapter{Conclusões}
   \label{chap:Concl}
 	\section{Conclusões Finais} 	  
-		
-			Falar que o Algoritmo de hoje já é bem robusto
+	
+	O presente trabalho teve como objetivo buscar otimizações e melhorias nas técnicas de ML dentro dos modelos de classificação de supernovas usando espectroscopia. A partir da análise dos resultados, foi possível verificar que o modelo atual possui uma robustez muito eficaz tendo em vista a pouca quantidade de dados treinados.
+	
+	Como ponto positivo para o método, este projeto pôde agregar conhecimento testando diferentes abordagens e concluindo que suas aplicações não ofereceriam melhoras ao modelo. Além de averiguar que a robustez do método.
+	
+	Dentro do escopo de um projeto final, cabe também mencionar a evolução e aquisição de conhecimento do aluno, que ao realizar pesquisas e discutir novas ideias para o algoritmo, teve um aprendizado significativo a medida em que foram sendo descobertas e estudadas novas tecnologias e novos conceitos.
+	
+	Ao aplicar a estratégia de tratamento de dados removendo os \textit{outliers}, foi possível observar que a diferença dos resultados finais mostrou-se tão pequena que pode ser desprezada, levando a conclusão de que a etapa das transformadas de \textit{wavelets} proporciona ao algoritmo uma robustez significativa, a ponto de que \textit{outliers} 'grosseiros' não comprometeram o modelo.
+	
+	Em relação ao Deep Learning concluiu-se que no local onde as redes neurais convolucionais foram aplicadas, essa técnica não se mostrou eficaz devido aos modelos serem treinados com apenas um dezenove avos dos dados. Além de concluir que a ausência de um possível \textit{data augmentation} compromete o desempenho mesmo quando são utilizados 80\% dos dados para treino.
+	
+	\newpage
+	
+	Por fim, a abordagem principal que foi a busca de uma melhor execução do Processo Gaussiano não pôde ser concluída devido a problemas que fugiram da natureza do projeto. Entretanto, a partir da análise de outros métodos e dos resultados das interpolações dos gráficos através do Kernel \textit{Mattern 5/2} pelo \textit{george}, conclui-se que o método atual já se encontra bem otimizado, sustentado principalmente pela robustez que a transformada de \textit{wavelets} oferece ao modelo.  
+	
 		
 	\section{Trabalhos Futuros} 
 		
-			Falar de consertar o Erro e pah
+	Em relação à utilização de aprendizado de máquina na temática em questão, muitos outros métodos são usados para a identificação de objetos astronômicos para demais fins \cite{sooknunan}. Tendo em vista esses outros objetivos, o trabalho aqui desenvolvido mostra-se útil para projetar novas ideias nessas outras abordagens.
+	
+	Em relação ao erro de \textit{memory leak}, a resolução fica em aberto para trabalhos futuros que busquem finalizar a ideia aqui já construída. Visto que a parte árdua de identificar o problema já foi feita, o mesmo pode ser publicado em repositórios e comunidades de programadores buscando suporte direcionado.
+	
+	Sobre as outras bibliotecas estudadas para realizar a interpolação, após a análise e detalhamento de cada uma delas e suas propriedades \cite{bibliotecacomp}, elas podem se mostrar interessantes em trabalhos cujo uso de Processo Gaussiano seja necessário.
+	
+	Após a utilização da biblioteca PyMC3, apesar do problema ocorrido, ela se mostrou extremamente eficaz e matematicamente completa, estando alinhada com os conceitos estatísticos proporcionando uma flexibilidade na modelagem das distribuições. Logo, é aconselhável que novos interessados no projeto usem a biblioteca, devido ao seu grande suporte que facilita o entendimento teórico. Assim como àqueles que já possuem determinado conhecimento e queiram tentar modelos mais específicos e customizados.
 		  
 
   \backmatter
@@ -975,6 +1042,13 @@ Média &  x\% &x\%& x\%& x&x &x & x&x & x\\
   \label{chap:Apendice}
   
   Todo o código desenvolvido encontra-se disponível no repositório público do \textit{GitHub}, a fim de poder ser desenvolvido e modificado por qualquer pessoa que deseje contribuir ou estudar este projeto, podendo ser acessado no seguinte link: \href{https://github.com/FelipeMFO/supernova_identification}{https://github.com/FelipeMFO/supernova\_identification}.
+  
+  \chapter{Avaliação das Interpolações}
+  \label{chap:ApendiceB}
+  
+  Dentro do repositório citado no apêndice \ref{chap:Apendice}, um \textit{notebook} em especial possui as diversas interpolações feitas para avaliar de maneira empírica quais métodos e quais \textit{random seeds} se mostraram mais eficazes. O arquivo é o \href{https://github.com/FelipeMFO/supernova_identification/blob/master/src_and_notebooks/processing/GP_evaluation.ipynb}{https://github.com/FelipeMFO/supernova\_identification/blob/master/src\_and\_notebooks/processing/GP\_evaluation.ipynb}.
+  
+  
 \end{document}
 %% 
 %%

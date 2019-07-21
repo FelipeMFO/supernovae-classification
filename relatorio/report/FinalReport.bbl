@@ -1,4 +1,4 @@
-\begin{thebibliography}{21}
+\begin{thebibliography}{22}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -96,8 +96,8 @@
 \newblock \enquote{Reconstruction of dark energy and expansion dynamics using
   Gaussian processes}, \emph{JCAP06}, v.~2, n.~2, \penalty0 pp.~20, 2012.
 
-\bibitem[\MakeUppercase{Wikipedia}(2017)Wikipedia]{bibliotecacomp}
-\MakeUppercase{Wikipedia}.
+\bibitem[\MakeUppercase{Lab}(2017)Lab]{bibliotecacomp}
+\MakeUppercase{Lab, D.~D.}
 \newblock \enquote{Fitting Gaussian Process Models in Python},
   \emph{\href{https://blog.dominodatalab.com/fitting-gaussian-process-models-python/}{https://blog.dominodatalab.com/fitting-gaussian-process-models-python/}},
   mar. 2017.
@@ -125,5 +125,10 @@
 \newblock \enquote{PyMC3 - Continuos functions},
   \emph{\href{https://docs.pymc.io/api/distributions/continuous.html}{
   https://docs.pymc.io/api/distributions/continuous.html}}, 2018{\natexlab{d}}.
+
+\bibitem[\MakeUppercase{K.~Sooknunan}(2018)K.~Sooknunan]{sooknunan}
+\MakeUppercase{K.~Sooknunan, M.~L.}
+\newblock \enquote{Classification of Multiwavelength Transients with Machine
+  Learning}, v.~1, \penalty0 pp.~16, nov. 2018.
 
 \end{thebibliography}
