@@ -18,7 +18,7 @@
 \BOOKMARK [1][-]{section.2.3}{Demais Conceitos}{chapter.2}% 18
 \BOOKMARK [2][-]{subsection.2.3.1}{An\341lise de Componentes Principais}{section.2.3}% 19
 \BOOKMARK [2][-]{subsection.2.3.2}{Transformadas de Wavelet}{section.2.3}% 20
-\BOOKMARK [2][-]{subsection.2.3.3}{K-Fold Cross Validation}{section.2.3}% 21
+\BOOKMARK [2][-]{subsection.2.3.3}{Valida\347\343o cruzada K-Fold}{section.2.3}% 21
 \BOOKMARK [0][-]{chapter.3}{Modelo Atual}{}% 22
 \BOOKMARK [1][-]{section.3.1}{Pr\351-processamento dos Dados Brutos}{chapter.3}% 23
 \BOOKMARK [1][-]{section.3.2}{Pipeline Atual}{chapter.3}% 24

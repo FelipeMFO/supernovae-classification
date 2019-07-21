@@ -11,53 +11,53 @@ Repeated entry---line 87 of file bibliografia.bib
  : @article{GPVisual
  :                  ,
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 135 of file bibliografia.bib
+I was expecting a `,' or a `}'---line 143 of file bibliografia.bib
  :  year = 2012
  :             -2018,
 I'm skipping whatever remains of this entry
 Warning--string name "mai" is undefined
---line 159 of file bibliografia.bib
+--line 167 of file bibliografia.bib
 `address' is a missing field, not a string, for entry Erros
 while executing---line 1327 of file coppe-unsrt.bst
-You've used 20 entries,
+You've used 21 entries,
             2630 wiz_defined-function locations,
-            642 strings with 6856 characters,
-and the built_in function-call counts, 6032 in all, are:
-= -- 472
-> -- 146
-< -- 26
-+ -- 87
-- -- 42
-* -- 487
-:= -- 894
-add.period$ -- 60
-call.type$ -- 20
-change.case$ -- 24
+            645 strings with 7010 characters,
+and the built_in function-call counts, 6322 in all, are:
+= -- 495
+> -- 153
+< -- 27
++ -- 92
+- -- 44
+* -- 510
+:= -- 936
+add.period$ -- 63
+call.type$ -- 21
+change.case$ -- 25
 chr.to.int$ -- 15
-cite$ -- 20
-duplicate$ -- 449
-empty$ -- 704
-format.name$ -- 64
-if$ -- 1290
-int.to.chr$ -- 6
-int.to.str$ -- 21
-missing$ -- 24
-newline$ -- 93
-num.names$ -- 60
-pop$ -- 173
+cite$ -- 21
+duplicate$ -- 471
+empty$ -- 738
+format.name$ -- 67
+if$ -- 1352
+int.to.chr$ -- 7
+int.to.str$ -- 22
+missing$ -- 25
+newline$ -- 97
+num.names$ -- 63
+pop$ -- 182
 preamble$ -- 1
-purify$ -- 20
+purify$ -- 21
 quote$ -- 0
-skip$ -- 208
+skip$ -- 218
 stack$ -- 0
-substring$ -- 80
-swap$ -- 125
+substring$ -- 83
+swap$ -- 132
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 128
+type$ -- 135
 warning$ -- 0
-while$ -- 46
+while$ -- 48
 width$ -- 0
-write$ -- 241
+write$ -- 252
 (There were 3 error messages)

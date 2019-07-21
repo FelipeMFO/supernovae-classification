@@ -12,25 +12,25 @@
 \contentsline {subsection}{\numberline {1.4.2}Aprendizagem Profunda}{4}{subsection.1.4.2}
 \contentsline {subsection}{\numberline {1.4.3}Tratamento de \textit {Outliers}}{4}{subsection.1.4.3}
 \contentsline {section}{\numberline {1.5}Metodologia}{6}{section.1.5}
-\contentsline {section}{\numberline {1.6}Descri\IeC {\c c}\IeC {\~a}o}{6}{section.1.6}
+\contentsline {section}{\numberline {1.6}Descri\IeC {\c c}\IeC {\~a}o}{7}{section.1.6}
 \contentsline {chapter}{\numberline {2}Fundamentos Te\IeC {\'o}ricos}{8}{chapter.2}
 \contentsline {section}{\numberline {2.1}Processo Gaussiano}{8}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}\textit {Kernel} e Fun\IeC {\c c}\IeC {\~a}o de Covari\IeC {\^a}ncia}{8}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.1}\textit {Kernel} e Fun\IeC {\c c}\IeC {\~a}o de Covari\IeC {\^a}ncia}{9}{subsection.2.1.1}
 \contentsline {subsection}{\numberline {2.1.2}Fun\IeC {\c c}\IeC {\~a}o M\IeC {\'e}dia}{10}{subsection.2.1.2}
-\contentsline {section}{\numberline {2.2}Redes Neurais Convolucionais}{12}{section.2.2}
+\contentsline {section}{\numberline {2.2}Redes Neurais Convolucionais}{11}{section.2.2}
 \contentsline {section}{\numberline {2.3}Demais Conceitos}{14}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}An\IeC {\'a}lise de Componentes Principais}{14}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Transformadas de \textit {Wavelet}}{14}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}K-Fold Cross Validation}{15}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.3}Valida\IeC {\c c}\IeC {\~a}o cruzada \textit {K-Fold}}{15}{subsection.2.3.3}
 \contentsline {chapter}{\numberline {3}Modelo Atual}{16}{chapter.3}
 \contentsline {section}{\numberline {3.1}Pr\IeC {\'e}-processamento dos Dados Brutos}{16}{section.3.1}
 \contentsline {section}{\numberline {3.2}\textit {Pipeline} Atual}{17}{section.3.2}
-\contentsline {chapter}{\numberline {4}Tratamento de \textit {Outliers}}{20}{chapter.4}
+\contentsline {chapter}{\numberline {4}Tratamento de Outliers}{20}{chapter.4}
 \contentsline {section}{\numberline {4.1}Estrat\IeC {\'e}gias Utilizadas}{20}{section.4.1}
 \contentsline {section}{\numberline {4.2}Resultados e compara\IeC {\c c}\IeC {\~o}es}{21}{section.4.2}
 \contentsline {chapter}{\numberline {5}Rede Neural Convolucional}{22}{chapter.5}
 \contentsline {section}{\numberline {5.1}Gera\IeC {\c c}\IeC {\~a}o de Imagens e Par\IeC {\^a}metros}{22}{section.5.1}
-\contentsline {section}{\numberline {5.2}\textit {Pipeline}}{23}{section.5.2}
+\contentsline {section}{\numberline {5.2}Pipeline}{22}{section.5.2}
 \contentsline {section}{\numberline {5.3}Resultados e compara\IeC {\c c}\IeC {\~o}es}{24}{section.5.3}
 \contentsline {chapter}{\numberline {6}Interpola\IeC {\c c}\IeC {\~a}o atrav\IeC {\'e}s de Processo Gaussiano}{26}{chapter.6}
 \contentsline {section}{\numberline {6.1}Escolha da Biblioteca}{26}{section.6.1}
