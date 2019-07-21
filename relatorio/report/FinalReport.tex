@@ -481,12 +481,12 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
   \chapter{Modelo Atual}
   \label{chap:ModeloAtual}  		
   
-  Neste capítulo serão detalhados o modelo atualmente utilizado para estudos cosmológicos do IF-UFRJ.
+  Neste capítulo será detalhado o modelo atualmente utilizado para estudos cosmológicos do IF-UFRJ.
 
 
 	\section{Pré-processamento dos Dados Brutos}
 	
-	Os dados brutos chegam da seguinte forma para o pré-processamento \ref{fig:RawData}.
+	Os dados brutos chegam para o pré-processamento da maneira ilustrada na figura \ref{fig:RawData}.
 	
 	
 	\begin{figure}[ht]
@@ -503,15 +503,17 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
 		\item  \textbf{TERSE LIGHT CURVE OUTPUT} : Informa os pontos observados. Será o data frame. 
 		\begin{itemize}
 			\item \textbf{MJD} : O momento em que a observação foi obtida. A medida está descrita em dias do calendário Juliano.
-			\item \textbf{FLT} : O filtro no qual a observação foi obtida, tendo em vista que os objetos são observados em 4 espectros de luz. 
+			\item \textbf{FLT} : O filtro no qual a observação foi obtida. Pois os objetos são observados em 4 espectros de luz. 
 			\item  \textbf{FLUXCAL} : O valor do fluxo de luz obtido naquela observação.
 			\item  \textbf{FLUXCALERR} : O valor do erro do fluxo de luz.
 		\end{itemize}
 	\end{itemize}
 
-	Em relação ao \textbf{MJD} vale explicar que é um método usado na astronomia para contar os dias sequencialmente começando em uma data arbitrária no passado. Neste projeto essas datas serão normalizadas, tendo como 0 o menor valor do MJD para que o eixo das abscissas tenha sempre início em 0.
+	Em relação ao \textbf{MJD} vale explicar que é um método usado na astronomia para contar os dias sequencialmente começando em uma data arbitrária no passado. Neste projeto essas datas serão normalizadas, tendo como zero o menor valor do MJD para que o eixo das abscissas tenha sempre início em zero.
 
-	Em relação ao \textbf{FLT}, cada objeto astronômico é visto através de 4 filtros de luz diferentes, obtendo assim 4 curvas de luz para cada um deles. Na perspectiva de aprendizagem de máquina cada objeto possuirá 4 data frames, um para cada filtro, e posteriormente essas propriedades serão convertidas em features de cada objeto.
+	Em relação ao \textbf{FLT}, cada objeto astronômico é visto através de 4 filtros de luz diferentes, obtendo assim 4 curvas de luz para cada um deles.
+	
+	Pela perspectiva de aprendizagem de máquina cada objeto possuirá 4 data frames, um para cada filtro, e posteriormente essas propriedades serão convertidas em features de cada objeto.
 	
 	A figura \ref{fig:ExFiltro} ilustra as 4 curvas de luz para o mesmo objeto.
 	
@@ -663,7 +665,8 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
 \hline
  			\end{tabular}
  		\end{center}
- 	\caption{Resultados do tratamento de \textit{outliers}.}
+ 	\caption[Resultados do tratamento de \textit{outliers}.]
+ 	{\small Resultados do tratamento de \textit{outliers}. 'Padrão' se refere ao score \textit{default} do \textit{scikit}, e as colunas que não apresentam nem \textit{StdDev} nem \textit{Threshold} representam os scores do pipeline original.} 
  	\label{tab:outlier}
  	\end{table}
 	
@@ -710,7 +713,7 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
  
  	O último valor do \textit{Shape} de cada camada é a quantidade de neurônios que ela possui, enquanto os demais valores são o número de linhas e colunas da imagem. O valor '4' que era de se esperar devido aos 4 filtros, não aparece explicitamente na estrutura da arquitetura do modelo, todavia, é um comportamento normal visto que neste caso ele funciona como uma imagem em "RGBA", onde teria uma matriz para vermelho, azul, verde e transparência.
  	
- 	Em seguida, foi definida uma random seed para poder fixar quaisquer tipos de aleatoriedades intrínsecas ao modelo. Assim, o mesmo foi treinado em 2,3,5 e 10 épocas (número este também baseado nos exemplos citados), obtendo um resultado satisfatório quando o valor foi de 10 épocas, pois sua acurácia foi alta sem deixar o algoritmo dependente.
+ 	Em seguida, foi definida uma random seed para poder fixar quaisquer tipos de aleatoriedades intrínsecas ao modelo. Assim, o mesmo foi treinado em 2,3,5 e 10 épocas (número este também baseado nos exemplos citados), obtendo um resultado satisfatório para o valor de 10 épocas, pois sua acurácia foi alta sem deixar o algoritmo dependente.
  	
  	\newpage
  	
@@ -770,7 +773,7 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
   	
  	Contudo, ao tentar editar alguns parâmetros internos referentes a interpolação nesta biblioteca, como os Kernels ou funções a priori \ref{sec:GP}, houve certa dificuldade ou mesmo impossibilidade de modelá-los da maneira desejada. Como, por exemplo, somar e multiplicar Kernels, sobretudo aqueles não-estacionários (Cap. 3 \cite{GPBook} ).
  	
- 	Um motivo que levou o projeto a usar uma outra biblioteca foi a citação do capítulo 4 seção 2 do \citet{GPBook}, argumentando que o Kernel de tipo \textit{Squared Exponential Covariance Funtion} (utilizado no pipeline original) propicia à função interpolada uma suavização irreal para diversos fenômenos físicos, e recomenda usar Kernels do tipo \textit{Matern}. Apesar de a biblioteca \textit{george} também conter esse tipo de Kernel, outras bibliotecas possuíam uma maior possibilidade de modificação de edição. Além do fato de que o tipo \textit{Matern} foi aplicado através da biblioteca \textit{george}, mas não obteve um resultado melhor \ref{tab:materngeorge}.
+ 	Um motivo que levou o projeto a usar uma outra biblioteca foi a citação do capítulo 4 seção 2 do \citet{GPBook}, argumentando que o Kernel de tipo \textit{Squared Exponential Covariance Funtion} (utilizado no pipeline original) propicia à função interpolada uma suavização irreal para diversos fenômenos físicos, e recomenda usar Kernels do tipo \textit{Matern}. Apesar de a biblioteca \textit{george} também conter esse tipo de Kernel, outras bibliotecas possuíam uma maior possibilidade de edição.
  	
  	Na seção abaixo serão vistos os tipos de bibliotecas analisadas.
   
@@ -779,7 +782,7 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
 		A biblioteca utilizada no artigo da \citet{lochner} foi a \textit{Gapp}, uma biblioteca para reconstrução de funções usada em outros trabalhos de cosmologia \cite{gapp}.
 		
 		Entretanto, o próprio pipeline desenvolvido pelo IF-UFRJ já buscava otimizar o artigo original da M. Lochner, logo, este projeto partiu dos estudos já feitos, tendo como ponto de partida a biblioteca \textit{george}.
-		
+		\newpage
 		Vale mencionar também que embora seja possível implementar manualmente os processos gaussianos, as várias bibliotecas disponíveis já possuem especificações e ajustes para os modelos de maneira mais automatizada. As três bibliotecas analisadas foram:
 		
 		\begin{itemize}
@@ -804,11 +807,11 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
 	
 	A alternativa para esta escolha de projeto foi comparar determinadas sementes aleatórias \cite{pseudoaleatoriedade}. Através da análise de 11 sementes pôde-se escolher aquelas cujas condições iniciais resultavam em um maior overfitting das interpolações. As figuras das comparações das interpolações de cada semente encontram-se no apêndice \ref{chap:ApendiceB}.
 	
-	Buscando sempre aquelas sementes que eliminam interpolações constantes e proporcionam um \textit{overfitting}, as melhores foram:
+	Buscando sempre aquelas sementes que eliminam interpolações constantes e proporcionam um overfitting, as melhores foram:
 	
 	\begin{itemize}
 	\item Random Seed 8, possuiu overfitting muito alto.
-	\item Random Seed 6, possuiu também um alto overfitting.
+	\item Random Seed 6, possuiu um alto overfitting.
 	\item Random Seed 5, em troca de uma margem de erro menor, seu overfitting também é reduzido.
 	\item Random Seed 4, comportamento buscando reduzir os erros com overfitting e corrigindo o problema dos valores constantes.
 	\item Random Seed 9, a melhor combinação entre overfitting e erro não possuindo interpolações constantes.
@@ -847,7 +850,7 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
 	
 	Nestas funções temos $x$ e $x'$ como os valores das abscissas e $\alpha$ e $l$ como hiperparâmetros a serem ajustados. Empiricamente percebeu-se que o $l$ possui um efeito de aumentar overfitting em troca do aumento do erro da interpolação.
 	
-	Esses hiperparâmetros podem assumir valores como funções de distribuições probabilísticas ou como  constantes. Após diversos testes utilizando constantes, foi notório que os melhores resultados foram obtidos usando distribuições. Outro fator que levou a essa escolha, foram os exemplos oferecidos no suporte da biblioteca PyMC3 \cite{pymcex} \cite{pymcgs}. 
+	Esses hiperparâmetros podem assumir valores como funções de distribuições probabilísticas ou funções constantes. Após diversos testes utilizando constantes, foi notório que os melhores resultados foram obtidos usando distribuições. Outro fator que levou a essa escolha, foram os exemplos oferecidos no suporte da biblioteca PyMC3 \cite{pymcex} \cite{pymcgs}. 
 	
 	No apêndice \ref{chap:ApendiceB} são ilustradas as interpolações realizadas para escolher qual Kernel seria utilizado. Os critérios principais para a  escolha foram evitar interpolações constantes e buscar overfitting. Como resultado, os dois melhores Kernels foram o \textit{Matern} 3/2 e o \textit{Matern} 5/2; uma conclusão alinhada com a teoria exposta no capítulo 4 seção 2 do \citet{GPBook}.
 	
@@ -858,7 +861,7 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
 	
 	Antes de adentrar nos resultados das Interpolações, duas observações importantes são feitas.
 	
-	A primeira é a solução para o problema de possíveis valores negativos. Por mais que tal abordagem não tenha sido adotada neste trabalho, devido à tentativa de deixar o código com menos custo computacional possível; para trabalhos futuros nos quais deseje-se impossibilitar interpolações com valores negativos, o uso de uma \textit{mean function} não-negativa resolve este problema \cite{pymccont}.
+	A primeira é a solução para o problema de possíveis valores negativos. Por mais que tal abordagem não tenha sido adotada neste trabalho devido à tentativa de deixar o código com menos custo computacional possível; para trabalhos futuros nos quais deseje-se impossibilitar interpolações com valores negativos, o uso de uma \textit{mean function} não-negativa resolve este problema \cite{pymccont}.
 	
 	Vários tipos de funções que atendem esse pré-requisito estão descritos no \citet{pymccont}.
 	
@@ -887,28 +890,28 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
 	\begin{tabular}{|l|c|c|c|}
 		\hline
 		
-		Fold & \textbf{AUC} & \textbf{AP} & \textbf{Default scikit}\\
+		Fold & \textbf{Padrão}  & \textbf{AUC} & \textbf{AP} \\
 		
 		\hline
-\small{Fold 1 }&   94,79\%& 83,15\%& 88,88\%\\
-\small{Fold 2 }&   94,42\%& 81,28\%& 88,50\%\\
-\small{Fold 3 }&   94,32\%& 81,86\%& 88,74\%\\
-\small{Fold 4 }&   93,92\%& 80,44\%& 88,26\%\\
-\small{Fold 5 }&   94,53\%& 83,51\%& 88,67\%\\
-\small{Fold 6 }&   93,92\%& 79,85\%& 88,32\%\\
-\small{Fold 7 }&   94,09\%& 82,05\%& 88,72\%\\
-\small{Fold 8 }&   94,10\%& 81,51\%& 88,22\%\\
-\small{Fold 9 }&   93,74\%& 82,14\%& 88,18\%\\
-\small{Fold 10} &  94,04\%& 82,67\%& 88,43\%\\
-\small{Fold 11} &  94,82\%& 83,75\%& 89,33\%\\
-\small{Fold 12} &  93,97\%& 83,03\%& 89,14\%\\
-\small{Fold 13} &  94,36\%& 82,31\%& 88,35\%\\
-\small{Fold 14} &  94,38\%& 83,42\%& 88,56\%\\
-\small{Fold 15} &  93,83\%& 81,28\%& 88,01\%\\
-\small{Fold 16} &  94,12\%& 82,24\%& 88,29\%\\
-\small{Fold 17} &  94,72\%& 83,30\%& 88,90\%\\
-\small{Fold 18} &  94,21\%& 82,23\%& 88,63\%\\
-\small{Fold 19} &  94,26\%& 81,63\%& 88,38\%\\
+\small{Fold 1 }&   88,88\% & 83,15\% & 94,79\%\\
+\small{Fold 2 }&   88,50\% & 81,28\% & 94,42\%\\
+\small{Fold 3 }&   88,74\% & 81,86\% & 94,32\%\\
+\small{Fold 4 }&   88,26\% & 80,44\% & 93,92\%\\
+\small{Fold 5 }&   88,67\% & 83,51\% & 94,53\%\\
+\small{Fold 6 }&   88,32\% & 79,85\% & 93,92\%\\
+\small{Fold 7 }&   88,72\% & 82,05\% & 94,09\%\\
+\small{Fold 8 }&   88,22\% & 81,51\% & 94,10\%\\
+\small{Fold 9 }&   88,18\% & 82,14\% & 93,74\%\\
+\small{Fold 10} &  88,43\% & 82,67\% & 94,04\%\\
+\small{Fold 11} &  89,33\% & 83,75\% & 94,82\%\\
+\small{Fold 12} &  89,14\% & 83,03\% & 93,97\%\\
+\small{Fold 13} &  88,35\% & 82,31\% & 94,36\%\\
+\small{Fold 14} &  88,56\% & 83,42\% & 94,38\%\\
+\small{Fold 15} &  88,01\% & 81,28\% & 93,83\%\\
+\small{Fold 16} &  88,29\% & 82,24\% & 94,12\%\\
+\small{Fold 17} &  88,90\% & 83,30\% & 94,72\%\\
+\small{Fold 18} &  88,63\% & 82,23\% & 94,21\%\\
+\small{Fold 19} &  88,38\% & 81,63\% & 94,26\%\\
 		\hline
 		\hline
 		\textbf{Média} &  \textbf{94,24\%} & \textbf{82,19\%} & \textbf{88,55\%} \\
@@ -916,18 +919,21 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
 		
 	\end{tabular}
 	\end{center}
-	\caption{Resultados do Kernel \textit{Mattern 5/2} pela biblioteca \textit{george}.}
+	\caption[Resultados do Kernel \textit{Mattern 5/2} pela biblioteca \textit{george}.]
+	{\small Resultados do Kernel \textit{Mattern 5/2} pela biblioteca \textit{george}. 'Padrão' se refere ao score \textit{default} do \textit{scikit}.} 
 	\label{tab:materngeorge}
 	\end{table}
-	
-	A justificativa para tal desempenho ser pior pode ser atribuída aos hiperparâmetros terem sido constantes e não distribuições. Em contrapartida, poderia ser concluído que o uso do Matern é inferior ao do \textit{Exp Quadr} caso analisasse apenas o resultado do \textit{george}. Todavia, ao realizar comparações dentro de uma biblioteca com mais suporte, é visivelmente notada a melhora ao interpolar usando o Kernel proposto do que o antigo \ref{fig:GPResult}.
+
+	A justificativa para tal desempenho ser pior pode ser atribuída aos hiperparâmetros terem sido constantes e não distribuições. Assim, caso fosse analisado apenas o resultado do \textit{george}, concluiria-se que o uso do Matern é inferior ao do \textit{Exp Quadr}. Todavia, ao realizar comparações dentro de uma biblioteca com mais suporte, a melhora é visivelmente notada ao interpolar pelo Kernel proposto do que pelo antigo \ref{fig:GPResult}.
 	
 	
 	\section{Resultados das Interpolações}
 	
-	O resultado global das interpolações não pôde ser concluído devido a um erro de processamento de código, mais precisamente um \textit{memory leak} interno durante a execução dos modelos do PyMC3 em \textit{loop}. A explicação e detalhamento desse erro será apresentado na seção a seguir. 
+	O resultado global das interpolações não pôde ser concluído devido a um erro de processamento de código, mais precisamente um \textit{memory leak} interno durante a execução dos modelos do PyMC3 em looping. A explicação e detalhamento desse erro será apresentado na seção a seguir. 
 	
-	Nesta seção serão apresentados apenas alguns exemplos de comparação de interpolação entre os algoritmos, justificando o porquê de se esperar que caso o processamento de todos os dados fosse concluido, provavelmente obter-se-iam resultados melhores.
+	Nesta seção serão apresentados alguns exemplos de interpolações entre os algoritmos, onde pôde se notar uma melhor interpolação usando o Kernel Matern no PyMC3 através das sementes. Justificando o porquê de se esperar que caso o processamento de todos os dados fosse concluído, provavelmente obter-se-iam resultados melhores \ref{fig:GPResult}.
+	
+	Demais exemplos de comparações estão descritos no \textit{notebook} do apêndice \ref{chap:ApendiceB}.
 	
 			\begin{figure*}
 			\centering
@@ -977,7 +983,7 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
 			\label{fig:GPResult}
 		\end{figure*}
 	
-	 	\begin{figure*}[h]
+	 	\begin{figure*}[ht]
 		\centering
 		\begin{subfigure}[b]{0.475\textwidth}
 			\centering
@@ -993,14 +999,30 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
 			{{\small Valores absolutos.}}    
 		\end{subfigure}
 		\caption[ Matrizes de confusão do \textit{Matern 5/2} pela biblioteca \textit{george}.]
-		{\small Matrizes de confusão do \textit{Matern 5/2} pela biblioteca \textit{george}.} 
+		{\small Matrizes de confusão do \textit{Matern 5/2} pela biblioteca \textit{george}. Resultados piores do que os apresentados em \ref{fig:CMEx}} 
 		\label{fig:CMmaterngeorge}
-		\end{figure*}
+		\end{figure*}		
 
-		
-		Demais exemplos de comparações estão descritos no \textit{notebook} do apêndice \ref{chap:ApendiceB}.
-		
+	\newpage		
 	\section{Identificação e Justificativa do Erro}
+	
+	O erro ocorreu durante o looping de execução da interpolação modelada causando a parada do computador. Ao inspecionar o consumo de memória através do comando \textit{htop} do Ubuntu, foi identificado um \textit{memory leak} do sistema.
+	
+	Durante uma árdua investigação do problema, houveram várias tentativas buscando identificá-lo e posteriormente corrigi-lo, dentre elas as principais foram:
+	
+	\begin{itemize}
+		\item Buscar possíveis erros de construção no código.
+		\item Forçar manualmente a liberação de memória utilizando pacotes de \textit{Garbage Collector}.
+		\item Inspeção através de métodos \textit{magic} do Jupyter para localizar a linha de código com o vazamento de memória (\%\%time, \%\%lprun, \%\%mprun).
+		\item Tentativa de uso de GPU para o processamento.
+		\item Uso de pacotes envolvendo tabelas \textit{hash} para reduzir a memória consumida pela estrutura de dados em forma de dicionários.
+		\item Uso de bibliotecas próprias para gerenciar a alocação e consumo de memória.
+	\end{itemize} 
+
+	Após essa inspeção, o problema foi descoberto como um erro interno da biblioteca ao longo da criação modelos probabilísticos dentro de um looping. Em resumo, quando se instancia um modelo do PyMC3 dentro de um looping, a biblioteca continua alocando memória em lugares diferentes sem 'esvaziar' os antigos, ocasionando o vazamento.
+	
+	Uma discussão prolongada sobre esse erro foge do assunto abordado no presente trabalho, e devido ao grande tempo investido no estudo de identificação e solução do problema, tomou-se a decisão de abortar essa abordagem. Todavia, como o problema já foi identificado \cite{gitproblem2}, estão disponíveis na bibliografia os links das discussões em forums onde ele vem sendo discutido. 
+	
 	\newpage 
 
   \chapter{Conclusões}
@@ -1009,9 +1031,9 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
 	
 	O presente trabalho teve como objetivo buscar otimizações e melhorias nas técnicas de ML dentro dos modelos de classificação de supernovas usando espectroscopia. A partir da análise dos resultados, foi possível verificar que o modelo atual possui uma robustez muito eficaz tendo em vista a pouca quantidade de dados treinados.
 	
-	Como ponto positivo para o método, este projeto pôde agregar conhecimento testando diferentes abordagens e concluindo que suas aplicações não ofereceriam melhoras ao modelo. Além de averiguar que a robustez do método.
+	Como ponto positivo para o método, este projeto pôde agregar conhecimento testando diferentes abordagens e concluindo que suas aplicações não ofereceriam melhoras ao modelo.
 	
-	Dentro do escopo de um projeto final, cabe também mencionar a evolução e aquisição de conhecimento do aluno, que ao realizar pesquisas e discutir novas ideias para o algoritmo, teve um aprendizado significativo a medida em que foram sendo descobertas e estudadas novas tecnologias e novos conceitos.
+	Dentro do escopo de um projeto final, cabe também mencionar a evolução e aquisição de conhecimento do aluno, que ao realizar pesquisas e discutir novas ideias para o algoritmo, teve um aprendizado significativo a medida em que foram sendo descobertas e estudadas novas tecnologias e conceitos.
 	
 	Ao aplicar a estratégia de tratamento de dados removendo os \textit{outliers}, foi possível observar que a diferença dos resultados finais mostrou-se tão pequena que pode ser desprezada, levando a conclusão de que a etapa das transformadas de \textit{wavelets} proporciona ao algoritmo uma robustez significativa, a ponto de que \textit{outliers} 'grosseiros' não comprometeram o modelo.
 	
@@ -1019,16 +1041,16 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
 	
 	\newpage
 	
-	Por fim, a abordagem principal que foi a busca de uma melhor execução do Processo Gaussiano não pôde ser concluída devido a problemas que fugiram da natureza do projeto. Entretanto, a partir da análise de outros métodos e dos resultados das interpolações dos gráficos através do Kernel \textit{Mattern 5/2} pelo \textit{george}, conclui-se que o método atual já se encontra bem otimizado, sustentado principalmente pela robustez que a transformada de \textit{wavelets} oferece ao modelo.  
+	Por fim, a abordagem principal que foi a busca de uma melhor execução do Processo Gaussiano não pôde ser concluída devido a problemas que fugiram da natureza do projeto. Entretanto, a partir da análise de outros métodos e dos resultados das interpolações dos gráficos através do Kernel \textit{Mattern 5/2} pelo \textit{george}, conclui-se que o método atual já se encontra bem otimizado, sustentado principalmente pela robustez que a transformada de \textit{wavelets} o oferece.  
 	
 		
 	\section{Trabalhos Futuros} 
 		
 	Em relação à utilização de aprendizado de máquina na temática em questão, muitos outros métodos são usados para a identificação de objetos astronômicos para demais fins \cite{sooknunan}. Tendo em vista esses outros objetivos, o trabalho aqui desenvolvido mostra-se útil para projetar novas ideias nessas outras abordagens.
 	
-	Em relação ao erro de \textit{memory leak}, a resolução fica em aberto para trabalhos futuros que busquem finalizar a ideia aqui já construída. Visto que a parte árdua de identificar o problema já foi feita, o mesmo pode ser publicado em repositórios e comunidades de programadores buscando suporte direcionado.
+	Em relação ao erro de \textit{memory leak}, a resolução fica em aberto para trabalhos futuros que busquem finalizar a ideia aqui já construída. Visto que a parte árdua de identificar o problema já foi feita, o mesmo pode ser publicado em repositórios \cite{gitproblem1} \cite{gitproblem2} \cite{gitproblem3} e comunidades de programadores buscando suporte direcionado.
 	
-	Sobre as outras bibliotecas estudadas para realizar a interpolação, após a análise e detalhamento de cada uma delas e suas propriedades \cite{bibliotecacomp}, elas podem se mostrar interessantes em trabalhos cujo uso de Processo Gaussiano seja necessário.
+	Sobre as outras bibliotecas estudadas para realizar a interpolação, após a análise e detalhamento de cada uma delas e suas propriedades \cite{bibliotecacomp}, elas se mostram interessantes em trabalhos cujo uso de Processo Gaussiano seja necessário.
 	
 	Após a utilização da biblioteca PyMC3, apesar do problema ocorrido, ela se mostrou extremamente eficaz e matematicamente completa, estando alinhada com os conceitos estatísticos proporcionando uma flexibilidade na modelagem das distribuições. Logo, é aconselhável que novos interessados no projeto usem a biblioteca, devido ao seu grande suporte que facilita o entendimento teórico. Assim como àqueles que já possuem determinado conhecimento e queiram tentar modelos mais específicos e customizados.
 		  

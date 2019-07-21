@@ -26,45 +26,45 @@ while executing---line 1327 of file coppe-unsrt.bst
 Name 1 in "K. Sooknunan, M. Lochner," has a comma at the end for entry sooknunan
 while executing---line 1327 of file coppe-unsrt.bst
 Warning--empty journal in sooknunan
-You've used 22 entries,
+You've used 25 entries,
             2630 wiz_defined-function locations,
-            650 strings with 7127 characters,
-and the built_in function-call counts, 6641 in all, are:
-= -- 520
-> -- 160
-< -- 28
-+ -- 96
-- -- 46
-* -- 538
-:= -- 982
-add.period$ -- 66
-call.type$ -- 22
-change.case$ -- 26
-chr.to.int$ -- 16
-cite$ -- 23
-duplicate$ -- 494
-empty$ -- 776
-format.name$ -- 70
-if$ -- 1420
+            661 strings with 7631 characters,
+and the built_in function-call counts, 7503 in all, are:
+= -- 589
+> -- 181
+< -- 31
++ -- 108
+- -- 52
+* -- 599
+:= -- 1111
+add.period$ -- 75
+call.type$ -- 25
+change.case$ -- 29
+chr.to.int$ -- 19
+cite$ -- 26
+duplicate$ -- 560
+empty$ -- 878
+format.name$ -- 79
+if$ -- 1606
 int.to.chr$ -- 7
-int.to.str$ -- 23
-missing$ -- 26
-newline$ -- 101
-num.names$ -- 66
-pop$ -- 191
+int.to.str$ -- 26
+missing$ -- 29
+newline$ -- 113
+num.names$ -- 75
+pop$ -- 218
 preamble$ -- 1
-purify$ -- 22
+purify$ -- 25
 quote$ -- 0
-skip$ -- 228
+skip$ -- 262
 stack$ -- 0
-substring$ -- 92
-swap$ -- 138
+substring$ -- 101
+swap$ -- 155
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 142
+type$ -- 163
 warning$ -- 1
-while$ -- 51
+while$ -- 57
 width$ -- 0
-write$ -- 263
+write$ -- 296
 (There were 6 error messages)

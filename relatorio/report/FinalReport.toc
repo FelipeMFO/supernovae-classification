@@ -38,10 +38,10 @@
 \contentsline {section}{\numberline {6.3}\textit {Kernel Functions}}{28}{section.6.3}
 \contentsline {section}{\numberline {6.4}Demais Observa\IeC {\c c}\IeC {\~o}es}{29}{section.6.4}
 \contentsline {section}{\numberline {6.5}Resultados das Interpola\IeC {\c c}\IeC {\~o}es}{30}{section.6.5}
-\contentsline {section}{\numberline {6.6}Identifica\IeC {\c c}\IeC {\~a}o e Justificativa do Erro}{32}{section.6.6}
-\contentsline {chapter}{\numberline {7}Conclus\IeC {\~o}es}{34}{chapter.7}
-\contentsline {section}{\numberline {7.1}Conclus\IeC {\~o}es Finais}{34}{section.7.1}
-\contentsline {section}{\numberline {7.2}Trabalhos Futuros}{35}{section.7.2}
-\contentsline {chapter}{Refer\^encias Bibliogr\'aficas}{36}{chapter*.25}
-\contentsline {chapter}{\numberline {A}Reposit\IeC {\'o}rio do C\IeC {\'o}digo}{38}{appendix.A}
-\contentsline {chapter}{\numberline {B}Avalia\IeC {\c c}\IeC {\~a}o das Interpola\IeC {\c c}\IeC {\~o}es}{39}{appendix.B}
+\contentsline {section}{\numberline {6.6}Identifica\IeC {\c c}\IeC {\~a}o e Justificativa do Erro}{33}{section.6.6}
+\contentsline {chapter}{\numberline {7}Conclus\IeC {\~o}es}{35}{chapter.7}
+\contentsline {section}{\numberline {7.1}Conclus\IeC {\~o}es Finais}{35}{section.7.1}
+\contentsline {section}{\numberline {7.2}Trabalhos Futuros}{36}{section.7.2}
+\contentsline {chapter}{Refer\^encias Bibliogr\'aficas}{37}{chapter*.25}
+\contentsline {chapter}{\numberline {A}Reposit\IeC {\'o}rio do C\IeC {\'o}digo}{39}{appendix.A}
+\contentsline {chapter}{\numberline {B}Avalia\IeC {\c c}\IeC {\~a}o das Interpola\IeC {\c c}\IeC {\~o}es}{40}{appendix.B}
