@@ -17,8 +17,16 @@ I was expecting a `,' or a `}'---line 152 of file bibliografia.bib
 I'm skipping whatever remains of this entry
 Warning--string name "mai" is undefined
 --line 176 of file bibliografia.bib
+Repeated entry---line 308 of file bibliografia.bib
+ : @article{sklearn
+ :                 ,
+I'm skipping whatever remains of this entry
+Warning--string name "mai" is undefined
+--line 319 of file bibliografia.bib
 Name 1 in "K. Sooknunan, M. Lochner," has a comma at the end for entry sooknunan
 while executing---line 1243 of file coppe-unsrt.bst
+Warning--empty year in ANlab
+Warning--empty year in ANlab
 `address' is a missing field, not a string, for entry Erros
 while executing---line 1327 of file coppe-unsrt.bst
 Name 1 in "K. Sooknunan, M. Lochner," has a comma at the end for entry sooknunan
@@ -26,45 +34,45 @@ while executing---line 1327 of file coppe-unsrt.bst
 Name 1 in "K. Sooknunan, M. Lochner," has a comma at the end for entry sooknunan
 while executing---line 1327 of file coppe-unsrt.bst
 Warning--empty journal in sooknunan
-You've used 25 entries,
+You've used 36 entries,
             2630 wiz_defined-function locations,
-            661 strings with 7631 characters,
-and the built_in function-call counts, 7503 in all, are:
-= -- 589
-> -- 181
-< -- 31
-+ -- 108
-- -- 52
-* -- 599
-:= -- 1111
-add.period$ -- 75
-call.type$ -- 25
-change.case$ -- 29
-chr.to.int$ -- 19
-cite$ -- 26
-duplicate$ -- 560
-empty$ -- 878
-format.name$ -- 79
-if$ -- 1606
-int.to.chr$ -- 7
-int.to.str$ -- 26
-missing$ -- 29
-newline$ -- 113
-num.names$ -- 75
-pop$ -- 218
+            701 strings with 8966 characters,
+and the built_in function-call counts, 10716 in all, are:
+= -- 844
+> -- 264
+< -- 42
++ -- 159
+- -- 76
+* -- 841
+:= -- 1585
+add.period$ -- 108
+call.type$ -- 36
+change.case$ -- 40
+chr.to.int$ -- 25
+cite$ -- 39
+duplicate$ -- 803
+empty$ -- 1253
+format.name$ -- 115
+if$ -- 2295
+int.to.chr$ -- 12
+int.to.str$ -- 37
+missing$ -- 40
+newline$ -- 157
+num.names$ -- 108
+pop$ -- 320
 preamble$ -- 1
-purify$ -- 25
+purify$ -- 36
 quote$ -- 0
-skip$ -- 262
+skip$ -- 379
 stack$ -- 0
-substring$ -- 101
-swap$ -- 155
+substring$ -- 134
+swap$ -- 223
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 163
-warning$ -- 1
-while$ -- 57
+type$ -- 240
+warning$ -- 3
+while$ -- 79
 width$ -- 0
-write$ -- 296
-(There were 6 error messages)
+write$ -- 416
+(There were 7 error messages)

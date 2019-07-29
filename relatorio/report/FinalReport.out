@@ -21,13 +21,13 @@
 \BOOKMARK [2][-]{subsection.2.3.3}{Valida\347\343o cruzada K-Fold}{section.2.3}% 21
 \BOOKMARK [0][-]{chapter.3}{Modelo Atual}{}% 22
 \BOOKMARK [1][-]{section.3.1}{Pr\351-processamento dos Dados Brutos}{chapter.3}% 23
-\BOOKMARK [1][-]{section.3.2}{Pipeline Atual}{chapter.3}% 24
+\BOOKMARK [1][-]{section.3.2}{pipeline Atual}{chapter.3}% 24
 \BOOKMARK [0][-]{chapter.4}{Tratamento de Outliers}{}% 25
 \BOOKMARK [1][-]{section.4.1}{Estrat\351gias Utilizadas}{chapter.4}% 26
 \BOOKMARK [1][-]{section.4.2}{Resultados e compara\347\365es}{chapter.4}% 27
 \BOOKMARK [0][-]{chapter.5}{Rede Neural Convolucional}{}% 28
 \BOOKMARK [1][-]{section.5.1}{Gera\347\343o de Imagens e Par\342metros}{chapter.5}% 29
-\BOOKMARK [1][-]{section.5.2}{Pipeline}{chapter.5}% 30
+\BOOKMARK [1][-]{section.5.2}{pipeline}{chapter.5}% 30
 \BOOKMARK [1][-]{section.5.3}{Resultados e compara\347\365es}{chapter.5}% 31
 \BOOKMARK [0][-]{chapter.6}{Interpola\347\343o atrav\351s de Processo Gaussiano}{}% 32
 \BOOKMARK [1][-]{section.6.1}{Escolha da Biblioteca}{chapter.6}% 33
@@ -39,6 +39,6 @@
 \BOOKMARK [0][-]{chapter.7}{Conclus\365es}{}% 39
 \BOOKMARK [1][-]{section.7.1}{Conclus\365es Finais}{chapter.7}% 40
 \BOOKMARK [1][-]{section.7.2}{Trabalhos Futuros}{chapter.7}% 41
-\BOOKMARK [0][-]{chapter*.25}{Refer\352ncias Bibliogr\341ficas}{}% 42
+\BOOKMARK [0][-]{chapter*.26}{Refer\352ncias Bibliogr\341ficas}{}% 42
 \BOOKMARK [0][-]{appendix.A}{Reposit\363rio do C\363digo}{}% 43
 \BOOKMARK [0][-]{appendix.B}{Avalia\347\343o das Interpola\347\365es}{}% 44

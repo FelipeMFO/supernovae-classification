@@ -1,4 +1,4 @@
-\begin{thebibliography}{25}
+\begin{thebibliography}{36}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -6,15 +6,84 @@
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 \newcommand{\enquote}[1]{``#1''}
 
+\bibitem[\MakeUppercase{Wikipedia}(2019{\natexlab{a}})Wikipedia]{distlum}
+\MakeUppercase{Wikipedia}.
+\newblock \enquote{Luminosity distance},
+  \emph{\href{https://en.wikipedia.org/wiki/Luminosity\_distance}{https://en.wikipedia.org/wiki/Luminosity\_distance}},
+  2019{\natexlab{a}}.
+
+\bibitem[\MakeUppercase{Wikipedia}(2019{\natexlab{b}})Wikipedia]{fluxo}
+\MakeUppercase{Wikipedia}.
+\newblock \enquote{Luminous Flux},
+  \emph{\href{https://en.wikipedia.org/wiki/Luminous\_flux}{https://en.wikipedia.org/wiki/Luminous\_flux}},
+  jun. 2019{\natexlab{b}}.
+
+\bibitem[\MakeUppercase{Wikipedia}(2013)Wikipedia]{vela}
+\MakeUppercase{Wikipedia}.
+\newblock \enquote{Vela padrão},
+  \emph{\href{https://pt.wikipedia.org/wiki/Vela\_padr\%C3\%A3o}{https://pt.wikipedia.org/wiki/Vela\_padr\%C3\%A3o}},
+  mar. 2013.
+
+\bibitem[\MakeUppercase{Wikipedia}(2018{\natexlab{a}})Wikipedia]{espectroscopia}
+\MakeUppercase{Wikipedia}.
+\newblock \enquote{Espectroscopia astronômica},
+  \emph{\href{https://pt.wikipedia.org/wiki/Espectroscopia\_astron\%C3\%B4mica}{https://pt.wikipedia.org/wiki/Espectroscopia\_astron\%C3\%B4mica}},
+  mar. 2018{\natexlab{a}}.
+
 \bibitem[\MakeUppercase{Lochner}(2016)Lochner]{lochner}
 \MakeUppercase{Lochner, M.}
 \newblock \enquote{Photometric Supernova Classification with Machine Learning},
   \emph{ApJS (2016)}, v.~225, n.~2, \penalty0 pp.~31, set. 2016.
 
+\bibitem[\MakeUppercase{Wikipedia}(2018{\natexlab{b}})Wikipedia]{fotometria}
+\MakeUppercase{Wikipedia}.
+\newblock \enquote{Fotometria astronômica},
+  \emph{\href{https://pt.wikipedia.org/wiki/Fotometria\_(astronomia)}{https://pt.wikipedia.org/wiki/Fotometria\_(astronomia)}},
+  jun. 2018{\natexlab{b}}.
+
+\bibitem[\MakeUppercase{Wikipedia}(2019{\natexlab{c}})Wikipedia]{2lei}
+\MakeUppercase{Wikipedia}.
+\newblock \enquote{Segunda lei da Termodinâmica},
+  \emph{\href{https://pt.wikipedia.org/wiki/Segunda\_lei\_da\_termodin\%C3\%A2mica}{https://pt.wikipedia.org/wiki/Segunda\_lei\_da\_termodin\%C3\%A2mica}},
+  jul. 2019{\natexlab{c}}.
+
 \bibitem[\MakeUppercase{Kessler}(2010)Kessler]{challenge}
 \MakeUppercase{Kessler, R.}
 \newblock \enquote{Supernova Photometric Classification Challenge},
   \emph{arXiv}, v.~6, n. 5210, \penalty0 pp.~4, abr. 2010.
+
+\bibitem[\MakeUppercase{Laboratory}()Laboratory]{ANlab}
+\MakeUppercase{Laboratory, A.~N.}
+\newblock \enquote{Argonne National Laboratory},
+  \emph{\href{https://www.anl.gov/hep}{https://www.anl.gov/hep}}.
+
+\bibitem[\MakeUppercase{Pandas}(2019)Pandas]{pd}
+\MakeUppercase{Pandas}.
+\newblock \enquote{Pandas - Python Data Analysis Library},
+  \emph{\href{https://pandas.pydata.org/}{https://pandas.pydata.org/}}, jul.
+  2019.
+
+\bibitem[\MakeUppercase{developers}(2019)developers]{np}
+\MakeUppercase{developers, N.}
+\newblock \enquote{Numpy},
+  \emph{\href{https://numpy.org/}{https://numpy.org/}}, 2019.
+
+\bibitem[\MakeUppercase{Inria}\emph{ et~al.}(2019)Inria et~al.]{sklearn}
+\MakeUppercase{Inria, others}.
+\newblock \enquote{Scikit-Learn},
+  \emph{\href{https://keras.io/}{https://keras.io/}}, 2019.
+
+\bibitem[\MakeUppercase{community}(2019)community]{keras}
+\MakeUppercase{community, K.}
+\newblock \enquote{Keras},
+  \emph{\href{https://scikit-learn.org/stable/}{https://scikit-learn.org/stable/}},
+  2019.
+
+\bibitem[\MakeUppercase{PyMC3}(2018{\natexlab{a}})PyMC3]{pymc}
+\MakeUppercase{PyMC3}.
+\newblock \enquote{PyMC3 - Mean and Covariance Functions},
+  \emph{\href{https://docs.pymc.io/notebooks/GP-MeansAndCovs.html}{https://docs.pymc.io/notebooks/GP-MeansAndCovs.html}},
+  2018{\natexlab{a}}.
 
 \bibitem[\MakeUppercase{Rasmussen} e \MakeUppercase{Williams}(2004)Rasmussen e
   Williams]{GPBook}
@@ -46,23 +115,23 @@
   Inference}.
 \newblock 2 ed. New York, Chapman and Hall/CRC, 2006.
 
-\bibitem[\MakeUppercase{Wikipedia}(2018)Wikipedia]{wikiCNN}
+\bibitem[\MakeUppercase{Wikipedia}(2018{\natexlab{c}})Wikipedia]{wikiCNN}
 \MakeUppercase{Wikipedia}.
 \newblock \enquote{Rede neural convolucional},
   \emph{\href{https://pt.wikipedia.org/wiki/Rede{\_}neural{\_}convolucional}{Rede
-  neural convolucional}}, jun. 2018.
+  neural convolucional}}, jun. 2018{\natexlab{c}}.
 
-\bibitem[\MakeUppercase{Wikipedia}(2019{\natexlab{a}})Wikipedia]{wikiperceptron}
+\bibitem[\MakeUppercase{Wikipedia}(2019{\natexlab{d}})Wikipedia]{wikiperceptron}
 \MakeUppercase{Wikipedia}.
 \newblock \enquote{Perceptron Multicamadas},
   \emph{\href{https://pt.wikipedia.org/wiki/Perceptron\_multicamadas}{https://pt.wikipedia.org/wiki/Perceptron\_multicamadas}},
-  jun. 2019{\natexlab{a}}.
+  jun. 2019{\natexlab{d}}.
 
-\bibitem[\MakeUppercase{Wikipedia}(2019{\natexlab{b}})Wikipedia]{pseudoaleatoriedade}
+\bibitem[\MakeUppercase{Wikipedia}(2019{\natexlab{e}})Wikipedia]{pseudoaleatoriedade}
 \MakeUppercase{Wikipedia}.
 \newblock \enquote{Pseudoaleatoriedade},
   \emph{\href{https://pt.wikipedia.org/wiki/Pseudoaleatoriedade}{https://pt.wikipedia.org/wiki/Pseudoaleatoriedade}},
-  2019{\natexlab{b}}.
+  2019{\natexlab{e}}.
 
 \bibitem[\MakeUppercase{Murphy}(2012)Murphy]{ML}
 \MakeUppercase{Murphy, K.~P.}
@@ -79,17 +148,17 @@
 \newblock \emph{Fundamentos da Teoria de Erros}.
 \newblock Editora Edgard Blücher LTDA, 1996.
 
-\bibitem[\MakeUppercase{Wikipedia}(2012)Wikipedia]{george}
-\MakeUppercase{Wikipedia}.
+\bibitem[\MakeUppercase{Bib}(2012)Bib]{george}
+\MakeUppercase{Bib, G.}
 \newblock \enquote{Documentação biblioteca \textit{George}},
   \emph{\href{https://george.readthedocs.io/en/latest/}{https://george.readthedocs.io/en/latest/}},
   2012.
 
-\bibitem[\MakeUppercase{Wikipedia}(2019{\natexlab{c}})Wikipedia]{marginallikelihood}
+\bibitem[\MakeUppercase{Wikipedia}(2019{\natexlab{f}})Wikipedia]{marginallikelihood}
 \MakeUppercase{Wikipedia}.
 \newblock \enquote{Wikipedia, probabilidade marginal},
   \emph{\href{https://en.wikipedia.org/wiki/Marginal\_likelihood}{https://en.wikipedia.org/wiki/Marginal\_likelihood}},
-  jun. 2019{\natexlab{c}}.
+  jun. 2019{\natexlab{f}}.
 
 \bibitem[\MakeUppercase{Marina~Seikel}(2012)Marina~Seikel]{gapp}
 \MakeUppercase{Marina~Seikel, Chris~Clarkson, M.~S.}
@@ -101,12 +170,6 @@
 \newblock \enquote{Fitting Gaussian Process Models in Python},
   \emph{\href{https://blog.dominodatalab.com/fitting-gaussian-process-models-python/}{https://blog.dominodatalab.com/fitting-gaussian-process-models-python/}},
   mar. 2017.
-
-\bibitem[\MakeUppercase{PyMC3}(2018{\natexlab{a}})PyMC3]{pymc}
-\MakeUppercase{PyMC3}.
-\newblock \enquote{PyMC3 - Mean and Covariance Functions},
-  \emph{\href{https://docs.pymc.io/notebooks/GP-MeansAndCovs.html}{https://docs.pymc.io/notebooks/GP-MeansAndCovs.html}},
-  2018{\natexlab{a}}.
 
 \bibitem[\MakeUppercase{PyMC3}(2018{\natexlab{b}})PyMC3]{pymcex}
 \MakeUppercase{PyMC3}.
