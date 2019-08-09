@@ -23,10 +23,29 @@ Repeated entry---line 308 of file bibliografia.bib
 I'm skipping whatever remains of this entry
 Warning--string name "mai" is undefined
 --line 319 of file bibliografia.bib
+Warning--entry type for "fmnist" isn't style-file defined
+--line 334 of file bibliografia.bib
+Too many commas in name 1 of "Michelle Lochner, Jason D. McEwen, Hiranya V. Peiris, Ofer Lahav, Max K. Winter" for entry lochner
+while executing---line 1243 of file coppe-unsrt.bst
+Too many commas in name 1 of "Michelle Lochner, Jason D. McEwen, Hiranya V. Peiris, Ofer Lahav, Max K. Winter" for entry lochner
+while executing---line 1243 of file coppe-unsrt.bst
 Name 1 in "K. Sooknunan, M. Lochner," has a comma at the end for entry sooknunan
 while executing---line 1243 of file coppe-unsrt.bst
+Too many commas in name 1 of "Michelle Lochner, Jason D. McEwen, Hiranya V. Peiris, Ofer Lahav, Max K. Winter" for entry lochner
+while executing---line 1327 of file coppe-unsrt.bst
+Too many commas in name 1 of "Michelle Lochner, Jason D. McEwen, Hiranya V. Peiris, Ofer Lahav, Max K. Winter" for entry lochner
+while executing---line 1327 of file coppe-unsrt.bst
+Too many commas in name 1 of "Michelle Lochner, Jason D. McEwen, Hiranya V. Peiris, Ofer Lahav, Max K. Winter" for entry lochner
+while executing---line 1327 of file coppe-unsrt.bst
+Too many commas in name 1 of "Michelle Lochner, Jason D. McEwen, Hiranya V. Peiris, Ofer Lahav, Max K. Winter" for entry lochner
+while executing---line 1327 of file coppe-unsrt.bst
 Warning--empty year in ANlab
 Warning--empty year in ANlab
+Warning--empty author in mjd
+Warning--empty year in mjd
+Warning--empty year in mjd
+Warning--empty year in imagewave
+Warning--empty year in imagewave
 `address' is a missing field, not a string, for entry Erros
 while executing---line 1327 of file coppe-unsrt.bst
 Name 1 in "K. Sooknunan, M. Lochner," has a comma at the end for entry sooknunan
@@ -34,45 +53,45 @@ while executing---line 1327 of file coppe-unsrt.bst
 Name 1 in "K. Sooknunan, M. Lochner," has a comma at the end for entry sooknunan
 while executing---line 1327 of file coppe-unsrt.bst
 Warning--empty journal in sooknunan
-You've used 36 entries,
+You've used 44 entries,
             2630 wiz_defined-function locations,
-            701 strings with 8966 characters,
-and the built_in function-call counts, 10716 in all, are:
-= -- 844
-> -- 264
-< -- 42
-+ -- 159
-- -- 76
-* -- 841
-:= -- 1585
-add.period$ -- 108
-call.type$ -- 36
-change.case$ -- 40
-chr.to.int$ -- 25
-cite$ -- 39
-duplicate$ -- 803
-empty$ -- 1253
-format.name$ -- 115
-if$ -- 2295
+            731 strings with 10835 characters,
+and the built_in function-call counts, 13025 in all, are:
+= -- 1026
+> -- 324
+< -- 48
++ -- 193
+- -- 94
+* -- 1017
+:= -- 1916
+add.period$ -- 131
+call.type$ -- 44
+change.case$ -- 48
+chr.to.int$ -- 33
+cite$ -- 53
+duplicate$ -- 974
+empty$ -- 1527
+format.name$ -- 140
+if$ -- 2793
 int.to.chr$ -- 12
-int.to.str$ -- 37
-missing$ -- 40
-newline$ -- 157
-num.names$ -- 108
-pop$ -- 320
+int.to.str$ -- 45
+missing$ -- 47
+newline$ -- 188
+num.names$ -- 129
+pop$ -- 405
 preamble$ -- 1
-purify$ -- 36
+purify$ -- 44
 quote$ -- 0
-skip$ -- 379
+skip$ -- 465
 stack$ -- 0
-substring$ -- 134
-swap$ -- 223
+substring$ -- 159
+swap$ -- 267
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 240
-warning$ -- 3
-while$ -- 79
+type$ -- 296
+warning$ -- 8
+while$ -- 93
 width$ -- 0
-write$ -- 416
-(There were 7 error messages)
+write$ -- 499
+(There were 13 error messages)

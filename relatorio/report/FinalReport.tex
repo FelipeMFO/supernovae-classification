@@ -46,10 +46,10 @@
   \title{IDENTIFICAÇÃO FOTOMÉTRICA DE SUPERNOVAS ATRAVÉS DE ALGORITMOS DE MACHINE LEARNING}
   \foreigntitle{SUPERNOVA PHOTOMETRIC IDENTIFICATION USING MACHINE LEARNING ALGORYTHMS}
   \author{Felipe Matheus}{Fernandes de Oliveira}
-  \advisor{Prof.}{Amit}{Bhaya}{D.Sc.}
+  \advisor{Prof.}{Amit}{Bhaya}{Ph.D.}
   \advisor{Prof.}{Ribamar}{Rondon de Rezende dos Reis}{Ph.D.}
 
-  \examiner{Prof.}{Amit Bhaya}{D.Sc.}
+  \examiner{Prof.}{Amit Bhaya}{Ph.D.}
   \examiner{Prof.}{Ribamar Rondon de Rezende dos Reis}{Ph.D.}
   \examiner{Prof.}{Heraldo Luís Silveira de Almeida}{D.Sc.}
   \examiner{Prof.}{Ramon Romankevicius Costa }{D.Sc.}
@@ -98,7 +98,7 @@
   
   
   
-  \date{07}{2019}
+  \date{08}{2019}
 
   \keyword{Machine Learning}
   \keyword{Gaussian Process Fitting}
@@ -170,7 +170,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
 	
 	Sabendo que curvas de luz são medidas de fluxo (energia por tempo por área \cite{fluxo}) em função do tempo, para determinar a distância de um objeto a partir desta medida, é preciso conhecer a potência intrínseca do mesmo. Um objeto com tal potência conhecida é chamado de vela padrão \cite{vela}. Apesar de supernovas não serem velas padrões, as do tipo Ia podem ser padronizadas através de correlações empíricas entre suas características observáveis. Esse processo de padronização funciona apenas com esse tipo de Supernova, o que torna fundamental a classificação correta desses objetos.
 	
-	No passado, o conjunto de dados de supernovas era pequeno o suficiente para poder analisar a maior parte dos objetos usando o método da espectroscopia \cite{espectroscopia}, um método que fornece medidas de fluxo em função do comprimento de onda ou frequência. Apesar da espetroscopia confirmar precisamente o tipo de cada supernova, com a grande quantidade dos dados possuídos atualmente ela acaba se mostrando um método lento e custoso.
+	No passado, o conjunto de dados de supernovas era pequeno o suficiente para poder analisar a maior parte dos objetos usando o método da espectroscopia \cite{espectroscopia}, um método que fornece medidas de fluxo em função do comprimento de onda ou frequência. Apesar da espectroscopia confirmar precisamente o tipo de cada supernova, com a grande quantidade dos dados possuídos atualmente ela acaba se mostrando um método lento e custoso.
 	
 	Com o avanço das pesquisas e da tecnologia de telescópios, a astronomia está entrando em uma era de conjuntos massivos de dados, tornando-se necessário a adoção de técnicas automatizadas mais simples e práticas para classificar a enorme quantidade de objetos astronômicos captados, pois através da espectroscopia não seria possível.
 	 
@@ -185,7 +185,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
 	
 	No presente trabalho, o termo \textit{\textit{pipeline}} será utilizado diversas vezes para se referir a \textbf{sequência de passos ou procedimentos/algoritmos} utilizados ao longo do processo de classificação, caracterizando a construção das etapas do processo como um todo.
 	
-	Tendo em vista que o artigo \cite{lochner} testou e validou diversos \textit{\textit{pipeline}s}, este trabalho adotou aquele em que ela obteve o melhor resultado de classificação, e a partir desse ponto, foram aplicadas modificações para avaliar quaisquer possíveis melhoras.
+	Tendo em vista que o artigo \cite{lochner} testou e validou diversos \textit{\textit{pipeline}s}, este trabalho adotou aquele que obteve o melhor resultado de classificação, e a partir desse ponto, foram aplicadas modificações para avaliar quaisquer possíveis melhoras.
 	
 	O \textit{\textit{pipeline}} escolhido é constituído majoritariamente de 4 partes:
 	
@@ -196,7 +196,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
 		\item Floresta Aleatória (\textit{Random Forest} ou \textbf{RF}) aplicada à classificação dos objetos astronômicos, através das suas componentes principais (resultado do PCA).
 	\end{itemize}
 	
-	A problemática principal encontra-se no método de interpolação chamado \textbf{Processo Gaussiano}. Por ser um método de interpolação, espera-se que ele defina uma função que passe pelos pontos obtidos respeitando as incertezas em suas medições. Entretanto, onde esperava-se ver uma variação temporal de fluxo considerável, em alguns casos o gráfico interpolado é uma constante \ref{fig:ExReto}. Consequentemente, tal interpolação não possui sentido físico, visto que se trata do fluxo de luz após a explosão de um objeto astronômico; além de também violar a segunda lei da termodinâmica \cite{2lei}, pois uma explosão que tenha fluxo de luz constante representaria um objeto de energia infinita.
+	A problemática principal encontra-se no método de interpolação chamado \textbf{Processo Gaussiano}. Por ser um método de interpolação, espera-se que ele defina uma função que passe pelos pontos obtidos respeitando as incertezas em suas medições. Entretanto, onde esperava-se ver uma variação temporal de fluxo considerável, em alguns casos o gráfico interpolado é uma constante (Figura \ref{fig:ExReto}). Consequentemente, tal interpolação não possui sentido físico, visto que se trata do fluxo de luz após a explosão de um objeto astronômico; além de também violar a segunda lei da termodinâmica \cite{2lei}, pois uma explosão que tenha fluxo de luz constante representaria um objeto de energia infinita.
 	
 	O objetivo principal deste trabalho é propor uma modificação do método de interpolação usando GP que evite o comportamento que não esteja de acordo com as leis da física. 
 	
@@ -225,22 +225,43 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
 	Esses pontos são apresentados e justificados a seguir, criando as três vertentes do projeto.
 	
 	\begin{itemize}
-		\item Interpolação utilizando Processo Gaussiano.
+		\item Tratamento de \textit{Outliers}
 		\item Aprendizagem Profunda
-		\item Tratamento de \textit{Outliers}		
+		\item Interpolação utilizando Processo Gaussiano.
+				
 	\end{itemize}
 	
-		\subsection{Processo Gaussiano \textit{Gaussian Process}}
-		
-		O Processo Gaussiano, é a primeira parte do tratamento após a transformação dos dados brutos em dicionários de Python. Esta etapa será abordada no \autoref{chap:GP}.
-		
-		Cada objeto astronômico possui uma quantidade de pontos que representam a intensidade do fluxo de luz captado em determinado dia e em determinado filtro. Associado a cada ponto, também há uma incerteza desse valor. Assim, busca-se uma interpolação que seja uma variação temporal considerável do fluxo passando por determinados pontos. 
-		
-		O objetivo ao abordar esse ponto é consertar interpolações que não condizem com a interpretação física, como pode ser vista na figura \ref{fig:ExReto}.
+
+\subsection{Tratamento de \textit{Outliers}}
+
+A última vertente para buscar melhorias no algoritmo é o tratamento de pontos cuja incerteza é muito alta ou cujos valores são fora do esperado, pontos com essas características são conhecidos na literatura como \textit{outliers}.
+
+Analisando alguns dados brutos, é possível observar pontos cuja incerteza é extrapola o maior valor da curva (ponto mais à esquerda da figura \ref{fig:ExOutlierStd}) e também pontos que se encontram completamente fora da curva interpolada (figura \ref{fig:ExOutlier}).
+
+As etapas do tratamento encontram-se descritas no \autoref{chap:Out}.
+
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=15cm]{OutPoint.png}
+	\caption[Exemplo de \textit{outlier}.]
+	{{\small Exemplo de \textit{outlier}. Gráfico Fluxo $ \times $ Tempo (dias).}}
+	\label{fig:ExOutlier}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=15cm]{OutStd.png}
+	\caption[Exemplo de ponto com incerteza 3 vezes maior que o pico da curva.]
+	{{Exemplo de ponto com incerteza 3 vezes maior que o pico da curva. Gráfico Fluxo $ \times $ Tempo (dias).}}
+	\label{fig:ExOutlierStd}
+\end{figure}
+
 		
 		\subsection{Aprendizagem Profunda}		
 
-		A Aprendizagem Profunda (\textit{Deep Learning} ou \textbf{DL}) vem sendo um advento utilizado recentemente para aprimorar alguns algoritmos de Aprendizagem de Máquina (\textit{Machine Learning} ou \textbf{ML}). 
+		A Aprendizagem Profunda (\textit{Deep Learning} ou \textbf{DL}) vem sendo utilizada recentemente para aprimorar alguns algoritmos de Aprendizagem de Máquina (\textit{Machine Learning} ou \textbf{ML}). 
 		
 		A ideia de aplicar DL nesse problema veio a partir da análise do \textit{pipeline} inicial. Tendo em vista que o mesmo possui diversas partes entre os dados brutos e algoritmo de Random Forest, busca-se aplicar DL esperando obter um \textit{pipeline} mais simples, possuindo apenas uma etapa entre os dados brutos e o algoritmo de classificação.
 		
@@ -250,33 +271,13 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
 		
 		Assim, foi decidido aplicar algoritmos de DL após a primeira parte do tratamento de dados, visando manter uma simplicidade ao longo do \textit{pipeline}, estabelecendo apenas a etapa do GP entre os dados brutos e o algoritmo de classificação. O detalhamento desse procedimento encontra-se no \autoref{chap:DL}.
 
-		\subsection{Tratamento de \textit{Outliers}}
-		
-		A última vertente para buscar melhorias no algoritmo é o tratamento de pontos cuja incerteza é muito alta ou cujos valores são fora do esperado, pontos com essas características são conhecidos na literatura como \textit{outliers}.
-		
-		Analisando alguns dados brutos, e possível observar pontos cuja incerteza mostra-se mais de 100\% maior do que a própria curva (ponto mais a esquerda da figura \ref{fig:ExOutlierStd}) e também pontos que encontram-se completamente fora da curva interpolada \ref{fig:ExOutlier}.
-		
-		As etapas do tratamento encontram-se descritas no \autoref{chap:Out}.
-		
-		
-		
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=15cm]{OutPoint.png}
-			\caption[Exemplo de \textit{outlier}.]
-			{{\small Exemplo de \textit{outlier}. Gráfico Fluxo $ \times $ Tempo (dias).}}
-			\label{fig:ExOutlier}
-		\end{figure}
-	
-		\begin{figure}[h!]
-		\centering
-		\includegraphics[width=15cm]{OutStd.png}
-		\caption[Exemplo de ponto com incerteza 3 vezes maior que o pico da curva.]
-		{{Exemplo de ponto com incerteza 3 vezes maior que o pico da curva. Gráfico Fluxo $ \times $ Tempo (dias).}}
-		\label{fig:ExOutlierStd}
-		\end{figure}
-	
+		\subsection{Processo Gaussiano (\textit{Gaussian Process})}
 
+O Processo Gaussiano, é a primeira parte do tratamento após a transformação dos dados brutos em dicionários de Python. Esta etapa será abordada no \autoref{chap:GP}.
+
+Cada objeto astronômico possui uma quantidade de pontos que representam a intensidade do fluxo de luz captado em determinado dia e em determinado filtro. Associado a cada ponto, também há uma incerteza desse valor. Assim, busca-se uma interpolação que seja uma variação temporal considerável do fluxo passando por determinados pontos. 
+
+O objetivo ao abordar esse ponto é consertar interpolações que não condizem com a interpretação física, como pode ser vista na figura \ref{fig:ExReto}.
 		
 		\newpage
 
@@ -292,13 +293,12 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
 	
 	Por se tratar de um algoritmo de classificação, a saída do modelo será booleana e classificará se um objeto astronômico é ou não do tipo Ia. Entretanto, nos dados brutos as classes são divididas em 8 tipos de objetos: \textit{Ia, Ib, Ibc, Ic, II, IIL, IIN} e \textit{IIP}.
 	
-	É importante ressaltar também que para validar os modelos do projeto foi usado o método \textit{K-fold}. Todavia, este trabalho se diferenciou da divisão clássica presente na literatura, normalmente uma divisão de 80\% dos dados para treinamento e 20\% para o teste dos modelos. Neste projeto foram utilizados apenas 1100 objetos para treino dentre 21316 objetos totais. A justificativa é a limitação física das amostras (espera se ter apenas 1100 objetos espectroscopicamente confirmados).
+	É importante ressaltar também que para validar os modelos do projeto foi usado o método \textit{K-fold}. Todavia, este trabalho se diferenciou da divisão clássica presente na literatura, normalmente uma divisão de 80\% dos dados para treinamento e 20\% para o teste dos modelos. Neste projeto foram utilizados apenas 1100 objetos para treino dentre 21316 objetos totais. A justificativa é a limitação física das amostras (serão conhecidos apenas 1100 objetos espectroscopicamente confirmados).
 	
-	Por fim, as mudanças foram verificadas através de \textbf{Matrizes de Confusão} (\textit{Confusion Matrices} ou \textbf{CM}) ou através de métodos de score da biblioteca \textit{scikit-learn}.
+	Por fim, as mudanças foram verificadas através de \textbf{Matrizes de Confusão} (\textit{Confusion Matrices} ou \textbf{CM}) ou através de métodos de \textit{score} da biblioteca \textit{scikit-learn}.
 	
 	Como última observação, a fim de estudos posteriores fora do escopo do projeto, foram feitas classificações envolvendo os 8 tipos de objetos, além de treinamentos adotando a proporção de 80\% para treino e 20\% para teste.
 		
-	\newpage
 		
 	\section{Descrição}
 	No \autoref{chap:FundTeo}, serão explicados os principais conceitos teóricos utilizados na aplicação do \textbf{Processo Gaussiano} e no \textbf{Deep Learning}. Também serão levantados alguns conceitos não tão centrais do trabalho, mas de importância igualmente significativa.
@@ -317,7 +317,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
  	\section{Processo Gaussiano}
  	\label{sec:GP}
  	
- 	O Processo Gaussiano é uma ferramenta importante para algoritmos de Machine Learning, pois permite fazer predições sobre os dados tendo como base um conhecimento a priori. A sua aplicação mais frequente é em interpolações de funções, como é o caso deste projeto. Há também possíveis aplicações do conceito em classificações e agrupamentos de grande quantidades de dados. O livro base utilizado para os estudos desse projeto foi \citet{GPBook} . 
+ 	O Processo Gaussiano é uma ferramenta importante para algoritmos de \textit{Machine Learning}, pois permite fazer predições sobre os dados tendo como base um conhecimento a priori. A sua aplicação mais frequente é em interpolações de funções, como é o caso deste projeto. Há também possíveis aplicações do conceito em classificações e agrupamentos de grande quantidades de dados. O livro base utilizado para os estudos desse projeto foi \citet{GPBook} . 
  	
  	Visto que para uma quantidade determinada de pontos existe uma infinidade de funções que podem interpolar esses valores, o Processo Gaussiano realiza sua interpolação a partir da expectativa a priori dos valores e do formato que ela pode assumir devido à relação entre seus pontos. Por fim, o GP não irá obter um valor específico para cada ponto da função interpolada, mas sim uma distribuição probabilística para cada ponto, onde cada um possuirá uma média (valor da interpolação) e um desvio padrão (incerteza).
  	
@@ -333,7 +333,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
 	
 	O diferencial do GP é considerar uma distribuição normal multivariável de dimensão $n+m$ durante a interpolação. Essa distribuição normal multivariável possuirá uma covariância $\Sigma$, responsável não por apenas descrever o \textbf{formato} (senoidal, linear), como também por determinar \textbf{características} (periodicidade, taxa de variação) da função a ser prevista.
 	
-	Para poder obter a matriz de covariância  ($\Sigma$) desta normal multivariável, é estabelecido o \textit{Kernel} do GP. Ele é uma função especial de duas variáveis que respeita certas restrições matemáticas (Cap. 4 \citet{GPBook}). Essas varíaveis são os valores da abscissa de cada ponto da função a ser interpolada.
+	Para poder obter a matriz de covariância  ($\Sigma$) desta normal multivariável, é estabelecido o \textit{Kernel} do GP. Ele é uma função especial de duas variáveis que respeita certas restrições matemáticas (Cap. 4 \citet{GPBook}). Essas duas variáveis são os valores da abscissa de cada ponto da função a ser interpolada.
 	
 	Em outras palavras, o \textit{Kernel} é uma função que irá relacionar dois pontos que deverão estar na curva interpolada, baseando se apenas na distância entre eles (para \textit{Kernels} estacionários) ou nos seus valores absolutos (para \textit{Kernels} não-estacionários). É essa relação que fornecerá características como periodicidade, picos e suavização da curva.
 	
@@ -373,7 +373,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
  	
  	Contudo, só existe sentido em falar de Função Média caso seja associada à Função Covariância. Normalmente a Função Média é estabelecida como uma distribuição normal com média em 0 e desvio padrão 1. 
  	
- 	É possível usar essa distribuição padrão como valor a priori, pois o valor final deste ponto será obtido após um número suficientemente grande de amostras para otimizar a distribuição. Elas são definidas através de amostragens usando \textbf{Cadeias de Markov Monte Carlo} \cite{MCMC}, se aproximando cada vez mais do valor ideal. No fim, o valor do ponto será a média dessa distribuição a posteriori. A figura \ref{fig:MCMC}(a) ilustra esse caso.
+ 	É possível usar essa distribuição padrão como valor a priori, pois o valor final deste ponto será obtido após um número suficientemente grande de amostras para otimizar a distribuição. Elas são definidas através de amostragens usando \textbf{\textit{Markov Chain Monte Carlo}} \cite{MCMC}, se aproximando cada vez mais do valor ideal. No fim, o valor do ponto será a média dessa distribuição a posteriori. A figura \ref{fig:MCMC}(a) ilustra esse caso.
  	
  	Todavia, é imprescindível o uso correto da Função Média, pois caso ela tenha seu domínio delimitado, isso poderá impossibilitar que a função assuma alguns valores, como está ilustrado na \ref{fig:MCMC}(b).
  	
@@ -397,7 +397,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
  		\quad
  		
  		\caption[ Ilustração do valor da função média.]
- 		{\small Ilustração do valor da função média durante as amostragens via Cadeias de Markov Monte Carlo. \textit{Imagens retiradas da \citet{GPDummies}} } 
+ 		{\small Ilustração do valor da função média durante as amostragens via Cadeias de Markov Monte Carlo. \textit{Imagens retiradas de \citet{GPDummies}} } 
  		\label{fig:MCMC}
  	\end{figure*}
  	
@@ -416,7 +416,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
 
  		\item \textit{Hidden Layers}: O grupo de camadas internas; nela encontram-se os nós que recebem os dados da \textit{input layer} e conectam às camadas subsequentes através de funções de ativação não-lineares. 
 
- 		\item \textit{Output Layer}: A última camada; responsável pela resposta final. Em uma rede de classificação ela possui valores de saída numéricos, referindo-se as classes. No caso deste projeto, são os números zero e um correspondendo as supernovas classificadas como \textit{IA} ou \textit{not IA}.
+ 		\item \textit{Output Layer}: A última camada; responsável pela resposta final. Em uma rede de classificação ela possui valores de saída numéricos, referindo-se as classes. No caso deste projeto, são os números zero e um correspondendo as supernovas classificadas como \textit{Ia} ou \textit{not Ia}.
 
  	\end{itemize}
  
@@ -426,7 +426,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
  		\centering
  		\includegraphics[width=12cm]{DLarch.png}
  		\caption[Arquitetura básica de \textit{Deep Learning}]
- 		{{Arquitetura básica de \textit{Deep Learning}. (retirado de: \href{https://en.proft.me/2016/06/15/getting-started-deep-learning-r/}{link}.)}}
+ 		{{Arquitetura básica de \textit{Deep Learning}. \textit{Imagens retiradas de \citet{dlimage}.}}}
  		\label{fig:DLArch}
  	\end{figure}
  	
@@ -440,7 +440,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
 		\centering
 		\includegraphics[width=12cm]{convolution.png}
 		\caption[Operação de Convolução.]
-		{{A matriz azul representa as variáveis de entrada; a vermelha os resultados da operação de convolução; e a verde possui os parâmetros para multiplicar valores da matriz azul ''deslizando'' através deles. (retirado de: \href{https://towardsdatascience.com/applied-deep-learning-part-4-convolutional-neural-networks-584bc134c1e2}{link}.)}}
+		{{A matriz azul representa as variáveis de entrada; a vermelha os resultados da operação de convolução; e a verde possui os parâmetros para multiplicar valores da matriz azul ''deslizando'' através deles. \textit{Imagens retiradas de \citet{convolutionimage}.}}}
 		\label{fig:convolution}
 	\end{figure}
  	
@@ -450,15 +450,15 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
  		\centering
  		\includegraphics[width=12cm]{maxpooling.png}
  		\caption[\textit{Max Pooling.}]
- 		{{Exemplo do \textit{Max pooling}, o maior valor dentro de um ''retângulo'' é selecionado e propagado para outra camada, esta possuindo sua dimensão reduzida (retirado de: \href{http://cs231n.github.io/convolutional-networks/\#pool}{link}.)}}
+ 		{{Exemplo do \textit{Max pooling}, o maior valor dentro de um ''retângulo'' é selecionado e propagado para outra camada, esta possuindo sua dimensão reduzida \textit{Imagens retiradas de \citet{convolutionimage}.}}}
  		\label{fig:maxpooling}
  	\end{figure}
 
- 	Dentro das camadas internas é impossível afirmar precisamente qual o ''sentido físico'' de cada uma delas. Algumas podem possuir apenas significado matemático, enquanto outras podem ser responsáveis por identificar formas. Como por exemplo, na identificação de rostos, algumas camadas pondem ser responsáveis por detectar olhos, pés, curvas, etc; na identificação de animais, algumas podem detectar caudas, focinhos e patas. 
+ 	Dentro das camadas internas é impossível afirmar precisamente qual o ''sentido físico'' de cada uma delas. Algumas podem possuir apenas significado matemático, enquanto outras podem ser responsáveis por identificar formas. Como por exemplo, na identificação de rostos, algumas camadas podem ser responsáveis por detectar olhos, pés, curvas, etc; na identificação de animais, algumas podem detectar caudas, focinhos e patas. 
  	
  	\newpage
 
- 	É importante mencionar que existe um pequeno fator de aleatoriedade dentro dos processos de treinamento envolvendo a otimização dos parâmetros internos de cada neurônio. Para estabelecer uma comparação livre de possíveis erros causados pela aleatoriedade, foram usadas \textit{random seeds}, funções do Python responsáveis por conservar a pseudoaleatoriedade \cite{pseudoaleatoriedade}. 
+ 	É importante mencionar que existe um pequeno fator de aleatoriedade dentro dos processos de treinamento envolvendo a otimização dos parâmetros internos de cada neurônio. Para poder comparar os resultados assegurando que eles não possuem nenhuma divergência causada pela aleatoridade, foram usadas \textit{random seeds}, funções do Python responsáveis por conservar a pseudoaleatoriedade \cite{pseudoaleatoriedade}. 
 
  	\section{Demais Conceitos}
  	\label{sec:OtherConcepts}
@@ -470,11 +470,11 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
  		
  		A Análise de Componentes Principais (Cap. 12 \citet{ML}) ou \textit{Principal Component Analysis} (\textbf{PCA}) utiliza conceitos de ortogonalizações de vetores para poder reduzir dimensões.
  		
- 		Em ML essa redução de dimensões é aplicada às \textit{features} de um \textit{dataframe} onde as amostras possuem um grande número de características e deseja reduzi-las, com a finalidade de que o modelo de aprendizagem de máquina seja menos custoso e igualmente eficaz.
+ 		Em ML essa redução de dimensões é aplicada para reduzir a quantidade de \textit{features} de um \textit{dataframe} onde as amostras possuem um grande número de características, a fim de que o modelo de aprendizagem de máquina seja menos custoso e igualmente eficaz.
  		
  		Através de técnicas da álgebra linear, o método ''cria'' novas dimensões virtuais compostas por combinações lineares das já existentes, de maneira que estas novas dimensões poderão melhor distinguir a quantidade de dados existentes no \textit{dataframe}. 
  		
- 		Por fim pode-se também interpretar PCA através de uma perspectiva de filtros, onde se decompõe determinado sinal e selecionando determinadas frequências conserva-se a potência dele. Por essa perspectiva, as frequências são as \textit{features} e a potência é a capacidade que as novas \textit{features} têm de representar o \textit{dataframe}.
+ 		Por fim se pode também interpretar PCA através de uma perspectiva de filtros, onde se decompõe determinado sinal e selecionando determinadas frequências conserva-se a potência dele. Por essa perspectiva, as frequências são as \textit{features} e a potência é a capacidade que as novas \textit{features} têm de representar o \textit{dataframe}.
  		
  		\subsection{Transformadas de Wavelet}
  		
@@ -490,15 +490,83 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
   		
   		Seu procedimento consiste em dividir os dados em $K$ partes, \textbf{normalmente} $K-1$ são utilizados para treinar o modelo, enquanto $1$ é usado para teste. Todavia, neste projeto devido as limitações físicas, apenas uma parte será usada para o treino enquanto as demais dezoito serão utilizadas para testar e validar o método.
   		
-  		Junto a validação cruzada existem 2 conceitos que serão usados para avaliar os resultados deste projeto
+  		Junto a validação cruzada, 3 técnicas serão usadas para avaliar os resultados de cada \textit{fold} deste projeto:
   		
   		\begin{itemize}
-  			\item Curva ROC e AUC (Cap. 5.7 \citet{ML})
-  			\item \textit{Mean Average Precision} (Cap. 9.7.4 \citet{ML})
   			\item \textit{Confusion Matrix}.
+  			\item Curva ROC e AUC (Cap. 5.7 \citet{ML})
+  			\item \textit{Mean Average Precision} (Cap. 9.7.4 \citet{ML}) 			
   		\end{itemize}
   	
+  		\subsection*{Matriz de Confusão ou \textit{Confusion Matrix} (CM)}
+  		
+  		 A Matriz de Confusão consiste em representar os acertos e erros do modelo. A figura \ref{fig:cm_teorica} ilustra o conceito de forma geral. O Valor Verdadeiro é aquele confirmado por análise e o Valor Previsto é aquele predito pelo teste.
   		 
+  		 \begin{figure}[ht]
+  		 	\centering
+  		 	\includegraphics[width=9cm]{cm_teorica.png}
+  		 	\caption{Ilustração geral de uma matriz de confusão. \textit{Imagem retirada de \citet{cmteorica}}}
+  		 	\label{fig:cm_teorica}
+  		 \end{figure}
+
+  		Através dos conceitos de Verdadeiros Positivos (TP), Falsos Negativos (FN), Falsos Positivos (FP) e Verdadeiros Negativos (TN) são definidos alguns outros conceitos abaixo:
+  		
+  		\begin{equation}
+  		Accuracy = \frac{TP + TN}{Total}
+  		\end{equation}
+  		
+ 	
+ 		\begin{equation}
+ 		Sensibilidade (\textit{sensitivity}) = \frac{TP}{TP+FN}
+ 		\end{equation}  
+ 				
+ 		\begin{equation}
+ 		Especificidade (\textit{specificity}) = \frac{TN}{TN+FP}
+ 		\end{equation}
+ 		
+  		\begin{equation}
+  		Precisao (Precision) = \frac{TP}{TP+FP}
+  		\end{equation}		  		
+
+		\subsection*{Curva ROC e AUC}
+		
+		Para entender estes dois conceitos é importante estabelecer o que é um limiar de decisão dentro do modelo de classificação. Chamado também de \textit{decision threshold}, ele estabelece uma ''divisória'' entre o que será classificado como um tipo e o que será classificado como outro.
+		
+		Ao alterar esse \textit{threshold}, alteram-se também os valores de TN, TP, FN e FP, como consequência os valores de \textit{Sensitivity} e \textit{Specificity}. Ilustração na figura \ref{fig:rocauc} 
+		
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[width=12cm]{rocauc.png}
+			\caption{Ilustração do ''deslocamento'' do \textit{threshold} e a alteração do gráfico \textit{Sensitivity} $\times$ \textit{Specificity}. \textit{Imagem retirada de \citet{cmteorica}}}
+			\label{fig:rocauc}
+		\end{figure}
+		
+		Nota-se que a partir de certos valores de \textit{threshold}, não haverá mais FN para um valor baixo e para um valor alto não haverá FP, fazendo com que as expressões de especificidade e sensibilidade assumam o valor de 1.
+		
+		Por fim a curva ROC (\textit{Receiver operating characteristic curve}) é a curva azul ilustrada na figura \ref{fig:rocauc} (b), e a área abaixo dessa curva (\textit{Area under curve}) é chamada de AUC.
+		
+		A interpretação desses dois indicadores para a eficiência do método consiste na ROC ser a mais curvada possível para que o valor de AUC se aproxime o máximo de 1. Significando a maximização dos valores de TN e TP (acertos) e a redução de FN e FP (erros).
+		
+		\subsection*{\textit{Mean Average Precision}}
+		
+		Também conhecida por apenas \textit{Average Precision}, ela é definida como a área abaixo da curva do gráfico da Precisão $\times$ Sensibilidade ao longo da classificação de $n$ amostras (incluindo tanto acertos quanto erros) .
+		
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[width=15cm]{map.png}
+			\caption{Ilustração do gráfico Precisão $\times$ Sensibilidade para $n = 7$ amostras classificadas. \textit{Imagem retirada de \citet{meanap}}}
+			\label{fig:map}
+		\end{figure}
+  		
+  		
+  		
+  		Matematicamente a \textit{Mean Average Precision} é definida por
+  		
+  		\begin{equation}
+  			AP = \int_{0}^{1} p(r)dr
+  		\end{equation}
+  		
+  		Onde $r$ é a Sensibilidade e o $p(r)$ é a Precisão.
   		
 	\newpage
   \chapter{Modelo Atual}
@@ -525,20 +593,14 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
 		\item \textbf{SN TYPE} : Informa o tipo de supernova
 		\item  \textbf{TERSE LIGHT CURVE OUTPUT} : Informa os pontos observados. Será o data frame. 
 		\begin{itemize}
-			\item \textbf{MJD} : O momento em que a observação foi obtida. A medida está descrita em dias do calendário Juliano modificado (\textit{Modified Julian Date}).
+			\item \textbf{MJD} : O momento em que a observação foi obtida. A medida está descrita em dias do calendário Juliano modificado (\textit{Modified Julian Date} \cite{mjd}).
 			\item \textbf{FLT} : O filtro no qual a observação foi obtida. Pois os objetos são observados em 4 bandas de comprimento de onda de luz. Na figura \ref{fig:fullEspectr} pode-se ver um exemplo de uma observação na íntegra e como a mesma é decomposta 4 bandas.
 			\item  \textbf{FLUXCAL} : O valor do fluxo de luz obtido naquela observação.
 			\item  \textbf{FLUXCALERR} : O valor do erro do fluxo de luz.
 		\end{itemize}
 	\end{itemize}
 
-	\begin{figure}[h!]
-	\centering
-	\includegraphics[width=15cm]{bandpass.jpg}
-	\caption[Observação íntegra de um objeto astronômico.]
-	{{\small Observação íntegra de um objeto astronômico. Não é referente a nenhum exemplo específico do \textit{dataframe}}}
-	\label{fig:fullEspectr}
-	\end{figure}
+
 
 
 	Em relação ao \textbf{MJD} vale explicar que é um método usado na astronomia para contar os dias sequencialmente começando em uma data arbitrária no passado. Neste projeto essas datas serão normalizadas, tendo como zero o menor valor do MJD para que o eixo das abscissas tenha sempre início em zero.
@@ -547,7 +609,15 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
 	
 	Pela perspectiva de aprendizagem de máquina cada objeto possuirá 4 data frames, um para cada filtro, e posteriormente essas propriedades serão convertidas em \textit{features} de cada objeto.
 	
-	A figura \ref{fig:ExFiltro} ilustra as 4 curvas de luz para o mesmo objeto.
+	A figura \ref{fig:ExFiltro} ilustra as 4 curvas de luz (\textit{g}, \textit{r}, \textit{i} e \textit{z}) para o mesmo objeto. A curva \textit{Y}, não é utilizada nos dados deste projeto.
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=15cm]{bandpass.jpg}
+		\caption[Observação íntegra de um objeto astronômico.]
+		{{\small Observação íntegra de um objeto astronômico. Não é referente a nenhum exemplo específico do \textit{dataframe} \cite{imagewave}}}
+		\label{fig:fullEspectr}
+	\end{figure}
 	
 	\begin{figure*}
 		\centering
@@ -590,11 +660,17 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
 
 	\section{\textit{\textit{pipeline}} Atual}
 	
-	Dispondo dos dados obtidos pelo pré-processamento explicado na seção anterior, inicialmente o \textit{pipeline} irá separar os dados do \textit{Terse Light Curve Output} pelos filtros e irá criar 4 \textit{numpy arrays} possuindo $n \times 3$ dimensões cada (\textbf{MJD}, \textbf{FLUXCAL} e \textbf{FLUXCALERR}), sendo n o número de amostras.
+	Dispondo dos dados obtidos pelo pré-processamento explicado na seção anterior, inicialmente o \textit{pipeline} irá separar os dados do \textit{Terse Light Curve Output} pelos filtros e irá criar 4 \textit{numpy arrays} possuindo $n \times 3$ dimensões cada (\textbf{MJD}, \textbf{FLUXCAL} e \textbf{FLUXCALERR}), sendo n o número de amostras de cada objeto (figura \ref{fig:pipeline}).
 	
-	Em seguida, esses 4 \textit{numpy arrays} serão a entrada do Processo Gaussiano, cuja função é interpolar uma curva que passe pelos pontos de cada filtro \ref{fig:ExFiltro}.
+	Em seguida, esses 4 \textit{numpy arrays} serão agrupados na forma de \textbf{dicionário} e irão ser a entrada do Processo Gaussiano, cuja função é interpolar uma curva que passe pelos pontos de cada filtro \ref{fig:ExFiltro}.
 	
-	\newpage
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=15cm]{pipeline_ilustracao.png}
+		\caption[Ilustração gráfica do \textit{pipeline}.]
+		{{\small Ilustração gráfica do \textit{pipeline}.}}
+		\label{fig:pipeline}
+	\end{figure}
 	
 	A saída do Processo Gaussiano será o gráfico interpolado em forma de \textit{numpy array} $100 \times 3$, contendo 100 pontos de abscissa, 100 pontos de ordenada e 100 pontos do erro da ordenada. 
 	
@@ -610,7 +686,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
 	
 	Finalmente serão estabelecidos os parâmetros que caracterizam o modelo de classificação baseado em \textit{Random Forest}. Neste ponto é usado o módulo \textit{sklearn.pipeline} da biblioteca \textit{scikit-learn}.
 	
-	Tendo em mãos o \textit{dataframe}, a lista com as classificações de cada objeto (os labels) e o modelo de classificação, é feita a divisão através do método \textit{k-fold} de validação cruzada, dividindo os objetos em 19 partições e usando 1 delas para treino e as demais para teste.
+	Tendo em mãos o \textit{dataframe}, a lista com as classificações de cada objeto (os labels) e o modelo de classificação, é feita a divisão através do método \textit{k-fold} de validação cruzada, dividindo os objetos em 19 partições e usando 1 delas para treino e as demais para teste. O número 19 foi escolhido pois atende as especificações para treinar com aproximadamente 1100 objetos. $21316$(objetos) $\div 19$(folds) $\approx 1122$ (quantidade de objetos destinados ao treino).
 	
 	Por fim cada modelo dos 19 \textit{folds} existentes é avaliado através de 2 maneiras de obtenção de \textit{score}, o \textbf{método AUC} (a área abaixo da curva ROC) e o \textbf{método de precisão média} \ref{sec:OtherConcepts}. As matrizes de confusão de cada um dos 19 modelos também podem ser analisadas para ilustrar seus acertos, falsos positivos e falsos negativos \ref{fig:CMEx}. 
 
@@ -650,7 +726,7 @@ Com a finalidade de estudar a expansão do universo, a cosmologia busca classifi
  	
  	Outra tentativa foi a aplicação de limiares baseados nos valores das incertezas de cada ponto em relação ao pico da curva. Caso o valor da incerteza fosse maior que o pico da curva multiplicado por um limiar (valor entre 0 e 1), este ponto seria excluído.
  	
- 	O código referente a implementação deste tratamento de \textit{outlier}, assim como todo o código do projeto, encontra-se disponível no \textit{GitHub} \ref{chap:Apendice}.
+ 	O código referente à implementação deste tratamento de \textit{outlier}, assim como todo o código do projeto, encontra-se disponível no \textit{GitHub} \ref{chap:Apendice}.
  	
  		\newpage
  		
@@ -719,8 +795,7 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
  	 
  	 Estes gráficos serão imagens em escalas de cinza na extensão \textit{png}, cujas dimensões são: $64 \times 40$ pixels. Ao gerar essas imagens eram criadas margens com 5 pixels na dimensão $y$ e 9 pixels na dimensão $x$. No fim, elas foram eliminadas resultando em um formato de dimensão $46 \times 30$.
  	 
- 	 Esses tamanhos foram escolhidos baseando-se em exemplos clássicos e bem conhecidos da literatura que possuem dimensões com valores bem próximos, como o \href{	https://towardsdatascience.com/image-classification-in-10-minutes-with-mnist-dataset-54c35b77a38d
- 	 }{MNIST} e \href{https://github.com/zalandoresearch/fashion-mnist}{Fashion MNIST}.
+ 	 Esses tamanhos foram escolhidos baseando-se em exemplos clássicos e bem conhecidos da literatura que possuem dimensões com valores bem próximos, como o MNIST \cite{mnist} e Fashion MNIST \cite{fmnist}.
 
  	\section{\textit{pipeline}} 	
  	
@@ -735,9 +810,9 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
  
  	Dentre diversos possíveis tipos de camadas internas de Deep Learning, foram escolhidas camadas do tipo \textbf{Convolucionais 2D} e \textbf{\textit{Max Pooling} 2D} (seção \ref{sec:CNN}).
  	
- 	A arquitetura escolhida também foi baseada em exemplos clássicos de problemas de identificação de imagens, em especial o \href{https://github.com/zalandoresearch/fashion-mnist}{Fashion MNIST}.
+ 	A arquitetura escolhida também foi baseada em exemplos clássicos de problemas de identificação de imagens, em especial o Fashion MNIST.
  	
- 	Tendo como base esses exemplos, algumas camadas foram adicionadas e modificadas de forma a buscar empiricamente obter um melhor resultado. A arquitetura final encontra-se na figura \ref{fig:DLArchUsed}. 
+ 	Tendo como base esses exemplos, algumas camadas foram adicionadas e modificadas de forma a buscar obter empiricamente um melhor resultado. A arquitetura final encontra-se na figura \ref{fig:DLArchUsed}. 
  	
  	\begin{figure}[ht]
  		\centering
@@ -778,9 +853,9 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
  
  	Ao compararmos os resultados da figura \ref{fig:resultadoDL} com o da figura \ref{fig:CMEx} percebemos que o modelo de Deep Learning apresentou piora em seu desempenho.
  	
- 	Dois motivos podem explicar tais resultados, o primeiro deles é o fato das imagens treinadas não terem sofrido o chamado \textit{data augmentation}, uma técnica que busca aumentar a quantidade de dados treinados e variar suas formas de identificação, focando em rotacionar, deslocar, reduzir e aumentar as figuras. Devido as imagens deste projeto serem gráficos, haveria uma perda de sentido caso os mesmos fossem rotacionados ou deslocados.
+ 	Dois motivos podem explicar tais resultados, o primeiro deles é o fato das imagens treinadas não terem sofrido o chamado \textit{data augmentation}, uma técnica que busca aumentar a quantidade de dados treinados e variar suas formas de identificação, focando em rotacionar, deslocar, reduzir e aumentar as figuras. Devido às imagens deste projeto serem gráficos, haveria uma perda de sentido caso os mesmos fossem rotacionados ou deslocados.
  	
- 	O segundo motivo é a limitação física que faz com que sejam treinados apenas 1100 objetos astronômicos. Normalmente algoritmos de Deep Learning mostram-se mais vantajosos do que algoritmos de ML devido a grande quantidade de dados que os faz ter um desempenho melhor.
+ 	O segundo motivo é a limitação física que faz com que sejam utilizados para o treinamento apenas 1100 objetos astronômicos. Normalmente algoritmos de Deep Learning mostram-se mais vantajosos do que algoritmos de ML devido a grande quantidade de dados que os faz ter um desempenho melhor.
  	
  	Por fim, também foram feitos experimentos envolvendo uma distribuição de dados de $80\%$ para treino de $20\%$ para teste. A análise dessas matrizes de confusão (figuras \ref{fig:DLScuks1} e \ref{fig:DLScuks2}) confirmam que para este problema a aplicação de Deep Learning analisando o formato dos gráficos não se mostra eficiente, reiterando a justificativa da ausência do \textit{data augmentation}.
  	
@@ -806,7 +881,7 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
   
   	A abordagem feita pelo IF-UFRJ ao usar o Processo Gaussiano foi através da biblioteca \textit{george} \cite{george}. Uma biblioteca focada em avaliar a probabilidade marginal \cite{marginallikelihood} \cite{GPBook} da distribuição dos dados. 
   	
- 	Contudo, ao tentar editar alguns parâmetros internos referentes a interpolação nesta biblioteca, como os \textit{Kernels} ou funções a priori \ref{sec:GP}, houve certa dificuldade ou mesmo impossibilidade de modelá-los da maneira desejada. Como, por exemplo, somar e multiplicar \textit{Kernels}, sobretudo aqueles não-estacionários (Cap. 3 \cite{GPBook} ).
+ 	Contudo, ao tentar editar alguns parâmetros internos referentes à interpolação nesta biblioteca, como os \textit{Kernels} ou funções a priori \ref{sec:GP}, houve certa dificuldade ou mesmo impossibilidade de modelá-los da maneira desejada. Como, por exemplo, somar e multiplicar \textit{Kernels}, sobretudo aqueles não-estacionários (Cap. 3 \cite{GPBook} ).
  	
  	Um motivo que levou o projeto a usar uma outra biblioteca foi a citação do capítulo 4 seção 2 do \citet{GPBook}, argumentando que o \textit{Kernel} de tipo \textit{Squared Exponential Covariance Funtion} (utilizado no \textit{pipeline} original) propicia à função interpolada uma suavização irreal para diversos fenômenos físicos, e recomenda usar \textit{Kernels} do tipo \textit{Matern}. Apesar de a biblioteca \textit{george} também conter esse tipo de \textit{Kernel}, outras bibliotecas possuíam uma maior possibilidade de edição.
  	
@@ -832,7 +907,7 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
 		
 		As minuciosidades destas análises podem ser vistas em todo o projeto realizado no blog citado acima, para não fugir do escopo deste trabalho não serão mencionados mais detalhes sobre a especificidade de cada biblioteca.
 		
-		Como explicação breve para a escolha final, pode se dizer globalmente que o \textit{scikit-learn} possui uma abordagem mais simples e focada menos nos modelos probabilísticos sofisticados. Enquanto tanto o \textit{GPFlow} quanto o PyMC3 possuem um próprio \textit{backend} computacional dando suporte a esses modelos. Por fim, o motivo da escolha do PyMC3 foi devido a maior comunidade de suporte e ao vasto domínio de estudo da biblioteca. Pois, por ser um pacote de programação probabilística, o PyMC3 abrange mais ferramentas que podem vir a ser úteis no desenvolvimento das distribuições de probabilidade usadas no GP.
+		Como explicação breve para a escolha final, pode se dizer globalmente que o \textit{scikit-learn} possui uma abordagem mais simples e focada menos nos modelos probabilísticos sofisticados. Enquanto tanto o \textit{GPFlow} quanto o PyMC3 possuem um próprio \textit{backend} computacional dando suporte a esses modelos. Por fim, o motivo da escolha do PyMC3 foi devido à maior comunidade de suporte e ao vasto domínio de estudo da biblioteca. Pois, por ser um pacote de programação probabilística, o PyMC3 abrange mais ferramentas que podem vir a ser úteis no desenvolvimento das distribuições de probabilidade usadas no GP.
 		
 	\section{Aleatoriedades e \textit{Random Seeds}}
 	
@@ -840,7 +915,7 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
 	
 	Isto não significa que os parâmetros do GP não serão otimizados, eles apenas não irão convergir para um valor final, o que os torna dependentes das condições iniciais estabelecidas internamente pelo computador durante as cadeias de Markov Monte Carlo \cite{MCMC}.
 	
-	A alternativa para esta escolha de projeto foi comparar determinadas sementes aleatórias \cite{pseudoaleatoriedade}. Através da análise de 11 sementes pôde-se escolher aquelas cujas condições iniciais resultavam em um maior \textit{overfitting} das interpolações. As figuras das comparações das interpolações de cada semente encontram-se no apêndice \ref{chap:ApendiceB}. Neste contexto, \textit{overfitting} se refere àquela interpolação que "força" o gráfico resultante a passar pelos pontos, podendo assim ter taxas de variações mais bruscas e suavidades menores. No contexto do presente projeto, é algo desejado, visto que variações bruscas do fluxo de luz correspondem a um comportamento esperado de uma explosão.
+	A alternativa para esta escolha de projeto foi comparar determinadas sementes aleatórias \cite{pseudoaleatoriedade}. Através da análise de 11 sementes pôde-se escolher aquelas cujas condições iniciais resultavam em um maior \textit{overfitting} das interpolações. As figuras das comparações das interpolações de cada semente encontram-se no apêndice \ref{chap:ApendiceB}. Neste contexto, \textit{overfitting} se refere àquela interpolação que ''força'' o gráfico resultante a passar pelos pontos, podendo assim ter taxas de variações mais bruscas e suavidades menores. No presente projeto, é algo desejado, visto que variações bruscas do fluxo de luz correspondem a um comportamento esperado de uma explosão.
 	
 	Buscando sempre aquelas sementes que eliminam interpolações constantes e proporcionam um \textit{overfitting}, as melhores foram:
 	
@@ -853,7 +928,7 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
 	\item Random Seed 7.
 	\end{itemize}
 	
-	Por fim, foram escolhidas duas delas para as interpolações finais, as sementes 4 e 9. A justificativa encontra-se no fato de elas não apresentarem nenhum caso de interpolação mantendo valores constantes, enquanto as demais, mesmo que menos do que o \textit{\textit{pipeline}} original, ainda a possuíam.
+	Por fim, foram escolhidas duas delas para as interpolações finais, as sementes 4 e 9. A justificativa encontra-se no fato de elas não apresentarem nenhum caso de interpolação mantendo valores constantes, enquanto as demais, mesmo que menos do que o \textit{\textit{pipeline}} original, ainda a possuíam. Essa decisão foi baseada na análise das figuras do apêndice \ref{chap:ApendiceB}.
 	
 	\section{\textit{Kernel Functions}}
 	
@@ -883,7 +958,7 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
 			\end{equation}	
 	\end{itemize}
 	
-	Nestas funções temos $x$ e $x'$ como os valores das abscissas e $\alpha$ e $l$ como hiperparâmetros a serem ajustados. Empiricamente percebeu-se que o $l$ possui um efeito de aumentar \textit{overfitting} em troca do aumento do erro da interpolação. O parâmetro $l$ é possui um efeito de "distância de correlação", pois pontos separados por muito mais do que essa distância, tem pouca influência uns sobre os outros. Enquanto $\alpha$ determina como a correlação diminui com a distância $x-x'$. 
+	Nestas funções temos $x$ e $x'$ como os valores das abscissas e $\alpha$ e $l$ como hiperparâmetros a serem ajustados. Empiricamente percebeu-se que o $l$ possui um efeito de aumentar \textit{overfitting} em troca do aumento do erro da interpolação. O parâmetro $l$ possui um efeito de ''distância de correlação'', pois pontos separados por muito mais do que essa distância têm pouca influência uns sobre os outros. Enquanto $\alpha$ determina como a correlação diminui com a distância $x-x'$. 
 	
 	Esses hiperparâmetros podem assumir valores como funções de distribuições probabilísticas ou funções constantes. Após diversos testes utilizando constantes, foi notório que os melhores resultados foram obtidos usando distribuições. Outro fator que levou a essa escolha, foram os exemplos oferecidos no suporte da biblioteca PyMC3 \cite{pymcex} \cite{pymcgs}. 
 	
@@ -925,7 +1000,7 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
 	\begin{tabular}{|l|c|c|c|}
 		\hline
 		
-		Fold & \textbf{Padrão}  & \textbf{AUC} & \textbf{AP} \\
+		Fold & \textbf{Padrão}  & \textbf{AP} & \textbf{AUC} \\
 		
 		\hline
 \small{Fold 1 }&   88,88\% & 83,15\% & 94,79\%\\
@@ -949,7 +1024,7 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
 \small{Fold 19} &  88,38\% & 81,63\% & 94,26\%\\
 		\hline
 		\hline
-		\textbf{Média} &  \textbf{94,24\%} & \textbf{82,19\%} & \textbf{88,55\%} \\
+		\textbf{Média} &  \textbf{88,55\%} & \textbf{82,19\%} & \textbf{94,24\%} \\
 		\hline
 		
 	\end{tabular}
@@ -966,7 +1041,7 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
 	
 	O resultado global das interpolações não pôde ser concluído devido a um erro de processamento de código, mais precisamente um \textit{memory leak} interno durante a execução dos modelos do PyMC3 em looping. A explicação e detalhamento desse erro será apresentado na seção a seguir. 
 	
-	Nesta seção serão apresentados alguns exemplos de interpolações entre os algoritmos, onde pôde se notar uma melhor interpolação usando o \textit{Kernel} \textit{Matern} no PyMC3 através das sementes. Justificando o porquê de se esperar que caso o processamento de todos os dados fosse concluído, provavelmente obter-se-iam resultados melhores \ref{fig:GPResult}.
+	Nesta seção serão apresentados alguns exemplos de interpolações entre os algoritmos, onde  se pôde notar uma melhor interpolação usando o \textit{Kernel} \textit{Matern} no PyMC3 através das sementes. Justificando o porquê de se esperar que, caso o processamento de todos os dados fosse concluído, provavelmente obter-se-iam resultados melhores \ref{fig:GPResult}.
 	
 	Demais exemplos de comparações estão descritos no \textit{notebook} do apêndice \ref{chap:ApendiceB}.
 	
@@ -1054,7 +1129,7 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
 		\item Uso de bibliotecas próprias para gerenciar a alocação e consumo de memória.
 	\end{itemize} 
 
-	Após essa inspeção, o problema foi descoberto como um erro interno da biblioteca ao longo da criação modelos probabilísticos dentro de um looping. Em resumo, quando se instancia um modelo do PyMC3 dentro de um looping, a biblioteca continua alocando memória em lugares diferentes sem 'esvaziar' os antigos, ocasionando o vazamento.
+	Após essa inspeção, o problema foi descoberto como um erro interno da biblioteca ao longo da criação de modelos probabilísticos dentro de um looping. Em resumo, quando se instancia um modelo do PyMC3 dentro de um looping, a biblioteca continua alocando memória em lugares diferentes sem 'esvaziar' os antigos, ocasionando o vazamento.
 	
 	Uma discussão prolongada sobre esse erro foge do assunto abordado no presente trabalho, e devido ao grande tempo investido no estudo de identificação e solução do problema, tomou-se a decisão de abortar essa abordagem. Todavia, como o problema já foi identificado \cite{gitproblem2}, estão disponíveis na bibliografia os links das discussões em forums onde ele vem sendo discutido. 
 	
@@ -1064,7 +1139,7 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
   \label{chap:Concl}
 	\section{Conclusões Finais} 	  
 	
-	O presente trabalho teve como objetivo buscar otimizações e melhorias nas técnicas de ML dentro dos modelos de classificação de supernovas usando espectroscopia. A partir da análise dos resultados, foi possível verificar que o modelo atual possui uma robustez muito eficaz tendo em vista a pouca quantidade de dados treinados.
+	O presente trabalho teve como objetivo buscar otimizações e melhorias nas técnicas de ML dentro dos modelos de classificação de supernovas usando espectroscopia. A partir da análise dos resultados, foi possível verificar que o modelo atual possui uma robustez muito eficaz tendo em vista a pouca quantidade de dados usados para o treinamento.
 	
 	Como ponto positivo para o método, este projeto pôde agregar conhecimento testando diferentes abordagens e concluindo que suas aplicações não ofereceriam melhoras ao modelo.
 	
@@ -1087,7 +1162,7 @@ Fold & \textbf{AUC} & \textbf{\makecell{AUC \\ StdDev}} & \textbf{\makecell{AUC 
 	
 	Sobre as outras bibliotecas estudadas para realizar a interpolação, após a análise e detalhamento de cada uma delas e suas propriedades \cite{bibliotecacomp}, elas se mostram interessantes em trabalhos cujo uso de Processo Gaussiano seja necessário.
 	
-	Após a utilização da biblioteca PyMC3, apesar do problema ocorrido, ela se mostrou extremamente eficaz e matematicamente completa, estando alinhada com os conceitos estatísticos proporcionando uma flexibilidade na modelagem das distribuições. Logo, é aconselhável que novos interessados no projeto usem a biblioteca, devido ao seu grande suporte que facilita o entendimento teórico. Assim como àqueles que já possuem determinado conhecimento e queiram tentar modelos mais específicos e customizados.
+	Após a utilização da biblioteca PyMC3, apesar do problema ocorrido, ela se mostrou eficaz e com um bom suporte para modelar as funções matemáticas, estando alinhada com os conceitos estatísticos proporcionando uma flexibilidade na modelagem das distribuições. Logo, é aconselhável que novos interessados no projeto usem a biblioteca, devido ao seu grande suporte que facilita o entendimento teórico. Assim como àqueles que já possuem determinado conhecimento e queiram tentar modelos mais específicos e customizados.
 		  
 
   \backmatter

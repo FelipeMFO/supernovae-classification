@@ -5,9 +5,9 @@
 \BOOKMARK [1][-]{section.1.2}{Problem\341tica}{chapter.1}% 5
 \BOOKMARK [1][-]{section.1.3}{Delimita\347\343o}{chapter.1}% 6
 \BOOKMARK [1][-]{section.1.4}{Objetivos}{chapter.1}% 7
-\BOOKMARK [2][-]{subsection.1.4.1}{Processo Gaussiano Gaussian Process}{section.1.4}% 8
+\BOOKMARK [2][-]{subsection.1.4.1}{Tratamento de Outliers}{section.1.4}% 8
 \BOOKMARK [2][-]{subsection.1.4.2}{Aprendizagem Profunda}{section.1.4}% 9
-\BOOKMARK [2][-]{subsection.1.4.3}{Tratamento de Outliers}{section.1.4}% 10
+\BOOKMARK [2][-]{subsection.1.4.3}{Processo Gaussiano \(Gaussian Process\)}{section.1.4}% 10
 \BOOKMARK [1][-]{section.1.5}{Metodologia}{chapter.1}% 11
 \BOOKMARK [1][-]{section.1.6}{Descri\347\343o}{chapter.1}% 12
 \BOOKMARK [0][-]{chapter.2}{Fundamentos Te\363ricos}{}% 13
@@ -39,6 +39,6 @@
 \BOOKMARK [0][-]{chapter.7}{Conclus\365es}{}% 39
 \BOOKMARK [1][-]{section.7.1}{Conclus\365es Finais}{chapter.7}% 40
 \BOOKMARK [1][-]{section.7.2}{Trabalhos Futuros}{chapter.7}% 41
-\BOOKMARK [0][-]{chapter*.26}{Refer\352ncias Bibliogr\341ficas}{}% 42
+\BOOKMARK [0][-]{chapter*.33}{Refer\352ncias Bibliogr\341ficas}{}% 42
 \BOOKMARK [0][-]{appendix.A}{Reposit\363rio do C\363digo}{}% 43
 \BOOKMARK [0][-]{appendix.B}{Avalia\347\343o das Interpola\347\365es}{}% 44

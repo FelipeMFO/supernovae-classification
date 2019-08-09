@@ -3,29 +3,33 @@
 \babel@toc {brazil}{}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Exemplo de interpola\IeC {\c c}\IeC {\~a}o via GP n\IeC {\~a}o condizente com a realidade de uma explos\IeC {\~a}o.\relax }}{3}{figure.caption.5}
-\contentsline {figure}{\numberline {1.2}{\ignorespaces Exemplo de \textit {outlier}.}}{5}{figure.caption.6}
-\contentsline {figure}{\numberline {1.3}{\ignorespaces Exemplo de ponto com incerteza 3 vezes maior que o pico da curva.}}{6}{figure.caption.7}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Exemplo de \textit {outlier}.}}{4}{figure.caption.6}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Exemplo de ponto com incerteza 3 vezes maior que o pico da curva.}}{5}{figure.caption.7}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Ilustra\IeC {\c c}\IeC {\~a}o da matriz $\Sigma $ possuindo 10 e 12 pontos.}}{11}{figure.caption.8}
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Ilustra\IeC {\c c}\IeC {\~a}o do valor da fun\IeC {\c c}\IeC {\~a}o m\IeC {\'e}dia.}}{12}{figure.caption.9}
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Arquitetura b\IeC {\'a}sica de \textit {Deep Learning}}}{13}{figure.caption.10}
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Opera\IeC {\c c}\IeC {\~a}o de Convolu\IeC {\c c}\IeC {\~a}o.}}{14}{figure.caption.11}
 \contentsline {figure}{\numberline {2.5}{\ignorespaces \textit {Max Pooling.}}}{14}{figure.caption.12}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Ilustra\IeC {\c c}\IeC {\~a}o geral de uma matriz de confus\IeC {\~a}o. \textit {Imagem retirada de \citet {cmteorica}}\relax }}{16}{figure.caption.14}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Ilustra\IeC {\c c}\IeC {\~a}o do ''deslocamento'' do \textit {threshold} e a altera\IeC {\c c}\IeC {\~a}o do gr\IeC {\'a}fico \textit {Sensitivity} $\times $ \textit {Specificity}. \textit {Imagem retirada de \citet {cmteorica}}\relax }}{17}{figure.caption.16}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Ilustra\IeC {\c c}\IeC {\~a}o do gr\IeC {\'a}fico Precis\IeC {\~a}o $\times $ Sensibilidade para $n = 7$ amostras classificadas. \textit {Imagem retirada de \citet {meanap}}\relax }}{18}{figure.caption.18}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Arquivo \textit {.txt} a ser lido pelos arquivos de pr\IeC {\'e}-processamento.\relax }}{18}{figure.caption.13}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Observa\IeC {\c c}\IeC {\~a}o \IeC {\'\i }ntegra de um objeto astron\IeC {\^o}mico.}}{19}{figure.caption.14}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Exemplo de 4 curvas de luz de um mesmo objeto.}}{20}{figure.caption.15}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Matrizes de Confus\IeC {\~a}o de um modelo final do \textit {\textit {pipeline}} original. }}{21}{figure.caption.16}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Arquivo \textit {.txt} a ser lido pelos arquivos de pr\IeC {\'e}-processamento.\relax }}{20}{figure.caption.19}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Observa\IeC {\c c}\IeC {\~a}o \IeC {\'\i }ntegra de um objeto astron\IeC {\^o}mico.}}{21}{figure.caption.20}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Exemplo de 4 curvas de luz de um mesmo objeto.}}{22}{figure.caption.21}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Ilustra\IeC {\c c}\IeC {\~a}o gr\IeC {\'a}fica do \textit {pipeline}.}}{22}{figure.caption.22}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Matrizes de Confus\IeC {\~a}o de um modelo final do \textit {\textit {pipeline}} original. }}{23}{figure.caption.23}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Arquitetura do modelo de Deep Learning utilizado.\relax }}{25}{figure.caption.18}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Matrizes de confus\IeC {\~a}o do modelo final. \textit {Deep Learning}.}}{26}{figure.caption.19}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Valores normalizados do modelo DL treinando com 80\% dos dados.\relax }}{27}{figure.caption.20}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Modelo do \textit {\textit {pipeline}} original treinado com 80\% dos dados.\relax }}{27}{figure.caption.21}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Arquitetura do modelo de Deep Learning utilizado.\relax }}{27}{figure.caption.25}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Matrizes de confus\IeC {\~a}o do modelo final. \textit {Deep Learning}.}}{28}{figure.caption.26}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Valores normalizados do modelo DL treinando com 80\% dos dados.\relax }}{29}{figure.caption.27}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Modelo do \textit {\textit {pipeline}} original treinado com 80\% dos dados.\relax }}{29}{figure.caption.28}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Exemplo de distribui\IeC {\c c}\IeC {\~a}o com valores n\IeC {\~a}o-negativos.\relax }}{32}{figure.caption.22}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Compara\IeC {\c c}\IeC {\~a}o dos resultados finais para um exemplo.}}{34}{figure.caption.24}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Matrizes de confus\IeC {\~a}o do \textit {Matern 5/2} pela biblioteca \textit {george}.}}{35}{figure.caption.25}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Exemplo de distribui\IeC {\c c}\IeC {\~a}o com valores n\IeC {\~a}o-negativos.\relax }}{34}{figure.caption.29}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Compara\IeC {\c c}\IeC {\~a}o dos resultados finais para um exemplo.}}{36}{figure.caption.31}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Matrizes de confus\IeC {\~a}o do \textit {Matern 5/2} pela biblioteca \textit {george}.}}{37}{figure.caption.32}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
