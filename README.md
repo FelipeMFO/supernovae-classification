@@ -19,7 +19,7 @@ Course: Automation and Control Engineering
 **In order to study the expansion of the universe, cosmology classifies different types of astronomical objects using spectroscopy. Given the enourmous size of current datasets, spectroscopy methods could not classify this amount of data. As a
 solution to this issue, photometric identification is crucial to fully exploit these large samples due to its simplicity. Once photometric identification uses machine learning algorithms, the following work tries to optimize those algorithms.**
 
-# 1. Introduction
+# Chapter 1. Introduction
 ## 1.1. Theme and Contextualization
   In cosmology there is a need to determine distances (through what is called luminosity distance [3]) to shape its studies. To reach this purpose, light curves originated from Ia supernovae are used as tools.
   
@@ -87,117 +87,197 @@ Figure 1.2: Example of outlier. Graphic Flow x Time (days).
 
 Figure 1.3: Example of point with uncertainty 3 times bigger than the peak of the curve. Graphic Flow x Time (days).
 
+### 1.4.2. Deep Learning
 
+Deep learning (DL) has been used recently in order to improve certain Machine Learning (ML) algorithms. 
 
+The idea of using DL in this matter came from the analysis of the initial pipeline. Regarding that it has various parts between the raw data and the Random Forest algorithm, we apply DL expecting to obtain a simpler pipeline, containing only one step between the raw data and the classifying algorithm.
 
+In many other cases in the literature, such as identification of sounds or images, there were significant improvements when reduced the number of steps regarding signal processing (wavelets) or reduction of components (PCA) in exchange of using DL.
 
-    1.4.2. Deep Learning
-The deep learning (DL) has been used recently in order to improve certain machine learning (ML) algorithms. 
-  The idea of using DL in this matter came from the analysis of the initial pipeline. Regarding that it has various parts between the raw data and the Random Forest algorithm, we apply DL expecting to obtain a simpler pipeline, containing only one step between the raw data and the classifying algorithm.
-  In many other cases in the literature, such as identification of sounds or images, there were significant improvements when reduced the number of steps regarding signal processing (wavelets) or reduction of components (PCA) in exchange of using DL.
-  The second reason for applying DL came from MICHELLE LOCHNER's article, in which she mentions possible applications of it in the issue's scope. 
-  Thusly, it was decided to apply DL algorithms after the first part of data treatment, aiming to keep a simplicity through the pipeline, establishing only the GP stage between the raw data and the classifying algorithm. The detailing of this procedure is in Chapter 5.
-    1.4.3. Gaussian Process
-  The Gaussian Process is the first part of the treatment after the conversion of raw data into Python dictionaries. This step will be approached in Chapter 6. 
-  Each astronomic object has an amount of points that represents the intensity of the flow of light captured in a certain day and in a certain filter. Linked to each point there is also an uncertainty of this value. Thus, we look for an interpolation that is a considerable temporal variation, passing by certain points. 
-   The purpose in addressing this issue is to to fix interpolations which do not match the physical interpretation, as it can be seen in the figure 1.1. 
- 1.5. Methodology
-On account of the preprocessing code from IF-UFRJ being written in Python, the entire work was also written in the same language. Another reason for its choice was its easiness to make experiments through the Jupyter hub, aside from its great amount of data science library and support for developing ML algorithms.
-  The main libraries used in the data treatment's scenario were Pandas and Numpy. When it comes to the application of the methods, the most important libraries were Scikit-learn, Keras and PyMC3.
-  The model's inputs will always be the dictionaries generated from the raw data after the preprocessing of the IF-UFRJ. Therefore, we could easily refine the desired properties for each one of all the three aspects of the work. 
-  Each one of the aspects has a specific and isolated work so that we can better check its changes afterwards. In other words, to each change there was a direct comparison with the results of the original pipeline, so we were able to specifically evaluate the performance and improvement of that change.
-  Since it is an classifying algorithm, the model's output will be boolean and will classify if an astronomic object is Ia type or not. However, in raw data, classes are divided between 8 types of objects: Ia, Ib, Ibc, Ic, II, IIL, IIN and IIP. 
-  It is also important to mention that, in order to validate the models from the project, the K-Fold method was used. Nevertheless, this work distinguished itself from the classic division which lies in the literature. Usually, 80% of data goes for training and 20% goes for the model tests. In this project only 1100 objects were used for training, among the 21316 total objects. The excuse for that is the physical limitation of the samples (only 1100 spectroscopically confirmed objects will be known).
-  At last, changes were verified through Confusion Matrices (CM) or through score methods from the Scikit-learn library.
-  As a final observation, aiming to perform subsequent studies outside the project's scope, classifications concerning the 8 types of objects were made, as well as practices adopting the proportion of 80% for training and 20% for testing.
- 1.6. Description
- In Chapter 2 the main theoretical concepts used in the application of the Gaussian Process and in Deep Learning will be explained. There also will be raised some concepts that are not the focus of the work, but they are equally significant to it. 
-  Chapter 3 will be destined to detail specifically each step of the current pipeline, as a brief mention to the way in which the raw data are treated. 
-  The Chapters 4, 5 and 6 will be destined to the explanation of the goals mentioned in the section 1.4, as well as the results of their changes, seeking to ascertain the efficiency of the application or to explain possible errors.
-  Finally, in Chapter 7, the final conclusions of the project and some suggestions of future works will be presented alongside with the restrictions and the possible solutions found. 
+The second reason for applying DL came from MICHELLE LOCHNER’s[7] article, in which she mentions possible applications of it in the issue’s scope. 
 
-CHAPTER 2
-2. Theoretical foundations
-2.1. Gaussian Process
-The Gaussian Process is an important tool for Machine Learning algorithms for that allows it to make predictions over the data based on an a priori knowledge . Its most usual application is in function interpolations, same as this project's case. There are also possible applications of this concept in classifications and groupings of great amounts of data. The reference book used for this project studies was RASMUSSEN and WILLIAMS.
-  As for a certain amount of points there are infinite functions that can interpolate these values, the Gaussian Process performs its interpolation from the a priori values expectation and the format that it may take due to the connection between the points. Lastly, the GP will not obtain a specific value for each point of the interpolated function but a probabilistic distribution for each point, in which each one will have an average (the interpolation value) and a standard deviation (uncertainty).
-  In this project it will not be approached further details for the learning of the method. However, in the bibliography it is possible to find more specific references and techniques, just as much as more practical and interactive ones.
-  Both of the two fundamentals aspects of the Gaussian Process are the main sculptors for characterizing the interpolations. They will be presented in the following subsections.
-    2.1.1. Kernel and Function of Covariance
-The Gaussian Process interpolates a discrete function of n points through the m known points, which results in n normal distributions, one for each point that will build this discrete function.
-  The differential of the GP is to consider a n + m dimension multivariable normal distribution during the interpolation. This multivariable normal distribution will have a Σ covariance that is responsible not only for describing the format (sine wave, linear), but also for certain characteristics (frequency, rate of change) of the function to be predicted.
-  To be able to obtain the covariance matrix (Σ) of this multivariable normal, the GP's Kernel is established. This is a special function of two variables that respects certain mathematical restrictions (Chapter 4 RASMUSSEN and WILLIAMS). These two variables are the values of the abscissa of each point of the function to be interpolated. 
-  In other words, Kernel is a function that will relate two points that must be in the interpolated curve, based solely on the distance between them (for stationary Kernels) or in its absolute values (for non-stationary Kernels). This is the relation that will provide characteristics as frequency, spikes and curve smoothing. 
-  It is worthy highlighting that only the abscissa values will be used for this relation, meanwhile the ordinate values of the points which are already known will be use to make this function to pass across them, through conditional probability (Posterior Distribution). This method of conditional probability can be used due to its Gaussian distributions property, which settles: conditional of marginalized distributions that came from Gaussian distributions are Gaussian as well.
-  The figure 2.1 shows an easier way of viewing what was said in the previous paragraph. We can see in figure 2.1(b) that the probability of the values and of the 10 points we wish to interpolate will be calculated through conditional probability considering the fixed values of the 2 preset points . That differs from what is illustrated in figure 2.1(a), in which we did not use conditional probability for the calculation of the values.
+Thus, it was decided to apply DL algorithms after the first part of data treatment, aiming to keep a simplicity through the pipeline, establishing only the GP stage between the raw data and the classifying algorithm. The detailing of this procedure is in Chapter 5.
+
+### 1.4.3. Gaussian Process
+  The Gaussian Process is the first part of the treatment after the conversion of raw data into Python dictionaries. This step will be approached in Chapter 6. 
+  
+  Each astronomic object has an amount of points that represents the intensity of the flow of light captured in a certain day and in a certain filter. Linked to each point there is also an uncertainty of this value. Thus, we look for an interpolation that is a considerable temporal variation, passing by certain points. 
+  
+  The purpose in addressing this issue is to to fix interpolations which do not match the physical interpretation, as it can be seen in the figure 1.1. 
+   
+## 1.5. Methodology
+On account of the pre-processing code from IF-UFRJ being written in Python, the entire work was also written in the same language. Another reason for its choice was its ease to make experiments through the Jupyter hub, aside from its great amount of data science library and support for developing ML algorithms.
+
+The main libraries used in the data treatment’s scenario were Pandas [12] and Numpy [13]. When it comes to the application of the methods, the most important libraries were Scikit-learn [14], Keras [15] and PyMC3 [16].
+
+The model’s inputs will always be the dictionaries generated from the raw data after the pre-processing of the IF-UFRJ. Therefore, we could easily refine the desired properties for each one of all the three aspects of the work. 
+
+Each one of the aspects has a specific and isolated work so that we can better check its changes afterwards. In other words, to each change there was a direct comparison with the results of the original pipeline, so we were able to specifically evaluate the efficiency and improvement of that change.
+
+Since it is a classifying algorithm, the model’s output will be boolean and will classify if an astronomical object is Ia type or not. However, in raw data, classes are divided between 8 types of objects: Ia, Ib, Ibc, Ic, II, IIL, IIN and IIP. 
+
+It is also important to mention that, in order to validate the models from the project, the K-Fold method was used. Nevertheless, this work distinguished itself from the classic division which lies in the literature. Usually, 80% of data goes for training and 20% goes for the model tests. In this project only 1100 objects were used for training, among the 21316 total objects. The excuse for that is the physical limitation of the samples (only 1100 spectroscopically confirmed objects will be known).
+
+At last, changes were verified through Confusion Matrices (CM) or through score methods from the Scikit-learn library.
+
+As a final observation, aiming to perform subsequent studies outside the project’s scope, classifications concerning the 8 types of objects were made, as well as practices adopting the proportion of 80% for training and 20% for testing.
+  
+## 1.6. Description
+ In Chapter 2 the main theoretical concepts used in the application of the Gaussian Process and in Deep Learning will be explained. There also will be raised some concepts that are not the focus of the work, but they are equally significant to it. 
+
+Chapter 3 will be destined to detail specifically each step of the current pipeline, as a brief mention to the way in which the raw data are treated. 
+
+Chapters 4, 5 and 6 will be destined to the explanation of the goals mentioned in section 1.4, as well as the results of their changes, seeking to ascertain the efficiency of the application or to explain possible errors.
+
+Finally, in Chapter 7, the final conclusions of the project and some suggestions of future works will be presented alongside with the restrictions and the possible solutions found. 
+
+# Chapter 2. Theoretical foundations
+## 2.1. Gaussian Process
+The Gaussian Process is an important tool for Machine Learning algorithms for that allows it to make predictions over the data based on an a priori knowledge . Its most usual application is in function interpolations, same as this project’s case. There are also possible applications of this concept in classifications and groupings of great amounts of data. The reference book used for this project studies was RASMUSSEN and WILLIAMS [17].
+
+As for a certain amount of points there are infinite functions that can interpolate these values, the Gaussian Process performs its interpolation from the a priori values expectation and the format that it may take due to the connection between the points. Lastly, the GP will not obtain a specific value for each point of the interpolated function but a probabilistic distribution for each point, in which each one will have an average (the interpolation value) and a standard deviation (uncertainty).
+
+In this project it will not be approached further details for the learning of the method. However, in the bibliography it is possible to find more specific references and techniques [17], just as much as more practical ones [18], [19], [20].
+
+Both of the two fundamental aspects of the Gaussian Process are the main sculptors for characterizing the interpolations. They will be presented in the following subsections.
+    
+### 2.1.1. Kernel and Function of Covariance
+The Gaussian Process interpoles a discrete function of n points through the m known points, which results in n normal distributions, one for each point that will build this discrete function.
+
+The differential of the GP is to consider a n + m dimensional multivariable normal distribution during the interpolation. This multivariable normal distribution will have a Σ covariance that is responsible not only for describing the format (sine wave, linear), but also for determining characteristics (frequency, rate of change) of the function to be predicted.
+
+To be able to obtain the covariance matrix (Σ) of this multivariable normal, the GP’s Kernel is established. This is a special function of two variables that respects certain mathematical restrictions (Chapter 4 RASMUSSEN and WILLIAMS [17]). These two variables are the values of the abscissa of each point of the function to be interpolated. 
+
+In other words, Kernel is a function that will relate two points that must be in the interpolated curve, based solely on the distance between them (for stationary Kernels) or in its absolute values (for non-stationary Kernels). This is the relation that will provide characteristics as frequency, spikes and curve smoothing. 
+
+It is worth highlighting that only the abscissa values will be used for this relation, meanwhile the ordinary values of the points which are already known will be used to make this function to pass across them, through conditional probability (Posterior Distribution [20]). This method of conditional probability can be used due to its Gaussian distributions property, which settles: conditional of marginalized distributions that came from Gaussian distributions are Gaussian as well.
+
+The figure 2.1 shows an easier way of viewing what was said in the previous paragraph. We can see in figure 2.1(b) that the probability of the values and of the 10 points we wish to interpole will be calculated through conditional probability considering the fixed values of the 2 pre-set points . That differs from what is illustrated in figure 2.1(a), in which we did not use conditional probability for the calculation of the values.
+
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/d09a44e7-f5a6-4941-bb31-91c383c49c8e)
+
 (a) Illustration of the Σ matrix to 10 points.
+
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/c298484a-d10e-425c-99b2-07fc1265bb1f)
+
 (b) Illustration of the Σ matrix to 12 points. 2 of them are given points.
-Figure 2.1: Illustration of the Σ matrix, which has 10 and 12 points. Images from JOCHEN GÖRTLER.
-    2.1.2. Average function 
- The average function of a Gaussian Process is the one responsible for offering the initial prediction of the point which will be interpolated. It is the value that a certain point would have only if this one alone was to be defined.
-  However, it only makes sense to talk about the average function in case it is associated with the Function of Covariance. Ordinarily, the Average Function is established as a normal distribution with an average 0 and 1 as standard deviation. 
-  We can use this standard distribution as an value a priori, after all this point's final value will be obtained after having a number of samples large enough to optimize the distribution. They are defined by samples in which we use the Markov Chain Monte Carlo, increasingly getting closer to the ideal value. At last, the point's value will be the average of this distribution a posteriori. The figure 2.2(a) illustrates this scenario.
-  Nonetheless, the appropriate use of the Average Function is crucial, for if it has its domains limited it may prevent the function from taking some values, as it is illustrated in figure 2.2(b).
+
+Figure 2.1: Illustration of the Σ matrix, which has 10 and 12 points. Images from JOCHEN GÖRTLER [20].
+
+   
+### 2.1.2. Average function 
+ The average function of a Gaussian Process is the one responsible for offering the initial prediction of the point which will be interpolated. It is the value that a certain point would have only if this one alone was to be defined.
+  
+  However, it only makes sense to talk about the average function in case it is associated with the Function of Covariance. Ordinarily, the Average Function is established as a normal distribution with an average 0 and 1 as standard deviation. 
+  
+  We can use this standard distribution as an value a priori, after all this point’s final value will be obtained after having a number of samples large enough to optimize the distribution. They are defined by samples in which we use the Markov Chain Monte Carlo [21], increasingly getting closer to the ideal value. At last, the point’s value will be the average of this distribution a posteriori. The figure 2.2(a) illustrates this scenario.
+  
+  Nonetheless, the appropriate use of the Average Function is crucial, for if it has its domains limited it may prevent the function from taking some values, as it is illustrated in figure 2.2(b).
+
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/8e63d4e1-6ff7-4109-8239-f037c4b477da)
+
 (a) Example of a Gaussian priori which starts to assume the real value over the samples (in the example's case that is 4).
+
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/5eca2c51-4510-40f0-b30f-b54cfa4594dc)
+
 (b) Example of a delimited priori that, even over the samples, will never assume its real value (in the example's case that is 4 and the delimitation is between -2 and 2).
-Figure 2.2: Illustration of the value of the Average Function during the samples via Markov Monte Carlo Chain. Images from BAILEY.
-2.2. Convolutional neural network
-  Convolutional neural network (CNN) are a type of neural network that is applied in Deep Learning and it is mostly used for image analysis. The main purpose of this project is to use Machine Learning algorithms. Thus, in order to avoid any misconceptions regarding the nomenclatures, it is important to keep in mind that DL refers to a technique inside  ML's large field. 
-  A basic DL's architecture has 3 parts, as it can be seen in the figure 2.3:
-Input Layer: the first layer; the one responsible for receiving a data's sample and propagating it to the internal layers.
-Hidden Layers: the group of internal layers; we can find in it the knots which receive the data from the input layer and connect to the following layers through non-linear Activation functions.
-Output layer: the last layer; the one responsible for the final answer. In a classifying network it has numerical output values that refers to the classes. In this project's case those are the numbers zero and one, matching the supernovas classified as Ia or not Ia.
+Figure 2.2: Illustration of the value of the Average Function during the samples via Markov Monte Carlo Chain. Images from BAILEY [19].
 
- Each layer is formed by different types of neurons.These are the mathematical functions with specific parameters which will be trained so we can classify the data. 
-Figure 2.3: Basic DL's Architecture. Images from IVAN.
-CNN is a class of neural network frequently applied to image's analysis. In this project, the images are .png files created through Gaussian interpolation, which will be presented in matrix of values, as it can be seen in the current blue matrix in figure 2.4.
-  Convolutional neural network are usually referred about totally connected network. In other words, each neuron in a layer is connected to every neuron in the next layer. This high connectivity makes the algorithm demand the minimal pre-processing possible when compared to other image's classifying methods so that, in case enough samples are given, the network "learns" the filters that in a traditional algorithm would have to be manually implemented. In CNN there are also used multilayers perceptrons. The function of each neuron can be understood as the green matrix's illustration in figure 2.4 and each parameter being the number that multiplies the value of the blue matrix.
-Figure 2.4: The blue matrix represents input variables; the red one represents results of the convolutional operation; the green one has the parameters to multiply values of the blue matrix, "sliding" through them. Images from DERTAT.
-  CNNs can have layers of pooling conjugation, which are responsible for partitioning the rectangles of the entry image in a shorter set of pixels for each sub region. Among many non-linear pooling functions, the most used one is max pooling.
-Figure 2.5: Example of Max pooling. The highest value in a "rectangle" is selected and disseminated to another layer, which has its dimension reduced. Images from DERTAT.
-  Inside the internal layers it is impossible to precisely affirm which is the "physical sense" of each one of them. Some may have only the mathematical meaning meanwhile others can be responsible for identifying shapes. For example, when identifying faces, some layers can be responsible for detecting eyes, feet, curves, etc.; when identifying animals, some may detect tails, snouts and paws.
-  It is important to state that there is a small randomness factor inside the training processes involving the internal parameters of each neuron optimization. In order to be possible to compare the results, making sure that they won't have any deviation caused by the randomness, random seeds were used, Python functions responsible for conserving the pseudorandomness.
-2.3. Other concepts
-  In the ML's vocabulary the expressions data frame and feature are used, respectively, to refer to the amount of samples for training and testing the model; and its characteristics that will be analyzed for the classification. 
-   2.3.1. Principal components analysis
-The principal components analysis (PCA) uses orthogonalizations of vectors so it can reduce dimensions. 
- When it comes to ML, this dimensions reduction is applied to shorten the group of features of a dataframe in which the samples have a great number of characteristics so that the machine learning method will be less expensive and equally efficient. 
-  By linear algebra techniques the method creates new virtual dimensions formed by linear combinations that already exist so that these new dimensions can better distinguish the amount of data in the dataframe. 
-  At last, it is also possible to play PCA through a perspective of filters, where a certain signal is decomposed and, while selecting certain frequencies, its potency is conserved. From this perspective, the frequencies are features and the potency is the capacity that new features have for representing the dataframe. 
-    2.3.2. Wavelet Transform
-  Wavelet Transform or Wavelet are functions which are capable of describing or representing other functions in different scales of frequency and time. 
-  They are normally used in the domain of signals processing, being useful to eliminate noises and to compress data, for example.
-  In this project, the Wavelet Transform are used to process the interpolated graphics from GP, what results in values that could possibly have interpolation's errors eliminated.
-    2.3.3. K-Fold Cross Validation
-Cross validation is a family of statistic methods used to determinate how a model can be generalized regardless of the training and testing set. In short, it is mostly used to analyze if a model is strong enough as well as to analyze the amount of false positives and negatives. K-Fold Cross Validation is one of these methods. 
-  Its procedure consists in dividing the data in K parts, usually k-1 are used for training the model while 1 is used for testing. However, in this project, due to physical limitations, only a part of it will be used for training, while the other eighteen ones will be used for testing and validating the method. 
-  Alongside with the cross validation, 3 techniques will be used for evaluating the results of each fold of this project:
-Confusion Matrix.
-ROC Curves and AUC (Chap. 5.7 MURPHY).
-Mean and Average Precision (Chap. 9.7.4 MURPHY).
+## 2.2. Convolutional neural network
+  Convolutional neural networks (CNN) are a type of neural network that is applied in Deep Learning and it is mostly used for image analysis. The main purpose of this project is to use Machine Learning algorithms. Thus, in order to avoid any misconceptions regarding the nomenclatures, it is important to keep in mind that DL refers to a technique inside ML’s large field. 
+  
+  A basic DL’s architecture has 3 parts, as it can be seen in the figure 2.3:
+  
+- Input Layer: the first layer; the one responsible for receiving a data's sample and propagating it to the internal layers.
+- Hidden Layers: the group of internal layers; we can find in it the knots which receive the data from the input layer and connect to the following layers through non-linear Activation functions.
+- Output layer: the last layer; the one responsible for the final answer. In a classifying network it has numerical output values that refers to the classes. In this project's case those are the numbers zero and one, matching the supernovas classified as Ia or not Ia.
 
-Confusion Matrix
- Confusion Matrix is for representing the hits and misses of the model. The figure 2.6 illustrates the concept in a general way. The True Value is that one confirmed by analysis and the Predicted Value is that one predicted by the test. 
-Figure 2.6: General illustration of a confusion matrix. Image from MOHAJON)
- Through the concept of True Positives (TP), False Negatives (FN) and True Negatives (TN), other concepts are defined below:
-(2.1)
-(2.2)
-(2.3)
-(2.4)
-ROC Curve sand AUC
-To be able to understand these concepts it is important to establish what is a decision threshold inside of a classification model. It establishes a "partition" between what will be classified as a type and what will be classified as another one.
-  When this threshold is altered, the TN, TP, FN and FP values are also altered, and, consequently, the Sensivity and Specifity values. Ilustration in figure 2.7.
-Figure 2.7: Ilustration of the threshold "displacement" and the modification of the graphic Sensivity x Specificity. Image from MOHAJON.
-  It is remarkable that, from certain threshold's values, there will not be any more FN for a small value and for a high value there will not be any FP, which makes the expressions of specificity and sensibility take the value of 1. 
-  Lastly, the ROC Curve (Receiver Operating Characteristic curve) is the blue curve ilustrated in figure 2.7(b) and the area under this curve (Area Under Curve) is called AUC.
-  The interpretation of these two indicators for the method's efficiency consists of ROC being the most curved as possible so the AUC's value reaches closely to 1 as far as possible. That means the maximization of TN and TP (rights) and the reduction of FN and FP (errors).
-Mean Average Precision 
-  Also known as Average Precision, this is defined as the area under the curve of the Precision x Sensibility graphic over the classification of n samples (incluiding both hits and misses).
-Figure 2.8: Ilustration of the Precision x Sensibility graphic to n = 7 classified samples. Image from HUI.
-(2.5)
+Each layer is formed by different types of neurons.These are the mathematical functions with specific parameters which will be trained so we can classify the data.
 
-CHAPTER 3 
-Current Model
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/935aec52-cb3a-43a9-8cbc-d6e4d429e724)
+
+Figure 2.3: Basic DL’s Architecture. Images from IVAN [22].
+
+CNN is a class of neural networks frequently applied to image’s analysis. In this project, the images are .png files created through Gaussian interpolation, which will be presented in matrix of values, as it can be seen in the current blue matrix in figure 2.4.
+
+Convolutional neural networks are usually referred to as totally connected networks. In other words, each neuron in a layer is connected to every neuron in the next layer. This high connectivity makes the algorithm demand the minimal preprocessing possible when compared to other image’s classifying methods so that, in case enough samples are given, the network “learns” the filters that in a traditional algorithm would have to be manually implemented [23]. In CNN there are also used multilayer perceptrons [24]. The function of each neuron can be understood as the green matrix’s illustration in figure 2.4 and each parameter being the number that multiplies the value of the blue matrix.
+
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/8436738d-538e-4c1b-a827-674d6ad41244)
+
+Figure 2.4: The blue matrix represents input variables; the red one represents results of the convolutional operation; the green one has the parameters to multiply values of the blue matrix, “sliding” through them. Images from DERTAT [25].
+
+CNNs can have layers of pooling conjugation, which are responsible for partitioning the rectangles of the entry image in a shorter set of pixels for each sub region. Among many non-linear pooling functions, the most used one is max pooling.
+
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/34db40a5-9761-4376-8ced-1b7a4cec14c7)
+
+Figure 2.5: Example of Max pooling. The highest value in a “rectangle” is selected and disseminated to another layer, which has its dimension reduced. Images from DERTAT [25].
+
+Inside the internal layers it is impossible to precisely affirm which is the “physical sense” of each one of them. Some may have only the mathematical meaning meanwhile others can be responsible for identifying shapes. For example, when identifying faces, some layers can be responsible for detecting eyes, feet, curves, etc.; when identifying animals, some may detect tails, snouts and paws.
+
+It is important to state that there is a small randomness factor inside the training processes involving the internal parameters of each neuron optimization. In order to be able to compare the results, making sure that they won’t have any deviation caused by the randomness, random seeds were used, Python functions responsibles for conserving the pseudorandomness [26].
+
+
+## 2.3. Other concepts
+  In the ML’s vocabulary the expressions dataframe and feature are used, respectively, to refer to the amount of samples for training and testing the model; and its characteristics that will be analyzed for the classification.
+
+### 2.3.1. Principal components analysis
+The principal components analysis (PCA) uses orthogonalization of vectors so it can reduce dimensions. 
+
+When it comes to ML, this dimension reduction is applied to shorten the group of features of a dataframe in which the samples have a great number of characteristics so that the machine learning method will be less expensive and equally efficient. 
+
+By linear algebra techniques the method creates new virtual dimensions formed by linear combinations that already exist so that these new dimensions can better distinguish the amount of data in the dataframe. 
+
+At last, it is also possible to interpret PCA through a perspective of filters, where a certain signal is decomposed and, while selecting certain frequencies, its potency is conserved. From this perspective, the frequencies are features and the potency is the capacity that new features have for representing the data frame. 
+
+### 2.3.2. Wavelet Transform
+  Wavelet Transform [28] or Wavelet are functions which are capable of describing or representing other functions in different scales of frequency and time. 
+  
+  They are normally used in the domain of signals processing, being useful to eliminate noises and to compress data, for example.
+  
+  In this project, the Wavelet Transform are used to process the interpolated graphics from GP, which results in values that could possibly have interpolation’s errors eliminated.
+### 2.3.3. K-Fold Cross Validation
+Cross validation is a family of statistical methods used to determine how a model can be generalized regardless of the training and testing set. In short, it is mostly used to analyze if a model is strong enough as well as to analyze the amount of false positives and negatives. K-Fold Cross Validation is one of these methods. 
+
+Its procedure consists in dividing the data in K parts, usually k-1 are used for training the model while 1 is used for testing. However, in this project, due to physical limitations, only a part of it will be used for training, while the other eighteen ones will be used for testing and validating the method. 
+
+Alongside with the cross validation, 3 techniques will be used for evaluating the results of each fold of this project:
+- Confusion Matrix.
+- ROC Curves and AUC (Chap. 5.7 MURPHY).
+- Mean and Average Precision (Chap. 9.7.4 MURPHY).
+
+#### Confusion Matrix
+ Confusion Matrix is for representing the hits and misses of the model. The figure 2.6 illustrates the concept in a general way. The True Value is that one confirmed by analysis and the Predicted Value is that one predicted by the test. 
+
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/2a81d63b-a325-42e5-91df-34a077c54ea5)
+
+Figure 2.6: General illustration of a confusion matrix. Image from VAZ [1]
+ Through the concept of True Positives (TP), False Negatives (FN) and True Negatives (TN), other concepts are defined below:
+
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/1c479fab-f9ec-43ca-8a09-9056142dc90e)
+
+#### ROC Curve sand AUC
+To be able to understand these concepts it is important to establish what is a decision threshold inside of a classification model. It establishes a “partition” between what will be classified as a type and what will be classified as another one.
+
+When this threshold is altered, the TN, TP, FN and FP values are also altered, and, consequently, the Sensitivity and Specificity values. Illustration in figure 2.7.
+
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/c756ab89-5894-42f9-9a0f-8447fe99dba3)
+
+Figure 2.7: Illustration of the threshold “displacement” and the modification of the graphic Sensitivity and Specificity. Image from VAZ [1].
+
+It is remarkable that, from a certain threshold’s values, there will not be any more FN for a small value and for a high value there will not be any FP, which makes the expressions of specificity and sensibility take the value of 1. 
+  Lastly, the ROC Curve (Receiver Operating Characteristic curve) is the blue curve illustrated in figure 2.7(b) and the area under this curve (Area Under Curve) is called AUC.
+  The interpretation of these two indicators for the method’s efficiency consists of ROC being the most curved as possible so the AUC’s value reaches close to 1 as far as possible. That means the maximization of TN and TP (rights) and the reduction of FN and FP (errors).
+
+#### Mean Average Precision 
+  Also known as Average Precision, this is defined as the area under the curve of the Precision x Sensibility graphic over the classification of n samples (incluiding both hits and misses).
+
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/31743c07-1dd2-4e45-bece-2fa2e150d5b8)
+
+Figure 2.8: Illustration of the Precision x Sensibility graphic to n = 7 classified samples. Image from HUI [2].
+
+
+# Chapter 3. Current Model
   In this chapter will be detailed the current model used for the cosmological studies from IF-UFRJ.
 3.1. Raw data processing
   The raw data arrive at the pre-processing in the way described in figure 3.1.
