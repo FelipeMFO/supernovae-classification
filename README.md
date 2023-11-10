@@ -249,7 +249,7 @@ Alongside with the cross validation, 3 techniques will be used for evaluating th
 #### Confusion Matrix
  Confusion Matrix is for representing the hits and misses of the model. The figure 2.6 illustrates the concept in a general way. The True Value is that one confirmed by analysis and the Predicted Value is that one predicted by the test. 
 
-![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/2a81d63b-a325-42e5-91df-34a077c54ea5)
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/a5f8e53b-80e5-41ef-bf03-35f61ade24f9)
 
 Figure 2.6: General illustration of a confusion matrix. Image from VAZ [1]
  Through the concept of True Positives (TP), False Negatives (FN) and True Negatives (TN), other concepts are defined below:
@@ -276,26 +276,43 @@ It is remarkable that, from a certain threshold’s values, there will not be an
 
 Figure 2.8: Illustration of the Precision x Sensibility graphic to n = 7 classified samples. Image from HUI [2].
 
+Mathematically, Mean Average Precision is defined by
+
+- <img src="https://latex.codecogs.com/gif.latex?O_t=\text { Onset event at time bin } t " /> 
+- <img src="[https://latex.codecogs.com/gif.latex?O_t=\text { Onset event at time bin } t ](https://latex.codecogs.com/svg.image?AP=%5Cint_%7B0%7D%5E%7B1%7Dp(r)dr)"/> 
+
+![equation](https://latex.codecogs.com/svg.image?AP=%5Cint_%7B0%7D%5E%7B1%7Dp(r)dr)
+(2.5)
+
+Where r is Sensitivity and p(r) is Accuracy.
 
 # Chapter 3. Current Model
   In this chapter will be detailed the current model used for the cosmological studies from IF-UFRJ.
-3.1. Raw data processing
-  The raw data arrive at the pre-processing in the way described in figure 3.1.
-  From the pre-processing files all these informations will be obtained in the form of dictionary. Nevertheless, only the following ones will be used in this project.
-SN TYPE: informes the type of supernova.
-TERSE LIGHT CURVE OUTPUT: informs the observed aspects. This will be the dataframe.
 
- - MJD: the moment when the information was obtained. The measure is described in days of the Modified Julian Date.
- - FLT: the filter in which the information was obtained. Afterall, the objects are observed in 4 bands of the light wavelength. In the figure 3.2 we can fully observe an example of an observation ad how it is decomposed in 4 bands.
- - FLUXCAL: the value of light flow obtained in that observation.
- - FLUXCALERR: the value of the light flow's error.
-  In relation to MJD, it is relevant to explain that it is a method used in Astronomy for sequencially counting the days, starting in an arbitrary day in the past.
-Figure 3.1: File .txt to be read by the pre-processing files.
-  In this project these dates will be normalized having zero as the smallest MJD value so that the abscissa axis will always start with zero. 
-  Regarding the FLT, each astronomic object is seen through 4 different filters of light for each one of them. 
-   From the machine learning percpective, each object will have 4 dataframes - one for each filter - and, afterwards, these properties will be converted into features of each object. 
-  The figure 3.3 ilustrates 4 light curves (g, r, i, e, z) for the same object. The Y curve is not used in this project's data. 
-3.2. Current pipeline
+## 3.1. Raw data processing
+  The raw data arrive at the pre-processing in the way described in figure 3.1.
+  From the pre-processing files all this information will be obtained in the form of a dictionary. Nevertheless, only the following ones will be used in this project.
+- SN TYPE: informs the type of supernova.
+- TERSE LIGHT CURVE OUTPUT: informs the observed aspects. This will be the dataframe.
+- MJD: the moment when the information was obtained. The measure is described in days of the Modified Julian Date [29].
+-  FLT: the filter in which the information was obtained. Afterall, the objects are observed in 4 bands of the light wavelength. In the figure 3.2 we can fully observe an example of an observation and how it is decomposed in 4 bands.
+- FLUXCAL: the value of light flow obtained in that observation.
+- FLUXCALERR: the value of the light flow’s error.
+
+  In relation to MJD, it is relevant to explain that it is a method used in Astronomy for sequentially counting the days, starting in an arbitrary day in the past.
+  
+  ![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/4a3668b9-f6d6-4b9c-b167-a553dff03cfc)
+
+Figure 3.1: File .txt to be read by the pre-processing files.
+  In this project these dates will be normalized having zero as the smallest MJD value so that the abscissa axis will always start with zero. 
+  
+  Regarding the FLT, each astronomical object is seen through 4 different filters of light for each one of them. 
+  
+  From the machine learning percpective, each object will have 4 dataframes - one for each filter - and, afterwards, these properties will be converted into features of each object. 
+  
+  The figure 3.3 illustrates 4 light curves (g, r, i, e, z) for the same object. The Y curve is not used in this project’s data. 
+
+## 3.2. Current pipeline
   Laying out the data obtained from the pre-processing which was explained in the previous section, the pipeline, initially, will separate the data from the Terse Light Curve Output by the filters and will create 4 numpy arrays, each one containing n x 3 dimensions (MJD, FLUXCAL and FLUXCALERR), with n being the number of samples of each object (figure 3.4).
 Figure 3.2: Full observation of an astronomic object. It does not refer to any specif example from the data frame.
   Then this 4 numpy arrays will be grouped into the form of a dictionary and they will be the entry of the Gaussian Process, whose interpolate function is a curve that passes through each filter's points 3.3.
