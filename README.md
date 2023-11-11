@@ -278,9 +278,6 @@ Figure 2.8: Illustration of the Precision x Sensibility graphic to n = 7 classif
 
 Mathematically, Mean Average Precision is defined by
 
-- <img src="https://latex.codecogs.com/gif.latex?O_t=\text { Onset event at time bin } t " /> 
-- <img src="[https://latex.codecogs.com/gif.latex?O_t=\text { Onset event at time bin } t ](https://latex.codecogs.com/svg.image?AP=%5Cint_%7B0%7D%5E%7B1%7Dp(r)dr)"/> 
-
 ![equation](https://latex.codecogs.com/svg.image?AP=%5Cint_%7B0%7D%5E%7B1%7Dp(r)dr)
 (2.5)
 
@@ -304,183 +301,274 @@ Where r is Sensitivity and p(r) is Accuracy.
   ![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/4a3668b9-f6d6-4b9c-b167-a553dff03cfc)
 
 Figure 3.1: File .txt to be read by the pre-processing files.
+  
   In this project these dates will be normalized having zero as the smallest MJD value so that the abscissa axis will always start with zero. 
   
   Regarding the FLT, each astronomical object is seen through 4 different filters of light for each one of them. 
   
-  From the machine learning percpective, each object will have 4 dataframes - one for each filter - and, afterwards, these properties will be converted into features of each object. 
+  From the machine learning perspective, each object will have 4 dataframes - one for each filter - and, afterwards, these properties will be converted into features of each object. 
   
   The figure 3.3 illustrates 4 light curves (g, r, i, e, z) for the same object. The Y curve is not used in this project’s data. 
 
 ## 3.2. Current pipeline
-  Laying out the data obtained from the pre-processing which was explained in the previous section, the pipeline, initially, will separate the data from the Terse Light Curve Output by the filters and will create 4 numpy arrays, each one containing n x 3 dimensions (MJD, FLUXCAL and FLUXCALERR), with n being the number of samples of each object (figure 3.4).
-Figure 3.2: Full observation of an astronomic object. It does not refer to any specif example from the data frame.
-  Then this 4 numpy arrays will be grouped into the form of a dictionary and they will be the entry of the Gaussian Process, whose interpolate function is a curve that passes through each filter's points 3.3.
-  The output of the Gaussian Process will be the interpolated graphic in the form of numpy array 100 x 3 containing 100 abscissa points, 100 ordenate points and 100 points of the ordenate's error.
-  This output will be the entry of the Wavelet Process, which will return 400 values for each entry.
-  Altogether, this procedure will be repeated four times for each object, one for each filter. Thus, as the output of the Wavelet Process, there will be 1600 coeficients for each astronomic object. 
-  Henceforth, it will be created a reduction of variables through the principal component analysis resulting in each object with 20 features.
-   After this step, the dataframe will be formed by 21316 samples, with 20 features each. 
-  In paralell, we use the SN TYPE from the dictionary to store the labels of each astronomic object in a list form. 
-  Finally, there will be established parameters that caracterize the classification model based on Random Forest. In this point we use the component sklearn.pipeline from the library scikit-learn.
- (a)
-(b) 
+  Laying out the data obtained from the preprocessing which was explained in the previous section, the pipeline, initially, will separate the data from the Terse Light Curve Output by the filters and will create 4 numpy arrays, each one containing n x 3 dimensions (MJD, FLUXCAL and FLUXCALERR), with n being the number of samples of each object (figure 3.4).
+
+Figure 3.2: Full observation of an astronomical object. It does not refer to any specific example from the dataframe [30].
+
+  Then these 4 numpy arrays will be grouped into the form of a dictionary and they will be the entry of the Gaussian Process, whose interpolate function is a curve that passes through each filter’s points 3.3.
+  
+  The output of the Gaussian Process will be the interpolated graphic in the form of numpy array 100 x 3 containing 100 abscissa points, 100 ordinate points and 100 points of the ordinate’s error.
+  
+  This output will be the entry of the Wavelet Process, which will return 400 values for each entry.
+  
+  Altogether, this procedure will be repeated four times for each object, one for each filter. Thus, as the output of the Wavelet Process, there will be 1600 coefficients for each astronomical object. 
+  
+  Henceforth, it will be created a reduction of variables through the principal component analysis resulting in each object with 20 features.
+  
+  After this step, the dataframe will be formed by 21316 samples, with 20 features each. 
+  
+  In parallel, we use the SN TYPE from the dictionary to store the labels of each astronomic object in a list form. 
+  
+  Finally, there will be established parameters that characterize the classification model based on Random Forest. At this point we use the component sklearn.pipeline from the library scikit-learn.
+ (a)
+(b) 
 ( c)
 (d)
-Figure 3.3: Example of 4 light curves from a same object, one for each filter. Graphic Flow x Time (days). 
-Figure 3.4: Graphic ilustration of the pipeline. 
-Having the dataframe, the list containing each object's classification (the labels) and the classification model in hands, we make the division through K-Fold Cross Validation Method, dividing the objects into 19 partitions and using one of them for training and the other ones for testing. The number 19 was chosen because it meets the specifications for training with approximately 1100 objects. 21316 (objects) ÷19 (folds)≈ 1122 (amount of objects destined for training).
-  At last, each model of the 19 existing folds is evaluated through 2 ways of score obtaining, the AUC method (area under the ROC curve) and the average precision method 2.3. The confusion matrix of each one of the 19 models can also be analyzed to ilustrate its rights, false positives and false negatives 3.5.
-(a) Example of Confusion Matrix, absolute values. 
-(b) Confusion Matrix, normalized values. 
-Figure 3.5: Confusion Matrix of the final model from the original pipeline. 
 
-CHAPTER 4
-Outliers Treating 
- The first way we took to search improvements in this project was through Outliers Treating. Every type of raw data is subject to samples with absurd values or unreal uncertainties, be them caused by measurement errors or any other factors.
-4.1. Strategies used
-The first treatment made was the removal of negative points. Since the values to be interpolated are light flows in function of time, it makes no physical sense in having negative points. However, the reason for them to exist in the records are the sensor's haziness in which, due to thermal agitation, is possible that an electron spountaneously passes from one receptor to another, resulting in a negative counting of electrons in the original receptor, provoking the negative value. 
-  The second strategy was to analyze the uncertainties of the samples of each point that concerned to the astronomic object's 4 filters. Followingly, we calculated the average and the standard deviation of these groups of uncertainties and, lastly, there was the exclusion of those points whose error was higher than the average plus a standard deviation of the uncertainties distribution.
-  Another attempt was the application of thresholds based on the values of the uncertanties of each point regarding the peak's curve. In case the value of the uncertainty was higher than the curve's peak multiplied by a threshold (a value between 0 and 1), this point would be excluded.
- The code which refers to the implementation of this Outlier Treatment as well as every code of the project are available on GitHub A.
- 4.2. Results and comparison
-There will be presented 3 different types of scores for each one of the 19 models generated by K-Fold Cross Validation: AUC Curve (AUC), Average Precision (AP) and the template of the scikit  library. The following strategies were applied:
-Removal of negative values and of those with a uncertainty that is higher than the average, plus standard deviation. Presented in chart 4.1 as StdDev.
-Removal of negative values and of those with an uncertainty that is higher than 70% of the peak's value. Presented in chart 4.1 as Threshold.
+Figure 3.3: Example of 4 light curves from the same object, one for each filter. Graphic Flow x Time (days). 
 
-Chart 4.1: Results of Outliers Treatment. "Standard" refers to the score default of scikit, and the columns that do not show neither StdDev neither Threshold present the scores of the original pipeline.
-The final conclusion for Outliers treatment is that it does not influence significantly in the scores rising. The possible explanation for that can be found in the robustness that Wavelet Transform offer to the method. 
-  Another explanation is that the fraction of outliers is pretty low. In StdDev method only 27 outliers were removed while in Threshold that number was 85, resulting in a clean percentage of 0,13% and 0,4% of every data, respectively.
+Figure 3.4: Graphic illustration of the pipeline. 
 
-CHAPTER 5
-Convolutional Neural Network
-5.1. Images and parameter generator
-The first step of this approach consists of generating graphics from the Gaussian Interpolation. In order to be possible to compare this method's results along with the initial pipeline, the interpolation created to generate graphics given to the Deep Learning model was the same interpolation used in the original pipeline.
-  These graphics will be images in gray scales in .png extension whose dimensions are: 64 x 40 pixels. When it generated these images, they were created with 5 pixels borders in the y dimension and 9 pixels in the x dimension . In the end, they were eliminated, which resulted in a dimensional format of 46 x 30. 
-  These sizes were chosen based on classic and well-known examples from the literature that have dimensions with very approximated values, such as MNIST and Fashion MNIST.
-5.2. Pipeline
-  After the transformation of the image files into numpy array matrices, it was built a structure of data for each object as a group formed by its 4 figures, obtaining the final format of (21316, 4, 30, 46), in which there were:
-Number of objects: 21316
-Number of images or matrices (referring to each filter): 4
-Number of pixels per column (or number of lines): 30
-Number of pixels per line (or number of columns): 46
+Having the dataframe, the list containing each object’s classification (the labels) and the classification model in hand, we make the division through the K-Fold Cross Validation Method, dividing the objects into 19 partitions and using one of them for training and the other ones for testing. The number 19 was chosen because it meets the specifications for training with approximately 1100 objects. 21316 (objects) ÷19 (folds)≈ 1122 (amount of objects destined for training).
+
+  At last, each model of the 19 existing folds is evaluated through 2 ways of score obtaining, the AUC method (area under the ROC curve) and the average precision method 2.3. The confusion matrix of each one of the 19 models can also be analyzed to illustrate its rights, false positives and false negatives 3.5.
+
+(a) Example of Confusion Matrix, absolute values. 
+
+(b) Confusion Matrix, normalized values. 
+
+Figure 3.5: Confusion Matrix of the final model from the original pipeline. 
+
+# CHAPTER 4. Outliers Treating 
+ The first way we took to search improvements in this project was through Outliers Treating. Every type of raw data is subject to samples with absurd values or unreal uncertainties, be them caused by measurement errors or any other factors [31].
+
+## 4.1. Strategies used
+The first treatment made was the removal of negative points. Since the values to be interpolated are light flows in function of time, it makes no physical sense in having negative points. However, the reason for them to exist in the records are the sensor’s haziness in which, due to thermal agitation, is possible that an electron spontaneously passes from one receptor to another, resulting in a negative counting of electrons in the original receptor, provoking the negative value. 
+  The second strategy was to analyze the uncertainties of the samples of each point that concerned the astronomic object’s 4 filters. Followingly, we calculated the average and the standard deviation of these groups of uncertainties and, lastly, there was the exclusion of those points whose error was higher than the average plus a standard deviation of the uncertainties distribution.
+  Another attempt was the application of thresholds based on the values of the uncertainties of each point regarding the peak’s curve. In case the value of the uncertainty was higher than the curve’s peak multiplied by a threshold (a value between 0 and 1), this point would be excluded.
+ The code which refers to the implementation of this Outlier Treatment as well as every code of the project are available on the notebooks.
+ 
+## 4.2. Results and comparison
+
+There will be presented 3 different types of scores for each one of the 19 models generated by K-Fold Cross Validation: AUC Curve (AUC), Average Precision (AP) and the template of the scikit library. The following strategies were applied:
+
+- Removal of negative values and of those with a uncertainty that is higher than the average, plus standard deviation. Presented in chart 4.1 as StdDev.
+- Removal of negative values and of those with an uncertainty that is higher than 70% of the peak’s value. Presented in chart 4.1 as Threshold.
+
+Chart 4.1: Results of Outliers Treatment. “Standard” refers to the score default of scikit, and the columns that do not show neither StdDev nor Threshold present the scores of the original pipeline.
+
+The final conclusion for Outliers treatment is that it does not influence significantly in the scores rising. The possible explanation for that can be found in the robustness that Wavelet Transform offers to the method. 
+
+  Another explanation is that the fraction of outliers is pretty low. In the StdDev method only 27 outliers were removed while in Threshold that number was 85, resulting in a clean percentage of 0,13% and 0,4% of every data, respectively.
+
+# CHAPTER 5. Convolutional Neural Network
+
+## 5.1. Images and parameter generator
+
+The first step of this approach consists of generating graphics from the Gaussian Interpolation. In order to be able to compare this method’s results along with the initial pipeline, the interpolation created to generate graphics given to the Deep Learning model was the same interpolation used in the original pipeline.
+
+These graphics will be images in gray scales in .png extension whose dimensions are: 64 x 40 pixels. When it generated these images, they were created with 5 pixels borders in the y dimension and 9 pixels in the x dimension . In the end, they were eliminated, which resulted in a dimensional format of 46 x 30. 
+
+These sizes were chosen based on classic and well-known examples from the literature that have dimensions with very approximated values, such as MNIST [32] and Fashion MNIST [33].
+
+## 5.2. Pipeline
+
+After the transformation of the image files into numpy array matrices, it was built a structure of data for each object as a group formed by its 4 figures, obtaining the final format of (21316, 4, 30, 46), in which there were:
+- Number of objects: 21316
+- Number of images or matrices (referring to each filter): 4
+- Number of pixels per column (or number of lines): 30
+- Number of pixels per line (or number of columns): 46
 
 Among the many possible types of internal layers of Deep Learning, we chose Convolucional 2D and Max Pooling 2D (section 2.2).
-  The chosen Architecture was also based on classic examples of problems in the identification of images, in particular Fashion MNIST.
-  Based on these examples, some layers were added and modified in a way so it could search and empirically obtain a better result. The final architecture can be found in figure 5.1. 
-Figure 5.1: Archictecture of the Deep Learning method that was used.
-The last value of each layer's Shape is the amount of neurons they have, while other values are the image's number of lines and columns. The value '4', which was expected due to the 4 filters, does not quite explicitly appear in the model's architecture structure. However, that is a normal behaviour since in this case it works as a image in "RGBA", where it would have one matrix for red, blue, green and transparency. 
-  Followingly, it was defined a random seed in order to fixate any type of randomness intrinsic to the model. Thus, the same one was trained in 2, 3, 5 and 10 periods (this number was also based on the mentioned examples), obtaining a satisfactory result to the value of 10 periods, for its accuracy was high without making the algorithm dependent. 
-5.3. Results and comparison 
-  The results in shape of Confusion matrix of the best model are described below. 5.2.
+  
+  The chosen Architecture was also based on classic examples of problems in the identification of images, in particular Fashion MNIST.
+  
+  Based on these examples, some layers were added and modified in a way so it could search and empirically obtain a better result. The final architecture can be found in figure 5.1. 
+
+Figure 5.1: Architecture of the Deep Learning method that was used.
+
+The last value of each layer’s Shape is the amount of neurons they have, while other values are the image’s number of lines and columns. The value ‘4’, which was expected due to the 4 filters, does not quite explicitly appear in the model’s architecture structure. However, that is a normal behavior since in this case it works as an image in “RGBA”, where it would have one matrix for red, blue, green and transparency. 
+
+  Followingly, it was defined as a random seed in order to fixate any type of randomness intrinsic to the model. Thus, the same one was trained in 2, 3, 5 and 10 periods (this number was also based on the mentioned examples), obtaining a satisfactory result to the value of 10 periods, for its accuracy was high without making the algorithm dependent. 
+  
+## 5.3. Results and comparison 
+  The results in the shape of the Confusion matrix of the best model are described below. 5.2.
+
 (a) Normalizes values.
-(b) Absulute values.
+
+(b) Absolute values.
+
 Figure 5.2: Confusion matrices of the best Deep Learning model.
- While comparing the results from figure 5.2 with those from figure 3.5, we noticed that Deep Learning revealed a worsening in its performance. 
-  There are two reasons that can explain these results. The first one of them is the fact that the trained images were not subjected to what we call data augmentation, a technique which seeks to increase that amount of trained data and vary its forms of identification, focusing on rotating, shifting, reducing and enlarging the figures. As the images from the project are graphic, there would be a loss of sense if they were rotated or displaced. 
-  The second reason is the physical limitation that makes us use only 1100 astronomic objects for training. Usually, Deep Learning algorithms turn up to be more advantageous than ML algorithms due to the big set of data which makes them have a better performance. 
-  Lastly, experiments were also made involving a data distribution of 80% for training and 20% for testing. The analysis of these Confusion matrices (figures 5.3 and 5.4) confirm that, to this problem, the application of Deep Learning, analyzing the graphic's format, does not appear eficient, reiterating the justification of the absence of data augmentation. 
+
+While comparing the results from figure 5.2 with those from figure 3.5, we noticed that Deep Learning revealed a worsening in its performance. 
+
+There are two reasons that can explain these results. The first one of them is the fact that the trained images were not subjected to what we call data augmentation, a technique which seeks to increase that amount of trained data and vary its forms of identification, focusing on rotating, shifting, reducing and enlarging the figures. As the images from the project are graphic, there would be a loss of sense if they were rotated or displaced. 
+
+The second reason is the physical limitation that makes us use only 1100 astronomical objects for training. Usually, Deep Learning algorithms turn out to be more advantageous than ML algorithms due to the big set of data which makes them have better performance. 
+
+Lastly, experiments were also made involving a data distribution of 80% for training and 20% for testing. The analysis of these Confusion matrices (figures 5.3 and 5.4) confirm that, to this problem, the application of Deep Learning, analyzing the graphic’s format, does not appear efficient, reiterating the justification of the absence of data augmentation. 
+
 Figure 5.3: Normalized values of the DL model trained with 80% of the data.
+
 Figure 5.4: Model of the original pipeline trained with 80% of the data.
 
-CHAPTER 6
-Gaussian Process Interpolation
-The approach taken by IF-UFRJ when using Gaussian Process was through the library george, a library focused on evaluating the marginal probability of data distribution. 
-  However, while trying to edit some internal parameters referred to the interpolation in this library, with Kernels or a priori functions 2.1, there was a certain difficulty, or even a impossibility, in shaping them the intended way, such as adding and multiplying Kernels, especially those non stationary ones (Chap. 3).
-  One of the reasons which led us to use one or another library in the project was the quote from chapter 4 section 2 of RASMUSSEN and WILLIAMS, which argues that the Kernel of Squared Exponential Covariance Function (used in the original pipeline) provides to the interpoled function a unreal smoothing to many physical phenomena and recommends using Kernel of Matern type. Even though george library also contains this type of Kernel, other libraries had a wider possibility of editing.
-  In the section below the types of the analyzed libraries will be presented.
-6.1. Library Choice
-The library used in MICHELLE LOCHNER's arcticle was Gapp, a library for functions reconstruction used in other cosmology works.
-  However, the very same pipeline developped by IF-UFRJ already aimed to optimize M. Lochner's original article, so this project came from studies that have already been done, having as a starting point the george library .
-  It is worthy to mention that even though it is possible to manually implement Gaussian Processes, the many available libraries already have the specifications and settings to the models in a more automated way. The three libraries analyzed were:
-SciKit-Learn
-GPflow
-PyMC3
 
-In particular, each one of this packets include a set of covariance functions which can be flexibly combined to properly describe the data's specific patterns along with the methods in order to adjust GP's parameters.
-  The major part of the analysis was based on the blog Domino, where many experiments were made comparing the performance of each library.
-  The details of these analysis can be seen throughout the entire project carried out by the blog mentioned above. In order to not miss the scope of this work, other details concerning the specificity of each library will not be mentioned . 
- Briefly explaining the final choice, it can be broadly stated that the scikit-learn has a simpler and less focused approach on the sophisticated probabilistic models. Meanwhile, both GPflow and PyMC3 have their on computational backend supporting these models. Finally, the reason for choosing PyMC3 was because of the wider community suport and the large domain of the library study, as for being a probabilistic programming packet the PyMC3 covers more tools which can be useful in the developpment of the probability distributions used in GP.
-6.2. Randomness and Random Seeds
-Before entering Kernel's choices, it is very important to explain the randomness factor inside the project. Usually, the PyMC3 library would carry out optimization methods of the a posteriori function in its GP. Yet, for being a library that requires a high computational cost, it was decided to not execute the code line which would optimize the code in favor of choosing a Kernel function that would better perform the interpolation.
-   This does not mean that GP parameters will not be optimized, it is just that they will not converge to a final value, what makes them dependent of the initial conditions internally established by the computer during Markov Monte Carlo Chains.
-  The alternative to this choice of project was to compare certain random seeds. Through the analysis of 11 seeds those ones whose initial conditions resulted in a bigger overfitting of the interpolations could be chosen. The figures of the comparison of the interpolations of each seed are found in Appendix B. In this context, overfitting refers to that interpolation which "forces" the resultant graphic to pass through the points so it can have variation taxes that are more abrupt and less smoothing. In the current project this is something we wish for as abrupt variations of the flow of light correspond to a expected behaviour of an explosion.
-  Always searching those seeds that eliminate constant interpolations and provide an overfitting, the best ones were:
-Random Seed 8
-Random Seed 6
-Random Seed 5
-Random Seed 4
-Random Seed 9
-Random Seed 7
+## CHAPTER 6. Gaussian Process Interpolation
+
+The approach taken by IF-UFRJ when using Gaussian Process was through the library george [34], a library focused on evaluating the marginal probability [35] [17] of data distribution. 
+
+  However, while trying to edit some internal parameters referred to the interpolation in this library, with Kernels or a priori functions 2.1, there was a certain difficulty, or even a impossibility, in shaping them the intended way, such as adding and multiplying Kernels, especially those non stationary ones (Chap. 3 [17]).
+  
+  One of the reasons which led us to use one or another library in the project was the quote from chapter 4 section 2 of RASMUSSEN and WILLIAMS [17], which argues that the Kernel of Squared Exponential Covariance Function (used in the original pipeline) provides to the interpolated function a unreal smoothing to many physical phenomena and recommends using Kernel of Matern type. Even though the George library also contains this type of Kernel, other libraries had a wider possibility of editing.
+  
+  In the section below the types of the analyzed libraries will be presented.
+  
+## 6.1. Library Choice
+
+The library used in MICHELLE LOCHNER 's article [7] was Gapp, a library for functions reconstruction used in other cosmology works [36].
+
+  However, the very same pipeline developed by IF-UFRJ already aimed to optimize M. Lochner’s original article, so this project came from studies that have already been done, having as a starting point the george library .
+  
+  It is worthy to mention that even though it is possible to manually implement Gaussian Processes, the many available libraries already have the specifications and settings to the models in a more automated way. The three libraries analyzed were:
+- SciKit-Learn
+- GPflow
+- PyMC3
+
+In particular, each one of these packets include a set of covariance functions which can be flexibly combined to properly describe the data’s specific patterns along with the methods in order to adjust GP’s parameters.
+
+  The major part of the analysis was based on the blog Domino, where many experiments were made comparing the performance of each packet [37].
+  
+  The details of these analysis can be seen throughout the entire project carried out by the blog mentioned above. In order to not miss the scope of this work, other details concerning the specificity of each library will not be mentioned . 
+ 
+ Briefly explaining the final choice, it can be broadly stated that the scikit-learn has a simpler and less focused approach on the sophisticated probabilistic models. Meanwhile, both GPflow and PyMC3 have their own computational backend supporting these models. Finally, the reason for choosing PyMC3 was because of the wider community support and the large domain of the library study, as for being a probabilistic programming packet the PyMC3 covers more tools which can be useful in the development of the probability distributions used in GP.
+ 
+## 6.2. Randomness and Random Seeds
+
+Before entering Kernel’s choices, it is very important to explain the randomness factor inside the project. Usually, the PyMC3 library would carry out optimization methods of the a posteriori function in its GP. Yet, for being a library that requires a high computational cost, it was decided to not execute the code line which would optimize the code in favor of choosing a Kernel function that would better perform the interpolation.
+
+This does not mean that GP parameters will not be optimized, it is just that they will not converge to a final value, which makes them dependent on the initial conditions internally established by the computer during Markov Monte Carlo Chains [21].
+
+  The alternative to this choice of project was to compare certain random seeds [26]. Through the analysis of 11 seeds those ones whose initial conditions resulted in a bigger overfitting of the interpolations could be chosen. The figures of the comparison of the interpolations of each seed are found in Appendix B. In this context, overfitting refers to that interpolation which “forces” the resultant graphic to pass through the points so it can have variation taxes that are more abrupt and less smoothing. In the current project this is something we wish for as abrupt variations of the flow of light correspond to a expected behavior of an explosion.
+  
+  Always searching those seeds that eliminate constant interpolations and provide an overfitting, the best ones were:
+  
+- Random Seed 8
+- Random Seed 6
+- Random Seed 5
+- Random Seed 4
+- Random Seed 9
+- Random Seed 7
 
 Finally, two of them were chosen for the final interpolations: the seeds 4 and 9. The justification lies in the fact that they did not show any case of interpolation keeping constant values, while the other ones still had them, even if it was less than in the original pipeline. This decision was based on the analysis of the figures from Appendix B.
-6.3. Kernel Functions
-In order to choose the Kernel functions that would be used in the interpolations, we followed the PyMC3 library upport. In this support there are different ways of interpolation and analysis on how Kernels directly interfere in the format of functions.
-  From the data of the reference above, the followingly Kernels were chosen for the interpolation:
-Quadratic exponential:
 
+
+## 6.3. Kernel Functions
+
+In order to choose the Kernel functions that would be used in the interpolations, we followed the PyMC3 library [16] support. In this support there are different ways of interpolation and analysis on how Kernels directly interfere in the format of functions.
+
+  From the data of the reference above, the followingly Kernels were chosen for the interpolation:
+Quadratic exponential:
 (6.1)
 Quadratic rational:
-
 (6.2)
 Matern 5/2:
-
 (6.3)
 Matern 3/2
-
 (6.4)
-In these functions we have x and x' as the values of the abscissa, and α and l as hyperparameters to be adjusted. Empirically, it was noticed that l has an effect of increasing the overfitting in exchange for the increase of the error in the interpolation. The parameter l has an effect of "correlation distance", as separated points for way more than this distance has little influence on about each other while α determines how the correlation shortens with the distance x - x'.
-  These hyperparameters can assume values as probabilistic distribution functions or constant functions. After many tests using constants, it was noticed that the best results were obtained using distributions. Another factor that led us to make this choice were the examples offered in the PyMC3 library support.
-  The interpolations performed in order to choose which Kernel would be used are illustrated in Appendix B. The main criteria for this choice were avoiding constant interpolations and searching for overfitting. As a result, two of the best Kernels were Matern 3/2 and Matern 5/2; which is a conclusion aligned with the theory exposed in Chapter 4 section 2 of RASMUSSEN and WILLIAMS.
-6.4. Other observations
-  Before getting in the results of the interpolations, two important observations are made. The first one is the solution to the problem of possible negative values. Although such approach has not been adopted in this work due to the attempt of making the code have the lowest computational cost as possible,  for future works in which we may wish to interpolate with negative values, using a not negative mean function would solve this problem. 
-  Many types of functions that fulfill this prerequisite are described in PyMC3.
-  As an example of this we have Half-Cauchy log-likelihood.
+
+In these functions we have x and x’ as the values of the abscissa, and α and l as hyperparameters to be adjusted. Empirically, it was noticed that l has an effect of increasing the overfitting in exchange for the increase of the error in the interpolation. The parameter l has an effect of “correlation distance”, as separated points for way more than this distance has little influence on about each other while α determines how the correlation shortens with the distance x — x’.
+
+These hyperparameters can assume values as probabilistic distribution functions or constant functions. After many tests using constants, it was noticed that the best results were obtained using distributions. Another factor that led us to make this choice were the examples offered in the PyMC3 library support [38][39].
+
+  The interpolations performed in order to choose which Kernel would be used are illustrated in Appendix B. The main criteria for this choice were avoiding constant interpolations and searching for overfitting. As a result, two of the best Kernels were Matern 3/2 and Matern 5/2; which is a conclusion aligned with the theory exposed in Chapter 4 section 2 of RASMUSSEN and WILLIAMS [17].
+
+## 6.4. Other observations
+  Before getting in the results of the interpolations, two important observations are made. The first one is the solution to the problem of possible negative values. Although such an approach has not been adopted in this work due to the attempt of making the code have the lowest computational cost as possible, for future works in which we may wish to interpolate with negative values, using a non-negative mean function would solve this problem [40]. 
+  
+  Many types of functions that fulfill this prerequisite are described in PyMC3 [40].
+  
+  As an example of this we have Half-Cauchy log-likelihood.
 (6.5)
-Figure 6.1: Example of distribution with not negative values. 
-The second observation to be made is the use of Matern function inside the same library used in george's original pipeline.
-  The results of the exchange of Kernel ExpQuadr for Matern 5/2 in george library can be seen in 6.1 and 6.3.
-  The justification for this performance being worse can be related to the fact that hyperparameters were constant and not distributions. Thus, if we only analyzed george's result, it would be concluded that the use of Matern is inferior to ExpQuadr. However, while making comparisons inside a library that has more support, the improvement is visibly noticed when we interpole through the proposed Kernel than through the previous one 6.2.
-6.5. Results of the interpolations
-  The global result of the interpolations could not be concluded due to an code error procedure, more precisely an internal memory leak during the execution of PyMC3 models in looping. The explanation and the detailment of this error will be presented in the following section. 
-Table 6.1: Results of Kernel Matern 5/2 by the library george. 'Pattern' refers to the scikit's score default.
-  In this section we will present some examples of interpolations between the algorithms, where it can be noticed a better interpolation using Kernel Matern in PyMC3 through the seeds. Justifying the reason why is expected to obtain better results if the processing of all the data was concluded 6.2. 
-  Other examples of comparisons are described in Appendix B's notebook.
+
+Figure 6.1: Example of distribution with not negative values. 
+
+The second observation to be made is the use of the Matern function inside the same library used in george’s original pipeline.
+
+  The results of the exchange of Kernel ExpQuadr for Matern 5/2 in george library can be seen in 6.1 and 6.3.
+  
+  The justification for this performance being worse can be related to the fact that hyperparameters were constant and not distributions. Thus, if we only analyzed George's result, it would be concluded that the use of Matern is inferior to ExpQuadr. However, while making comparisons inside a library that has more support, the improvement is visibly noticed when we interpole through the proposed Kernel than through the previous one 6.2.
+
+## 6.5. Results of the interpolations
+  The global result of the interpolations could not be concluded due to an code error procedure, more precisely an internal memory leak during the execution of PyMC3 models in looping. The explanation and the detailment of this error will be presented in the following section. 
+
+Table 6.1: Results of Kernel Matern 5/2 by the library george. ‘Pattern’ refers to the scikit’s score default.
+  
+  In this section we will present some examples of interpolations between the algorithms, where it can be noticed a better interpolation using Kernel Matern in PyMC3 through the seeds. Justifying the reason why is expected to obtain better results if the processing of all the data was concluded 6.2. 
+
+  Other examples of comparisons are described in Appendix B’s notebook.
+  
 (a) original pipeline
 (b) PyMC3 Exponential Quadratic seed 9
-( c ) PyMC3 Matern 5/2 seed 6, overfitting
+(c) PyMC3 Matern 5/2 seed 6, overfitting
 (d) PyMC3 Matern 5/2 seed 9, overfitting
 (e) PyMC3 Matern 5/2 seed 6, less overfitting
 (f) PyMC3 Matern 5/2 seed 9, less overfitting
-Figure 6.2: Interpolations of the object SN013742 using 6 differents settings. Graphic Flow x Time (days).
+
+Figure 6.2: Interpolations of the object SN013742 using 6 different settings. Graphic Flow x Time (days).
 
 (a) Normalized values
+
 (b) Absolute values
 Figure 6.3: Confusion Matrices of Matern 5/2 through library george. Results worse than the ones presented in 3.5.
-6.6. Identification and Error justification
-An error ocurred during the looping of the execution of the interpolation, causing the computer to stop. While inspecting the memory use through the command htop from Ubuntu, it identified a memory leak of the system.
-  During an arduous investigation of the problem, there were several attempts to identify and rectify it. Among them, the main ones were:
-To search possible code building errors.
-To manually force the memory release using Garbage Collector packets.
-Inspection through Jupyter magic's method to locate the code line with the memory leak (%% time, %%Iprun, %%mprum).
-Attempt of using GPU to processing.
-Use of pakets involving hash tables to reduce the memory consumed by data structure in form of dictionaries.
-Use of proper libraries to manage the location and memory use.
 
-After this inspection, the problem was found out as a internal error of the library through the creation of probabilistic models inside a looping. In short, when we instantiate a PyMC3 model inside a looping, the library keeps allocating memory in different places without 'draining out' the previous ones, which causes the leak.
-  A longstanding debate over this error does not meet the matter discussed in the current work and, due to the large amount of time invested in the study of identification and solution of the problem, it was decided to no longer carry on with this approach. Howsoever, the problem has already been identified and are available in the library alongside with the links of the forums where it have been debated over.
 
-CHAPTER 7
-Conclusions
-7.1 Final conclusions
-The present work's main purpose was to search for ways to optimize and improve the ML techniques in the supernovas classification model using spectroscopy. From the analysis of the results it was possible to confirm that the current model has a very efficient robustness bearing in mind  the few amount of data used for training.
-  As a positive aspect of the method, this project was able to add knowledge by testing differents approachs and concluding that its aplications would not offer the result any improvements.
-  Inside the scope of a final project it is also worthy to mention the student's knowledge evolution and aquisition, who had a significant learning meanwhile new technologies and concepts were beind discovered, as a consequence of his researches and discussion of new ideas for the algorithm.
-  While applying the data processing strategy removing the outliers, it was possible to observe that the difference in the final results was so little that it could be neglected, which leads to the conclusion that the Wavelets transform step causes a significant robustness to the algorithm, so much that the "gross" outliers did not compromise the model. 
-  Concerning the Deep Learning, it was concluded that the place in which the convolutional neural networks were applied, this technique was not sufficient because the models were trained with only one-nineteenth of the data. Besides, it was also concluded that the abscence of a possible data augmentation compromises the performance even if we used 80% of the data for training. 
-  Finally, the main approach, which was the search for a better execution of the Gaussian Process, could not be concluded due to problems which do not match the project's nature. Even so, from the analysis of other methods and of the results of the graphic interpolations through Kernel Mattern 5/2 by george, we concluded that the current method is already well optimized, mainly sustained by the robustness offered by Wavelets transform.
-7.2. Future works
-In relation to the use of machine learning in the subject matter, many other methods are used to identify astronomic objects to other purposes. Keeping these other objectives in mind, the work developed here is useful to project new ideas in those other approaches.
-  When it comes to the memory leak error, the solution is left open to future works which objectify to finish the idea that was built in here. Since the hardest part of identifying the problem has already been done, it could be published in repositories and programmer's communities in search of directed support.
-  Upon other libraries studied to accomplish the interpolation, after the analysis and derailment of each one of them and its properties, they were found to be interesting to works in which the use of Gaussian Process are necessary. 
-  After using PyMC3 library, despite the problem occurred, it showed itself to be efficient and with a good support to model the mathematics functions, being aligned with the statistical concepts, causing a flexibility in the distribution's modeling. Therefore, it is advised for the new ones who are interested in the project to use the library, due to its big support that facilitates the theoretical understanding. The same goes for those who already have a certain knowledge and want to try more specific and customized models.
+## 6.6. Identification and Error justification
+An error occurred during the looping of the execution of the interpolation, causing the computer to stop. While inspecting the memory use through the command htop from Ubuntu, it identified a memory leak of the system.
+ 
+  During an arduous investigation of the problem, there were several attempts to identify and rectify it. Among them, the main ones were:
+
+- To search possible code building errors.
+- To manually force the memory release using Garbage Collector packets.
+- Inspection through Jupyter magic’s method to locate the code line with the memory leak (%% time, %%Iprun, %%mprum).
+- Attempt to use GPU to process.
+- Use of packets involving hash tables to reduce the memory consumed by data structure in the form of dictionaries.
+- Use of proper libraries to manage the location and memory use.
+
+After this inspection, the problem was found out as an internal error of the library through the creation of probabilistic models inside a loop. In short, when we instantiate a PyMC3 model inside a loop, the library keeps allocating memory in different places without ‘draining out’ the previous ones, which causes the leak.
+
+  A longstanding debate over this error does not meet the matter discussed in the current work and, due to the large amount of time invested in the study of identification and solution of the problem, it was decided to no longer carry on with this approach. However, the problem has already been identified [4] and is available in the library alongside with the links of the forums where it has been debated over.
+
+# CHAPTER 7. Conclusions
+
+## 7.1 Final conclusions
+The present work’s main purpose was to search for ways to optimize and improve the ML techniques in the supernovas classification model using spectroscopy. From the analysis of the results it was possible to confirm that the current model has a very efficient robustness bearing in mind the few amounts of data used for training.
+  
+  As a positive aspect of the method, this project was able to add knowledge by testing different approaches and concluding that its applications would not offer the result any improvements.
+  
+  Inside the scope of a final project it is also worthy to mention the student’s knowledge of evolution and acquisition, who had a significant learning while new technologies and concepts were being discovered, as a consequence of his research and discussion of new ideas for the algorithm.
+  
+  While applying the data processing strategy removing the outliers, it was possible to observe that the difference in the final results was so little that it could be neglected, which leads to the conclusion that the Wavelets transform step causes a significant robustness to the algorithm, so much that the “gross” outliers did not compromise the model. 
+  
+  Concerning Deep Learning, it was concluded that the place in which the convolutional neural networks were applied, this technique was not sufficient because the models were trained with only one-nineteenth of the data. Besides, it was also concluded that the absence of a possible data augmentation compromises the performance even if we used 80% of the data for training. 
+  
+  Finally, the main approach, which was the search for a better execution of the Gaussian Process, could not be concluded due to problems which do not match the project’s nature. Even so, from the analysis of other methods and of the results of the graphic interpolations through Kernel Mattern 5/2 by george, we concluded that the current method is already well optimized, mainly sustained by the robustness offered by Wavelets transform.
+
+## 7.2. Future works
+
+In relation to the use of machine learning in the subject matter, many other methods are used to identify astronomical objects for other purposes [42]. Keeping these other objectives in mind, the work developed here is useful to project new ideas in those other approaches.
+
+  When it comes to the memory leak error, the solution is left open to future works which objectify to finish the idea that was built in here. Since the hardest part of identifying the problem has already been done, it could be published in repositories [43][41][44] and programmer’s communities in search of direct support.
+  
+  Upon other libraries studied to accomplish the interpolation, after the analysis and detailment of each one of them and its properties [37], they were found to be interesting to works in which the use of Gaussian Process are necessary. 
+  
+  After using PyMC3 library, despite the problem occurring, it showed itself to be efficient and with a good support to model the mathematical functions, being aligned with the statistical concepts, causing a flexibility in the distribution’s modeling. Therefore, it is advised for the new ones who are interested in the project to use the library, due to its big support that facilitates the theoretical understanding. The same goes for those who already have a certain knowledge and want to try more specific and customized models.
