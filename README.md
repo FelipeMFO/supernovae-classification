@@ -572,3 +572,134 @@ In relation to the use of machine learning in the subject matter, many other met
   Upon other libraries studied to accomplish the interpolation, after the analysis and detailment of each one of them and its properties [37], they were found to be interesting to works in which the use of Gaussian Process are necessary. 
   
   After using PyMC3 library, despite the problem occurring, it showed itself to be efficient and with a good support to model the mathematical functions, being aligned with the statistical concepts, causing a flexibility in the distribution’s modeling. Therefore, it is advised for the new ones who are interested in the project to use the library, due to its big support that facilitates the theoretical understanding. The same goes for those who already have a certain knowledge and want to try more specific and customized models.
+
+# References
+
+[1] VAZ, A. L. “Model Validation — Data Science”,
+https://medium.com/@arthurlambletvaz/model-validation-data-science3084bb3a4ff8, jun. 2018.
+
+[2] HUI, J. “mAP (mean Average Precision) for Object Detection”,
+https://medium.com/@jonathan_hui/map-mean-average-precisionfor-object-detection-45c121a31173, mar. 2018.
+
+[3] WIKIPEDIA. “Luminosity distance”, https://en.wikipedia.org/wiki/Luminosity_-
+distance, 2019.
+
+[4] WIKIPEDIA. “Luminous Flux”, https://en.wikipedia.org/wiki/Luminous_flux,
+jun. 2019.
+
+[5] WIKIPEDIA. “Vela padrão”, https://pt.wikipedia.org/wiki/Vela_-
+padr%C3%A3o, mar. 2013.
+
+[6] WIKIPEDIA. “Espectroscopia astronômica”,
+https://pt.wikipedia.org/wiki/Espectroscopia_astron%C3%B4mica,
+mar. 2018.
+
+[7] MICHELLE LOCHNER, JASON D. MCEWEN, H. V. P. O. L. M. K. W. “Photometric Supernova Classification with Machine Learning”, ApJS (2016),
+v. 225, n. 2, pp. 31, set. 2016.
+
+[8] WIKIPEDIA. “Fotometria astronômica”, https://pt.wikipedia.org/wiki/Fotometria_-
+(astronomia), jun. 2018.
+
+[9] WIKIPEDIA. “Segunda lei da Termodinâmica”,
+https://pt.wikipedia.org/wiki/Segunda_lei_da_termodin%C3%A2mica,
+jul. 2019.
+
+[10] KESSLER, R. “Supernova Photometric Classification Challenge”, arXiv, v. 6,
+n. 5210, pp. 4, abr. 2010.
+
+[11] LABORATORY, A. N. “Argonne National Laboratory”,
+https://www.anl.gov/hep.
+
+[12] PANDAS. “Pandas - Python Data Analysis Library”,
+https://pandas.pydata.org/, jul. 2019.
+
+[13] DEVELOPERS, N. “Numpy”, https://numpy.org/, 2019.
+
+[14] INRIA, OTHERS. “Scikit-Learn”, https://keras.io/, 2019.
+
+[15] COMMUNITY, K. “Keras”, https://scikit-learn.org/stable/, 2019.
+
+[16] PYMC3. “PyMC3 - Mean and Covariance Functions”,
+https://docs.pymc.io/notebooks/GP-MeansAndCovs.html, 2018.
+
+[17] RASMUSSEN, C., WILLIAMS, C. K. I. Gaussian Processes for Machine Learning. 1 ed. New York, Thomas Dietterich, Editor, 2004.
+
+[18] BAILEY, K. “From both sides now: the math of linear regression”, http://katbailey.github.io/post/from-both-sides-now-the-mathof-linear-regression/, v. 1, n. 1, pp. 1, jun. 2016.
+
+[19] BAILEY, K. “Gaussian Processes for Dummies”,
+http://katbailey.github.io/post/gaussian-processes-for-dummies/, v. 1,
+n. 1, pp. 1, jun. 2016.
+
+[20] JOCHEN GÖRTLER, REBECCA KEHLBECK, O. D. “A Visual Exploration of Gaussian Processes”, https://distill.pub/2019/visual-explorationgaussian-processes/, v. 1, n. 1, pp. 1, 2019.
+
+[21] DANI GAMERMAN, H. F. L. Markov Chain Monte Carlo Stochastic Simulation for Bayesian Inference. 2 ed. New York, Chapman and Hall/CRC,
+2006.
+
+[22] IVAN, M. “Getting started with Deep learning in R”,
+https://en.proft.me/2016/06/15/getting-started-deep-learning-r/, jun.
+2016.
+
+[23] WIKIPEDIA. “Rede neural convolucional”, Rede neural convolucional, jun.
+2018.
+
+[24] WIKIPEDIA. “Perceptron Multicamadas”,
+https://pt.wikipedia.org/wiki/Perceptron_multicamadas, jun. 2019.
+
+[25] DERTAT, A. “Applied Deep Learning - Part 4: Convolutional Neural
+Networks”, https://towardsdatascience.com/applied-deep-learning-part-4-
+convolutional-neural-networks-584bc134c1e2, nov. 2017.
+
+[26] WIKIPEDIA. “Pseudoaleatoriedade”, https://pt.wikipedia.org/wiki/Pseudoaleatoriedade,
+2019.
+
+[27] MURPHY, K. P. Machine Learning A Probabilistic Perspective. 1 ed. Massachussetts Institute of Technology, MIT, 2012.
+
+[28] CELSO, A. “Notas de Aula de Sinais e Sistemas”, UFRJ - COE350 - Sinais e
+Sistemas - ECA, jun. 2014.
+
+[29] “Modified Julian Date”, http://scienceworld.wolfram.com/astronomy/ModifiedJulianDate.html.
+
+[30] OBSERVATORY, C. T. I.-A. “DECam filter information - Standard Bandpasses
+for the DECam”, http://www.ctio.noao.edu/noao/content/DECam-filterinformation.
+
+[31] VUOLO, J. H. Fundamentos da Teoria de Erros. Editora Edgard Blücher
+LTDA, 1996.
+
+[32] YALÇIN, O. G. “Image Classification in 10 Minutes with MNIST Dataset”, https://towardsdatascience.com/image-classification-in-10-minuteswith-mnist-dataset-54c35b77a38d, ago. 2018.
+
+[33] XIAO, H., RASUL, K., VOLLGRAF, R. “Fashion-MNIST: a Novel Image
+Dataset for Benchmarking Machine Learning Algorithms”. 2017.
+
+[34] BIB, G. “Documentação biblioteca George”,
+https://george.readthedocs.io/en/latest/, 2012.
+
+[35] WIKIPEDIA. “Wikipedia, probabilidade marginal”,
+https://en.wikipedia.org/wiki/Marginal_likelihood, jun. 2019.
+
+[36] MARINA SEIKEL, CHRIS CLARKSON, M. S. “Reconstruction of dark energy
+and expansion dynamics using Gaussian processes”, JCAP06, v. 2, n. 2,
+pp. 20, 2012.
+
+[37] LAB, D. D. “Fitting Gaussian Process Models in Python”,
+https://blog.dominodatalab.com/fitting-gaussian-process-models-python/,
+mar. 2017.
+
+[38] PYMC3. “PyMC3 - Example”, https://docs.pymc.io/notebooks/GPMaunaLoa.html, 2018.
+
+[39] PYMC3. “PyMC3 - Getting Started”,
+https://docs.pymc.io/notebooks/getting_started.html, 2018.
+
+[40] PYMC3. “PyMC3 - Continuos functions”,
+https://docs.pymc.io/api/distributions/continuous.html, 2018.
+
+[41] PYMC DEVS. “memory leak issues when running pymc3 model in a loop”,
+https://github.com/pymc-devs/pymc3/issues/1825, mar. 2017.
+
+[42] K. SOOKNUNAN, M. L. “Classification of Multiwavelength Transients with
+Machine Learning”, v. 1, pp. 16, nov. 2018.
+
+[43] PYMC DEVS. “PyMC3 extra variables, and issues with theano.”
+https://github.com/pymc-devs/pymc3/issues/772, jun. 2015.
+
+[44] PYMC DEVS. “memory leak issue when running the pymc3 in AWS machine”,
+https://github.com/pymc-devs/pymc3/issues/1959, 2018.
