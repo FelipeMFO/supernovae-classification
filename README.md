@@ -313,6 +313,7 @@ Figure 3.1: File .txt to be read by the pre-processing files.
 ## 3.2. Current pipeline
   Laying out the data obtained from the preprocessing which was explained in the previous section, the pipeline, initially, will separate the data from the Terse Light Curve Output by the filters and will create 4 numpy arrays, each one containing n x 3 dimensions (MJD, FLUXCAL and FLUXCALERR), with n being the number of samples of each object (figure 3.4).
 
+
 Figure 3.2: Full observation of an astronomical object. It does not refer to any specific example from the dataframe [30].
 
   Then these 4 numpy arrays will be grouped into the form of a dictionary and they will be the entry of the Gaussian Process, whose interpolate function is a curve that passes through each filter’s points 3.3.
@@ -330,12 +331,12 @@ Figure 3.2: Full observation of an astronomical object. It does not refer to any
   In parallel, we use the SN TYPE from the dictionary to store the labels of each astronomic object in a list form. 
   
   Finally, there will be established parameters that characterize the classification model based on Random Forest. At this point we use the component sklearn.pipeline from the library scikit-learn.
- (a)
-(b) 
-( c)
-(d)
+
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/44b2d89e-1090-4194-8a9c-71f853806a71)
 
 Figure 3.3: Example of 4 light curves from the same object, one for each filter. Graphic Flow x Time (days). 
+
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/b808be63-efe8-4a2d-9edd-a57f7aed368d)
 
 Figure 3.4: Graphic illustration of the pipeline. 
 
@@ -343,11 +344,10 @@ Having the dataframe, the list containing each object’s classification (the la
 
   At last, each model of the 19 existing folds is evaluated through 2 ways of score obtaining, the AUC method (area under the ROC curve) and the average precision method 2.3. The confusion matrix of each one of the 19 models can also be analyzed to illustrate its rights, false positives and false negatives 3.5.
 
-(a) Example of Confusion Matrix, absolute values. 
+![Screenshot from 2023-11-13 12-07-15](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/e7a16188-fe82-477a-b136-44e4ffc4b868)
 
-(b) Confusion Matrix, normalized values. 
 
-Figure 3.5: Confusion Matrix of the final model from the original pipeline. 
+Figure 3.5: Confusion Matrix of the final model from the original pipeline. Absolute values on the left, normalized values on the right.
 
 # CHAPTER 4. Outliers Treating 
  The first way we took to search improvements in this project was through Outliers Treating. Every type of raw data is subject to samples with absurd values or unreal uncertainties, be them caused by measurement errors or any other factors [31].
