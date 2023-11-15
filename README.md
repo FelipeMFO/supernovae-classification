@@ -1,6 +1,6 @@
 # UFRJ B.Sc Thesis - PHOTOMETRIC IDENTIFICATION OF SUPERNOVAS THROUGH MACHINE LEARNING ALGORITHMS
 
-
+```
 Undergraduate Project presented to POLI/UFRJ as a partial fulfillment of the requirements for the degree of Engineer.
 
 SUPERNOVA PHOTOMETRIC IDENTIFICATION USING MACHINE LEARNING ALGORYTHMS
@@ -13,6 +13,7 @@ Advisors: Amit Bhaya
 Ribamar Rondon de Rezende dos Reis
 
 Course: Automation and Control Engineering
+```
 
 **Abstract** 
 
@@ -313,6 +314,7 @@ Figure 3.1: File .txt to be read by the pre-processing files.
 ## 3.2. Current pipeline
   Laying out the data obtained from the preprocessing which was explained in the previous section, the pipeline, initially, will separate the data from the Terse Light Curve Output by the filters and will create 4 numpy arrays, each one containing n x 3 dimensions (MJD, FLUXCAL and FLUXCALERR), with n being the number of samples of each object (figure 3.4).
 
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/e8b9d026-623e-4e08-863a-2e594b801b14)
 
 Figure 3.2: Full observation of an astronomical object. It does not refer to any specific example from the dataframe [30].
 
@@ -365,7 +367,9 @@ There will be presented 3 different types of scores for each one of the 19 model
 - Removal of negative values and of those with a uncertainty that is higher than the average, plus standard deviation. Presented in chart 4.1 as StdDev.
 - Removal of negative values and of those with an uncertainty that is higher than 70% of the peak’s value. Presented in chart 4.1 as Threshold.
 
-Chart 4.1: Results of Outliers Treatment. “Standard” refers to the score default of scikit, and the columns that do not show neither StdDev nor Threshold present the scores of the original pipeline.
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/f05c352c-de6d-4d77-8181-4e034ded572e)
+
+Table 4.1: Results of Outliers Treatment. “Standard” refers to the score default of scikit, and the columns that do not show neither StdDev nor Threshold present the scores of the original pipeline. _Média = Mean_, _Padrão = template of scikit_.
 
 The final conclusion for Outliers treatment is that it does not influence significantly in the scores rising. The possible explanation for that can be found in the robustness that Wavelet Transform offers to the method. 
 
@@ -395,6 +399,8 @@ Among the many possible types of internal layers of Deep Learning, we chose Conv
   
   Based on these examples, some layers were added and modified in a way so it could search and empirically obtain a better result. The final architecture can be found in figure 5.1. 
 
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/a7fbe0be-3c4d-4e6f-8a29-624d7e198018)
+
 Figure 5.1: Architecture of the Deep Learning method that was used.
 
 The last value of each layer’s Shape is the amount of neurons they have, while other values are the image’s number of lines and columns. The value ‘4’, which was expected due to the 4 filters, does not quite explicitly appear in the model’s architecture structure. However, that is a normal behavior since in this case it works as an image in “RGBA”, where it would have one matrix for red, blue, green and transparency. 
@@ -404,7 +410,11 @@ The last value of each layer’s Shape is the amount of neurons they have, while
 ## 5.3. Results and comparison 
   The results in the shape of the Confusion matrix of the best model are described below. 5.2.
 
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/baceca7e-8548-45cd-b4b8-abf2abbbb6c1)
+
 (a) Normalizes values.
+
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/c8bb7f79-1c0a-4f02-b4c8-21e089d40391)
 
 (b) Absolute values.
 
@@ -418,7 +428,11 @@ The second reason is the physical limitation that makes us use only 1100 astrono
 
 Lastly, experiments were also made involving a data distribution of 80% for training and 20% for testing. The analysis of these Confusion matrices (figures 5.3 and 5.4) confirm that, to this problem, the application of Deep Learning, analyzing the graphic’s format, does not appear efficient, reiterating the justification of the absence of data augmentation. 
 
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/0ea0f642-54c0-4816-ba0b-98cc1bf8e9c9)
+
 Figure 5.3: Normalized values of the DL model trained with 80% of the data.
+
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/18751198-89c5-46ab-b51f-fd13604ad7b0)
 
 Figure 5.4: Model of the original pipeline trained with 80% of the data.
 
@@ -478,12 +492,20 @@ In order to choose the Kernel functions that would be used in the interpolations
 
   From the data of the reference above, the followingly Kernels were chosen for the interpolation:
 Quadratic exponential:
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/4b13dc54-7087-4ee4-bf54-81b31f1c12c8)
+
 (6.1)
 Quadratic rational:
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/c6120745-71f9-4c8f-a048-00abb711bb00)
+
 (6.2)
 Matern 5/2:
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/d35679c1-2300-423b-a28e-8a2916a3026b)
+
 (6.3)
 Matern 3/2
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/a5ec88dc-762f-4973-91bb-71161579ec76)
+
 (6.4)
 
 In these functions we have x and x’ as the values of the abscissa, and α and l as hyperparameters to be adjusted. Empirically, it was noticed that l has an effect of increasing the overfitting in exchange for the increase of the error in the interpolation. The parameter l has an effect of “correlation distance”, as separated points for way more than this distance has little influence on about each other while α determines how the correlation shortens with the distance x — x’.
@@ -498,7 +520,10 @@ These hyperparameters can assume values as probabilistic distribution functions 
   Many types of functions that fulfill this prerequisite are described in PyMC3 [40].
   
   As an example of this we have Half-Cauchy log-likelihood.
+  ![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/788a3b05-8b7e-4219-b4ac-7bb5fb240c33)
+
 (6.5)
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/57d9cd7e-5985-4dbb-a9c7-565717f6b4c8)
 
 Figure 6.1: Example of distribution with not negative values. 
 
@@ -511,23 +536,33 @@ The second observation to be made is the use of the Matern function inside the s
 ## 6.5. Results of the interpolations
   The global result of the interpolations could not be concluded due to an code error procedure, more precisely an internal memory leak during the execution of PyMC3 models in looping. The explanation and the detailment of this error will be presented in the following section. 
 
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/144ebd90-d40c-4397-847c-c88ba1b4d569)
+
 Table 6.1: Results of Kernel Matern 5/2 by the library george. ‘Pattern’ refers to the scikit’s score default.
   
   In this section we will present some examples of interpolations between the algorithms, where it can be noticed a better interpolation using Kernel Matern in PyMC3 through the seeds. Justifying the reason why is expected to obtain better results if the processing of all the data was concluded 6.2. 
 
   Other examples of comparisons are described in Appendix B’s notebook.
   
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/7f2cac78-fa12-4619-b2f1-3f173b91d97f)
 (a) original pipeline
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/744e1e5a-8c64-4e29-8584-6aa20e36b9ee)
 (b) PyMC3 Exponential Quadratic seed 9
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/ff7f845b-4440-4f95-84ab-068ca49d536f)
 (c) PyMC3 Matern 5/2 seed 6, overfitting
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/fcdaa8d8-ae5b-4cdf-af6e-648762d80e32)
 (d) PyMC3 Matern 5/2 seed 9, overfitting
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/0a27d969-fa17-4c5b-ba28-07984e86d234)
 (e) PyMC3 Matern 5/2 seed 6, less overfitting
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/6edfae45-ce31-4eb2-8346-15c8169bc170)
 (f) PyMC3 Matern 5/2 seed 9, less overfitting
 
 Figure 6.2: Interpolations of the object SN013742 using 6 different settings. Graphic Flow x Time (days).
 
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/22ca1fdd-046c-4e9f-9631-8928f055396e)
 (a) Normalized values
 
+![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/2b61cbe9-9fda-4c32-8cc3-04aaca4c821a)
 (b) Absolute values
 Figure 6.3: Confusion Matrices of Matern 5/2 through library george. Results worse than the ones presented in 3.5.
 
