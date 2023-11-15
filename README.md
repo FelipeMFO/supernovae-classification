@@ -472,7 +472,7 @@ Before entering Kernel’s choices, it is very important to explain the randomne
 
 This does not mean that GP parameters will not be optimized, it is just that they will not converge to a final value, which makes them dependent on the initial conditions internally established by the computer during Markov Monte Carlo Chains [21].
 
-  The alternative to this choice of project was to compare certain random seeds [26]. Through the analysis of 11 seeds those ones whose initial conditions resulted in a bigger overfitting of the interpolations could be chosen. The figures of the comparison of the interpolations of each seed are found in Appendix B. In this context, overfitting refers to that interpolation which “forces” the resultant graphic to pass through the points so it can have variation taxes that are more abrupt and less smoothing. In the current project this is something we wish for as abrupt variations of the flow of light correspond to a expected behavior of an explosion.
+  The alternative to this choice of project was to compare certain random seeds [26]. Through the analysis of 11 seeds those ones whose initial conditions resulted in a bigger overfitting of the interpolations could be chosen. The figures of the comparison of the interpolations of each seed are found in https://github.com/FelipeMFO/supernovae-classification/blob/master/src_and_notebooks/processing/GP_evaluation.ipynb. In this context, overfitting refers to that interpolation which “forces” the resultant graphic to pass through the points so it can have variation taxes that are more abrupt and less smoothing. In the current project this is something we wish for as abrupt variations of the flow of light correspond to a expected behavior of an explosion.
   
   Always searching those seeds that eliminate constant interpolations and provide an overfitting, the best ones were:
   
@@ -483,7 +483,7 @@ This does not mean that GP parameters will not be optimized, it is just that the
 - Random Seed 9
 - Random Seed 7
 
-Finally, two of them were chosen for the final interpolations: the seeds 4 and 9. The justification lies in the fact that they did not show any case of interpolation keeping constant values, while the other ones still had them, even if it was less than in the original pipeline. This decision was based on the analysis of the figures from Appendix B.
+Finally, two of them were chosen for the final interpolations: the seeds 4 and 9. The justification lies in the fact that they did not show any case of interpolation keeping constant values, while the other ones still had them, even if it was less than in the original pipeline. This decision was based on the analysis of the figures from https://github.com/FelipeMFO/supernovae-classification/blob/master/src_and_notebooks/processing/GP_evaluation.ipynb.
 
 
 ## 6.3. Kernel Functions
@@ -519,7 +519,7 @@ In these functions we have x and x’ as the values of the abscissa, and α and 
 
 These hyperparameters can assume values as probabilistic distribution functions or constant functions. After many tests using constants, it was noticed that the best results were obtained using distributions. Another factor that led us to make this choice were the examples offered in the PyMC3 library support [38][39].
 
-  The interpolations performed in order to choose which Kernel would be used are illustrated in Appendix B. The main criteria for this choice were avoiding constant interpolations and searching for overfitting. As a result, two of the best Kernels were Matern 3/2 and Matern 5/2; which is a conclusion aligned with the theory exposed in Chapter 4 section 2 of RASMUSSEN and WILLIAMS [17].
+  The interpolations performed in order to choose which Kernel would be used are illustrated in https://github.com/FelipeMFO/supernovae-classification/blob/master/src_and_notebooks/processing/GP_evaluation.ipynb. The main criteria for this choice were avoiding constant interpolations and searching for overfitting. As a result, two of the best Kernels were Matern 3/2 and Matern 5/2; which is a conclusion aligned with the theory exposed in Chapter 4 section 2 of RASMUSSEN and WILLIAMS [17].
 
 ## 6.4. Other observations
   Before getting in the results of the interpolations, two important observations are made. The first one is the solution to the problem of possible negative values. Although such an approach has not been adopted in this work due to the attempt of making the code have the lowest computational cost as possible, for future works in which we may wish to interpolate with negative values, using a non-negative mean function would solve this problem [40]. 
@@ -551,7 +551,7 @@ Table 6.1: Results of Kernel Matern 5/2 by the library george. ‘Pattern’ ref
   
   In this section we will present some examples of interpolations between the algorithms, where it can be noticed a better interpolation using Kernel Matern in PyMC3 through the seeds. Justifying the reason why is expected to obtain better results if the processing of all the data was concluded 6.2. 
 
-  Other examples of comparisons are described in Appendix B’s notebook.
+  Other examples of comparisons are described in https://github.com/FelipeMFO/supernovae-classification/blob/master/src_and_notebooks/processing/GP_evaluation.ipynb’s notebook.
   
 ![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/7f2cac78-fa12-4619-b2f1-3f173b91d97f)
 
