@@ -492,18 +492,25 @@ In order to choose the Kernel functions that would be used in the interpolations
 
   From the data of the reference above, the followingly Kernels were chosen for the interpolation:
 Quadratic exponential:
+
 ![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/4b13dc54-7087-4ee4-bf54-81b31f1c12c8)
 
 (6.1)
+
 Quadratic rational:
+
 ![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/c6120745-71f9-4c8f-a048-00abb711bb00)
 
 (6.2)
+
 Matern 5/2:
+
 ![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/d35679c1-2300-423b-a28e-8a2916a3026b)
 
 (6.3)
+
 Matern 3/2
+
 ![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/a5ec88dc-762f-4973-91bb-71161579ec76)
 
 (6.4)
@@ -520,9 +527,11 @@ These hyperparameters can assume values as probabilistic distribution functions 
   Many types of functions that fulfill this prerequisite are described in PyMC3 [40].
   
   As an example of this we have Half-Cauchy log-likelihood.
+  
   ![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/788a3b05-8b7e-4219-b4ac-7bb5fb240c33)
 
 (6.5)
+
 ![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/57d9cd7e-5985-4dbb-a9c7-565717f6b4c8)
 
 Figure 6.1: Example of distribution with not negative values. 
@@ -545,24 +554,37 @@ Table 6.1: Results of Kernel Matern 5/2 by the library george. ‘Pattern’ ref
   Other examples of comparisons are described in Appendix B’s notebook.
   
 ![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/7f2cac78-fa12-4619-b2f1-3f173b91d97f)
+
 (a) original pipeline
+
 ![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/744e1e5a-8c64-4e29-8584-6aa20e36b9ee)
+
 (b) PyMC3 Exponential Quadratic seed 9
+
 ![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/ff7f845b-4440-4f95-84ab-068ca49d536f)
+
 (c) PyMC3 Matern 5/2 seed 6, overfitting
+
 ![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/fcdaa8d8-ae5b-4cdf-af6e-648762d80e32)
+
 (d) PyMC3 Matern 5/2 seed 9, overfitting
+
 ![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/0a27d969-fa17-4c5b-ba28-07984e86d234)
+
 (e) PyMC3 Matern 5/2 seed 6, less overfitting
+
 ![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/6edfae45-ce31-4eb2-8346-15c8169bc170)
+
 (f) PyMC3 Matern 5/2 seed 9, less overfitting
 
 Figure 6.2: Interpolations of the object SN013742 using 6 different settings. Graphic Flow x Time (days).
 
 ![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/22ca1fdd-046c-4e9f-9631-8928f055396e)
+
 (a) Normalized values
 
 ![image](https://github.com/FelipeMFO/supernovae-classification/assets/38300024/2b61cbe9-9fda-4c32-8cc3-04aaca4c821a)
+
 (b) Absolute values
 Figure 6.3: Confusion Matrices of Matern 5/2 through library george. Results worse than the ones presented in 3.5.
 
